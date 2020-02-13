@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="bd42e7ae-08c4-4685-b7ad-0763481df87c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../docs/Database.odt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gs-db/abiturients.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gs-web-app/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gs-web-app/src/app/components/Image/Image.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gs-web-app/src/app/consts/routePaths.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gs-web-app/src/app/containers/App/App.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gs-web-app/src/app/containers/App/AppLayout.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gs-web-app/src/app/containers/Root/Root.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gs-web-app/src/app/containers/Routes/PublicRoute.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gs-web-app/src/app/containers/Routes/Routes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gs-web-app/src/app/services/history.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gs-web-app/src/app/state/ducks/global/actionTypes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gs-web-app/src/app/state/ducks/global/actions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gs-web-app/src/app/state/ducks/global/reducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gs-web-app/src/app/state/ducks/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gs-web-app/src/app/state/store.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gs-web-app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../gs-web-app/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gs-web-app/public/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gs-web-app/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../gs-web-app/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gs-web-app/public/logo192.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gs-web-app/public/logo512.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gs-web-app/public/manifest.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gs-web-app/public/robots.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gs-web-app/src/App.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gs-web-app/src/App.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gs-web-app/src/App.test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gs-web-app/src/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gs-web-app/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../gs-web-app/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gs-web-app/src/logo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gs-web-app/src/serviceWorker.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gs-web-app/src/setupTests.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gs-web-app/yarn.lock" beforeDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="1Xl5xRx4b4opmzr3u1HzYlCp9KR" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_interpreter_path" value="node" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bd42e7ae-08c4-4685-b7ad-0763481df87c" name="Default Changelist" comment="" />
+      <created>1581608086316</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1581608086316</updated>
+      <workItem from="1581608087470" duration="70000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

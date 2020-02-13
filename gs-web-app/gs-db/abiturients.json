@@ -1,0 +1,26 @@
+[
+  {
+    "surname": "surname",
+    "name": "name",
+    "patronymic": "patronymic",
+    "birth_date": "birth_date",
+    "specialty": "specialty",
+    "faculty": "faculty",
+    "department": "department",
+    "study_form": "study_form",
+    "pay_form": "pay_form",
+    "foreign_language": "foreign_language",
+    "graduation_university": "graduation_university",
+    "graduation_year": "graduation_year",
+    "graduation_type": "graduation_year",
+    "isHonorsDegree": false,
+    "contact_email": "email",
+    "contact_phone": "contact_phone",
+    "isHostelNeeded": false,
+    "gpa": 10,
+    "publications_count": 0,
+    "prospective_supervisor": "prospective_supervisor",
+    "distinctive_awards": "distinctive_awards",
+    "additional_info": "additional_info"
+  }
+]
