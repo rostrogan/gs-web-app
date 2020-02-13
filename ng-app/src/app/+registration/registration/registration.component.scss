@@ -1,0 +1,21 @@
+.registration {
+  padding-top: 30px;
+  &__header {
+    font-weight: 300;
+    margin: 0;
+    padding: 10px 8px;
+    font-size: 20px;
+    color: #000;
+  }
+  &__form {
+    &-field {
+      margin-right: 10px;
+      &--full {
+        width: 100%;
+      }
+    }
+    &-btn {
+      margin-right: 10px;
+    }
+  }
+}

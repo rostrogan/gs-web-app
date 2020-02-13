@@ -1,0 +1,13 @@
+<div class="page-container">
+  <mat-sidenav-container class="cabinet-container">
+    <mat-sidenav mode="side" opened class="cabinet__sidenav mat-elevation-z8" [fixedInViewport]="true" [fixedTopGap]="56"
+                 [fixedBottomGap]="38">
+      <ak-cabinet-menu></ak-cabinet-menu>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div class="cabinet-content">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

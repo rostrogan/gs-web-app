@@ -1,0 +1,28 @@
+<mat-card>
+  <div class="groups" *ngIf="isLoadingFinished">
+    <mat-form-field class="groups__search">
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Пошук">
+    </mat-form-field><br>
+    <a mat-raised-button color="primary" routerLink="./add" style="margin-bottom: 20px">Додати викладача</a>
+    <table mat-table class="groups__table mat-elevation-z8" [dataSource]="dataSource">
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Викладач </th>
+        <td mat-cell *matCellDef="let element">{{ element.name }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="faculty">
+        <th mat-header-cell *matHeaderCellDef> Факультет </th>
+        <td mat-cell *matCellDef="let element"> {{ element.faculty }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="details">
+        <th mat-header-cell *matHeaderCellDef> </th>
+        <td mat-cell *matCellDef="let element"><a mat-raised-button color="primary" routerLink="./{{element.id}}">Детальніше</a></td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</mat-card>

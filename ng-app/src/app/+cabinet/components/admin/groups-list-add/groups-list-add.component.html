@@ -1,0 +1,34 @@
+<mat-card>
+  <div class="title">Додати групу</div>
+  <form class="" novalidate>
+    <mat-form-field class="groups__row-field" appearance="outline">
+      <mat-label>Назва групи</mat-label>
+      <input matInput [formControl]="groupName">
+      <mat-error>Це поле обов'язкове</mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="groups__form-field" appearance="outline">
+      <mat-label>Факультет</mat-label>
+      <mat-select placeholder="Select" [formControl]="faculty">
+        <mat-option *ngFor="let faculty of faculties" [value]="faculty.id">{{ faculty.abbr }} </mat-option>
+      </mat-select>
+      <mat-error>Це поле обов'язкове</mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="groups__form-field" appearance="outline">
+      <mat-label>Кафедра</mat-label>
+      <mat-select placeholder="Select" [formControl]="department" [disabled]="!faculty.value">
+        <mat-option *ngFor="let department of facultiesMap.get(faculty.value)?.departments" [value]="department">{{ departmentsMap.get(department).abbr }} </mat-option>
+      </mat-select>
+      <mat-error>Це поле обов'язкове</mat-error>
+    </mat-form-field>
+  </form>
+  <button
+    mat-raised-button
+    color="primary"
+    class="groups__row-btn"
+    (click)="addGroup()"
+    [disabled]="groupName.invalid || faculty.invalid || department.invalid">
+    Додати групу
+  </button>
+</mat-card>

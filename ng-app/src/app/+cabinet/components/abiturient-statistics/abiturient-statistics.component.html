@@ -1,0 +1,48 @@
+<mat-card class="mat-card">
+  <h1>Подані заяви</h1>
+  <div class="mat-card-chart">
+    <ngx-charts-bar-vertical
+      [results]="registrationData"
+      [gradient]="false"
+      [xAxis]="true"
+      [yAxis]="true"
+      [legend]="false"
+      [showXAxisLabel]="true"
+      [showYAxisLabel]="true"
+      [xAxisLabel]="'Факультети'"
+      [yAxisLabel]="'Подані заяви'">
+    </ngx-charts-bar-vertical>
+  </div>
+</mat-card>
+<mat-card class="mat-card">
+  <h1>Абітурієнти</h1>
+  <div class="mat-card-chart">
+    <ngx-charts-bar-vertical
+      [results]="abiturients"
+      [gradient]="false"
+      [xAxis]="true"
+      [yAxis]="true"
+      [legend]="false"
+      [showXAxisLabel]="true"
+      [showYAxisLabel]="true"
+      [xAxisLabel]="'Факультети'"
+      [yAxisLabel]="'Абітурієнти'">
+    </ngx-charts-bar-vertical>
+  </div>
+</mat-card>
+<mat-card class="mat-card">
+  <h1>Зараховані</h1>
+  <div class="mat-card-chart">
+    <ngx-charts-bar-vertical
+      [results]="aspirants"
+      [gradient]="false"
+      [xAxis]="true"
+      [yAxis]="true"
+      [legend]="false"
+      [showXAxisLabel]="true"
+      [showYAxisLabel]="true"
+      [xAxisLabel]="'Факультети'"
+      [yAxisLabel]="'Зараховані'">
+    </ngx-charts-bar-vertical>
+  </div>
+</mat-card>

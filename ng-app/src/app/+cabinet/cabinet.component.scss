@@ -1,0 +1,12 @@
+.cabinet {
+  &-container {
+    height: 100%;
+  }
+  &__sidenav {
+    width: 200px;
+  }
+  &-content {
+    height: 100%;
+    padding: 10px;
+  }
+}

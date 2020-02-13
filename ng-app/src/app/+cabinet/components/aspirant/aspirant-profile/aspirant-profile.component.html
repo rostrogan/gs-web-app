@@ -1,0 +1,26 @@
+<mat-card>
+  <mat-list>
+    <mat-list-item>ПІБ: {{ aspirant?.last_name }} {{ aspirant?.first_name }} {{ aspirant?.middle_name }}</mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>Інститут/Факультет: {{ aspirant?.faculty }} </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>Кафедра: {{ aspirant?.department }} </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>Спеціальність: {{ aspirant?.speciality }} </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>Науковий керівник: {{ aspirant?.supervisor }} </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>Термін підготовки: 3 роки </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>Рік вступу: {{ year }} </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>Рік закінчення: {{ year + 3 }} </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>Група: {{ group?.name }} </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>Форма підготовки: {{ aspirant?.training_form }} </mat-list-item>
+    <mat-divider></mat-divider>
+  </mat-list>
+<!--  <div class="profile__theme-name">Тема дисертації: <br> Lorem ipsum dolor sit amet. </div>-->
+<!--  <div class="profile__theme-description">Обґрунтування теми дисертації: <br> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam dolore dolores eveniet illo in magni neque placeat praesentium, quam quibusdam rerum sint sit totam vel, voluptates? Aspernatur cum possimus sequi? </div>-->
+</mat-card>

@@ -1,0 +1,28 @@
+<div mat-dialog-content>
+  <mat-form-field appearance="outline">
+    <mat-label>Назва предмету</mat-label>
+    <input matInput [formControl]="nameControl">
+    <mat-error>Це поле обов'язкове</mat-error>
+  </mat-form-field>
+  <br>
+  <mat-form-field appearance="outline">
+    <mat-label>Кількість кредитів</mat-label>
+    <input matInput [formControl]="creditControl">
+    <mat-error>Це поле обов'язкове</mat-error>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-select placeholder="Семестр" [formControl]="semesterControl">
+      <mat-option *ngFor="let semester of [1, 2, 3, 4]" value="{{semester}}">{{ semester }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select placeholder="Викладач" [formControl]="teacherControl">
+      <mat-option *ngFor="let teacher of teachers" value="{{teacher.id}}">{{ teacher.name }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Закрити</button>
+  <button mat-button (click)="addLesson()" [disabled]="teacherControl.invalid && nameControl.invalid">Додати</button>
+</div>

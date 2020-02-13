@@ -1,0 +1,26 @@
+mat-card {
+  margin-bottom: 20px;
+}
+
+.schedule {
+  &__table {
+    margin-bottom: 20px;
+    .mat-header-cell {
+      width: calc(100% / 6);
+    }
+    .mat-column-number {
+      width: 20px;
+    }
+    td {
+      padding: 5px;
+      span {
+        display: block;
+      }
+    }
+  }
+  &__title {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 10px;
+  }
+}

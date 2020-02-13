@@ -1,0 +1,14 @@
+.rating {
+  &__data {
+    padding: 20px 0;
+  }
+  &__table {
+    width: 100%;
+    &-green {
+      background: #c0ffc0;
+    }
+    &-active {
+      font-weight: bold;
+    }
+  }
+}

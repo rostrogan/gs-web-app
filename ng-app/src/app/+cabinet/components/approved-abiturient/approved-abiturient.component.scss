@@ -1,0 +1,27 @@
+.abiturient {
+  &__row {
+    padding: 10px;
+    display: flex;
+    &-title {
+      font-weight: bold;
+      width: 50%;
+    }
+    &-btn {
+      margin-right: 10px;
+    }
+    &-field {
+      margin-right: 10px;
+    }
+  }
+  form {
+    width: 100%;
+    mat-form-field {
+      width: 50%;
+    }
+  }
+}
+
+.additional_exam {
+  display: flex;
+  flex-direction: column;
+}

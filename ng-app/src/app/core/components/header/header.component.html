@@ -1,0 +1,16 @@
+<nav class="header">
+  <a routerLink="/" mat-button>
+    <img class="header__logo" src="assets/images/kpi-logo-black.png" alt="KPI">
+    Аспірантура КПІ
+  </a>
+  <div class="flex-spacer"></div>
+  <span *ngIf="isLoggedIn$ | async">
+    Вітаємо, <span *ngIf="user$ | async">{{ (user$ | async)?.first_name + ' ' + (user$ | async)?.last_name }}</span>
+  </span>
+  <a routerLink="/cabinet" mat-icon-button>
+    <mat-icon>account_circle</mat-icon>
+  </a>
+  <button *ngIf="isLoggedIn$ | async" mat-icon-button (click)="logout()">
+    <mat-icon>exit_to_app</mat-icon>
+  </button>
+</nav>

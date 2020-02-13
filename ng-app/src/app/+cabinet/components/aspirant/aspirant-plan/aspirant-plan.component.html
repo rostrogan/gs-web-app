@@ -1,0 +1,95 @@
+<mat-card>
+  Індивідуальний навчальний план
+</mat-card>
+<mat-card>
+  1 семестр
+  <table mat-table class="plan__table" [dataSource]="dataSource1">
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Назва навчальної дисципліни </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="count">
+      <th mat-header-cell *matHeaderCellDef> Кількість кредитів </th>
+      <td mat-cell *matCellDef="let element"> {{element.count}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="form">
+      <th mat-header-cell *matHeaderCellDef> Форма атестації </th>
+      <td mat-cell *matCellDef="let element"> {{element.form}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+<!--  Узгоджено Науковий Керівник-->
+</mat-card>
+<mat-card>
+  2 семестр
+  <table mat-table class="plan__table" [dataSource]="dataSource2">
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Назва навчальної дисципліни </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="count">
+      <th mat-header-cell *matHeaderCellDef> Кількість кредитів </th>
+      <td mat-cell *matCellDef="let element"> {{element.count}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="form">
+      <th mat-header-cell *matHeaderCellDef> Форма атестації </th>
+      <td mat-cell *matCellDef="let element"> {{element.form}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+<!--  Узгоджено Науковий Керівник-->
+</mat-card>
+<mat-card>
+  3 семестр
+  <table mat-table class="plan__table" [dataSource]="dataSource3">
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Назва навчальної дисципліни </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="count">
+      <th mat-header-cell *matHeaderCellDef> Кількість кредитів </th>
+      <td mat-cell *matCellDef="let element"> {{element.count}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="form">
+      <th mat-header-cell *matHeaderCellDef> Форма атестації </th>
+      <td mat-cell *matCellDef="let element"> {{element.form}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+<!--  Узгоджено Науковий Керівник-->
+</mat-card>
+<mat-card>
+  4 семестр
+  <table mat-table class="plan__table" [dataSource]="dataSource4">
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Назва навчальної дисципліни </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="count">
+      <th mat-header-cell *matHeaderCellDef> Кількість кредитів </th>
+      <td mat-cell *matCellDef="let element"> {{element.count}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="form">
+      <th mat-header-cell *matHeaderCellDef> Форма атестації </th>
+      <td mat-cell *matCellDef="let element"> {{element.form}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+<!--  Узгоджено Науковий Керівник-->
+</mat-card>

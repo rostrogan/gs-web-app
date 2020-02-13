@@ -1,0 +1,168 @@
+<mat-card>
+  <div class="schedule__title">І тиждень</div>
+  <table mat-table class="schedule__table" [dataSource]="firstWeek">
+    <ng-container matColumnDef="number">
+      <th mat-header-cell *matHeaderCellDef> </th>
+      <td mat-cell *matCellDef="let element"> {{element.number}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="monday">
+      <th mat-header-cell *matHeaderCellDef> Понеділок </th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="element.monday">
+          <span>{{element.monday.lesson_name}}</span>
+          <span>{{element.monday.lesson_room}}</span>
+          <span>{{element.monday.lesson_type}}</span>
+          <span>{{element.monday.teacher_name}}</span>
+        </ng-container>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="tuesday">
+      <th mat-header-cell *matHeaderCellDef> Вівторок </th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="element.tuesday">
+          <span>{{element.tuesday.lesson_name}}</span>
+          <span>{{element.tuesday.lesson_room}}</span>
+          <span>{{element.tuesday.lesson_type}}</span>
+          <span>{{element.tuesday.teacher_name}}</span>
+        </ng-container>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="wednesday">
+      <th mat-header-cell *matHeaderCellDef> Середа </th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="element.wednesday">
+          <span>{{element.wednesday.lesson_name}}</span>
+          <span>{{element.wednesday.lesson_room}}</span>
+          <span>{{element.wednesday.lesson_type}}</span>
+          <span>{{element.wednesday.teacher_name}}</span>
+        </ng-container>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="thursday">
+      <th mat-header-cell *matHeaderCellDef> Четвер </th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="element.thursday">
+          <span>{{element.thursday.lesson_name}}</span>
+          <span>{{element.thursday.lesson_room}}</span>
+          <span>{{element.thursday.lesson_type}}</span>
+          <span>{{element.thursday.teacher_name}}</span>
+        </ng-container>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="friday">
+      <th mat-header-cell *matHeaderCellDef> П'ятниця </th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="element.friday">
+          <span>{{element.friday.lesson_name}}</span>
+          <span>{{element.friday.lesson_room}}</span>
+          <span>{{element.friday.lesson_type}}</span>
+          <span>{{element.friday.teacher_name}}</span>
+        </ng-container>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="saturday">
+      <th mat-header-cell *matHeaderCellDef> Субота </th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="element.saturday">
+          <span>{{element.saturday.lesson_name}}</span>
+          <span>{{element.saturday.lesson_room}}</span>
+          <span>{{element.saturday.lesson_type}}</span>
+          <span>{{element.saturday.teacher_name}}</span>
+        </ng-container>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</mat-card>
+<mat-card>
+  <div class="schedule__title">ІІ тиждень</div>
+  <table mat-table class="schedule__table" [dataSource]="secondWeek">
+    <ng-container matColumnDef="number">
+      <th mat-header-cell *matHeaderCellDef> </th>
+      <td mat-cell *matCellDef="let element"> {{element.number}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="monday">
+      <th mat-header-cell *matHeaderCellDef> Понеділок </th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="element.monday">
+          <span>{{element.monday.lesson_name}}</span>
+          <span>{{element.monday.lesson_room}}</span>
+          <span>{{element.monday.lesson_type}}</span>
+          <span>{{element.monday.teacher_name}}</span>
+        </ng-container>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="tuesday">
+      <th mat-header-cell *matHeaderCellDef> Вівторок </th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="element.tuesday">
+          <span>{{element.tuesday.lesson_name}}</span>
+          <span>{{element.tuesday.lesson_room}}</span>
+          <span>{{element.tuesday.lesson_type}}</span>
+          <span>{{element.tuesday.teacher_name}}</span>
+        </ng-container>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="wednesday">
+      <th mat-header-cell *matHeaderCellDef> Середа </th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="element.wednesday">
+          <span>{{element.wednesday.lesson_name}}</span>
+          <span>{{element.wednesday.lesson_room}}</span>
+          <span>{{element.wednesday.lesson_type}}</span>
+          <span>{{element.wednesday.teacher_name}}</span>
+        </ng-container>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="thursday">
+      <th mat-header-cell *matHeaderCellDef> Четвер </th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="element.thursday">
+          <span>{{element.thursday.lesson_name}}</span>
+          <span>{{element.thursday.lesson_room}}</span>
+          <span>{{element.thursday.lesson_type}}</span>
+          <span>{{element.thursday.teacher_name}}</span>
+        </ng-container>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="friday">
+      <th mat-header-cell *matHeaderCellDef> П'ятниця </th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="element.friday">
+          <span>{{element.friday.lesson_name}}</span>
+          <span>{{element.friday.lesson_room}}</span>
+          <span>{{element.friday.lesson_type}}</span>
+          <span>{{element.friday.teacher_name}}</span>
+        </ng-container>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="saturday">
+      <th mat-header-cell *matHeaderCellDef> Субота </th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="element.saturday">
+          <span>{{element.saturday.lesson_name}}</span>
+          <span>{{element.saturday.lesson_room}}</span>
+          <span>{{element.saturday.lesson_type}}</span>
+          <span>{{element.saturday.teacher_name}}</span>
+        </ng-container>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</mat-card>

@@ -1,0 +1,174 @@
+<div class="page-container">
+  <div class="container registration">
+    <mat-card>
+      <mat-card-title class="registration__header">
+        Реєстраційна форма абітурієнта
+      </mat-card-title>
+      <form [formGroup]="formGroup" (ngSubmit)="createStudent()" class="registration__form" novalidate>
+        <mat-vertical-stepper formArrayName="formArray" [linear]="true">
+          <mat-step formGroupName="0" [stepControl]="formArray?.get([0])" label="Введіть своє ПІБ">
+            <mat-form-field class="registration__form-field" appearance="outline">
+              <mat-label>Прізвище</mat-label>
+              <input matInput placeholder="Іванов" formControlName="lastName">
+              <mat-error>Це поле обов'язкове</mat-error>
+            </mat-form-field>
+            <mat-form-field class="registration__form-field" appearance="outline">
+              <mat-label>Ім'я</mat-label>
+              <input matInput placeholder="Іван" formControlName="firstName">
+              <mat-error>Це поле обов'язкове</mat-error>
+            </mat-form-field>
+            <mat-form-field class="registration__form-field" appearance="outline">
+              <mat-label>По батькові</mat-label>
+              <input matInput placeholder="Іванович" formControlName="surname">
+              <mat-error>Це поле обов'язкове</mat-error>
+            </mat-form-field>
+            <mat-form-field class="registration__form-field" appearance="outline">
+              <mat-label>Стать</mat-label>
+              <mat-select placeholder="Стать" formControlName="sex">
+                <mat-option value="Ч">Чоловіча</mat-option>
+                <mat-option value="Ж">Жіноча</mat-option>
+              </mat-select>
+              <mat-error>Це поле обов'язкове</mat-error>
+            </mat-form-field>
+            <mat-form-field class="registration__form-field" appearance="outline">
+              <input formControlName="dateOfBirth" matInput [matDatepicker]="picker" (click)="picker.open()" placeholder="Дата народження">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker touchUi #picker></mat-datepicker>
+              <mat-error>Це поле обов'язкове</mat-error>
+            </mat-form-field>
+            <div>
+              <button mat-stroked-button matStepperNext type="button">Далі</button>
+            </div>
+          </mat-step>
+          <mat-step formGroupName="1" [stepControl]="formArray?.get([1])" label="Оберіть спеціальність, факультет і кафедру">
+            <mat-form-field class="registration__form-field" appearance="outline">
+              <mat-label>Спеціальність</mat-label>
+              <mat-select placeholder="Select" formControlName="speciality">
+                <mat-option *ngFor="let speciality of specialityList" [value]="speciality.id">{{ speciality.id }} - {{ speciality.name }}</mat-option>
+              </mat-select>
+              <mat-error>Це поле обов'язкове</mat-error>
+            </mat-form-field>
+            <mat-form-field class="registration__form-field" appearance="outline">
+              <mat-label>Факультет</mat-label>
+              <mat-select placeholder="Select" formControlName="faculty">
+                <mat-option *ngFor="let faculty of facultyList" [value]="faculty.name">{{ faculty.name }}</mat-option>
+              </mat-select>
+              <mat-error>Це поле обов'язкове</mat-error>
+            </mat-form-field>
+            <mat-form-field class="registration__form-field" appearance="outline">
+              <mat-label>Кафедра</mat-label>
+              <mat-select placeholder="Select" formControlName="chair">
+                <mat-option *ngFor="let chair of chairMap.get(facultyName)" [value]="chair.shortName">{{ chair.name }}</mat-option>
+              </mat-select>
+              <mat-error>Це поле обов'язкове</mat-error>
+            </mat-form-field>
+            <div>
+              <button class="registration__form-btn" mat-stroked-button matStepperPrevious type="button">Назад</button>
+              <button mat-stroked-button matStepperNext type="button">Далі</button>
+            </div>
+          </mat-step>
+          <mat-step formGroupName="2" [stepControl]="formArray?.get([2])" label="Вкажіть додаткову інформацію">
+            <div class="registration__form-row">
+              <mat-form-field class="registration__form-field" appearance="outline">
+                <mat-label>Форма навчання</mat-label>
+                <mat-select placeholder="Форма навчання" formControlName="trainingForm">
+                  <mat-option value="Денна">Денна</mat-option>
+                  <mat-option value="Вечірня">Вечірня</mat-option>
+                  <mat-option value="Заочна">Заочна</mat-option>
+                </mat-select>
+                <mat-error>Це поле обов'язкове</mat-error>
+              </mat-form-field>
+              <mat-form-field class="registration__form-field" appearance="outline">
+                <mat-label>Форма оплати</mat-label>
+                <mat-select placeholder="Форма оплати" formControlName="payForm">
+                  <mat-option value="Держзамовлення">Держзамовлення</mat-option>
+                  <mat-option value="Контракт">Контракт</mat-option>
+                </mat-select>
+                <mat-error>Це поле обов'язкове</mat-error>
+              </mat-form-field>
+              <mat-form-field class="registration__form-field" appearance="outline">
+                <mat-label>Іноземна мова</mat-label>
+                <mat-select placeholder="Іноземна мова" formControlName="languageType">
+                  <mat-option value="Англ.">Англійська</mat-option>
+                  <mat-option value="Німец.">Німецька</mat-option>
+                  <mat-option value="Франц.">Французька.</mat-option>
+                  <mat-option value="Іспанс.">Іспанська</mat-option>
+                </mat-select>
+                <mat-error>Це поле обов'язкове</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="registration__form-row">
+              <mat-form-field class="registration__form-field" appearance="outline">
+                <mat-label>Який ВНЗ закінчив</mat-label>
+                <input matInput placeholder="КПІ" formControlName="university">
+                <mat-error>Це поле обов'язкове</mat-error>
+              </mat-form-field>
+              <mat-form-field class="registration__form-field" appearance="outline">
+                <mat-label>Рік випуску</mat-label>
+                <input matInput placeholder="2019" formControlName="universityYear">
+                <mat-error>Це поле обов'язкове</mat-error>
+              </mat-form-field>
+              <mat-form-field class="registration__form-field" appearance="outline">
+                <mat-label>Спеціаліст/Магістр</mat-label>
+                <mat-select placeholder="Спеціаліст/Магістр" formControlName="degreeType">
+                  <mat-option value="Спеціаліст">Спеціаліст</mat-option>
+                  <mat-option value="Магістр">Магістр</mat-option>
+                </mat-select>
+                <mat-error>Це поле обов'язкове</mat-error>
+              </mat-form-field>
+              <mat-checkbox formControlName="degreeHonor">З відзнакою</mat-checkbox>
+            </div>
+            <div class="registration__form-row">
+              <mat-form-field class="registration__form-field" appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="Email" formControlName="email">
+                <mat-error>Це поле обов'язкове</mat-error>
+              </mat-form-field>
+              <mat-form-field class="registration__form-field" appearance="outline">
+                <mat-label>Телефон</mat-label>
+                <input matInput placeholder="+38099009900" formControlName="phone">
+                <mat-error>Це поле обов'язкове</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="registration__form-row">
+              <mat-checkbox formControlName="degreeHonor">Потребую місце проживання в гуртожитку на період навчання</mat-checkbox>
+            </div>
+            <div class="registration__form-row">
+              <mat-form-field class="registration__form-field" appearance="outline">
+                <mat-label>Середній бал диплому за 100-бальною шкалою</mat-label>
+                <input matInput placeholder="1" formControlName="averageMark">
+                <mat-error>Це поле обов'язкове</mat-error>
+              </mat-form-field>
+              <mat-form-field class="registration__form-field" appearance="outline">
+                <mat-label>Кількість публікацій</mat-label>
+                <input matInput placeholder="0" formControlName="publishCount">
+                <mat-error>Це поле обов'язкове</mat-error>
+              </mat-form-field>
+              <mat-form-field class="registration__form-field" appearance="outline" style="width: 500px">
+                <mat-label>Прізвище передбачуваного наукового керівника</mat-label>
+                <input matInput placeholder="" formControlName="supervisor">
+                <mat-error>Це поле обов'язкове</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="registration__form-row">
+              <mat-form-field class="registration__form-field registration__form-field--full" appearance="outline">
+                <mat-label>Особливі відзнаки (перемоги на олімпіадах, патенти, тощо)</mat-label>
+                <textarea matInput placeholder="" formControlName="indicia"></textarea>
+              </mat-form-field>
+            </div>
+            <div class="registration__form-row">
+              <mat-form-field class="registration__form-field registration__form-field--full" appearance="outline">
+                <mat-label>Додаткова інформація</mat-label>
+                <textarea matInput placeholder="Стаж роботи, місце роботи, посада" formControlName="additionalInfo"></textarea>
+              </mat-form-field>
+            </div>
+            <div>
+              <button class="registration__form-btn" mat-stroked-button matStepperPrevious type="button">Назад</button>
+              <button mat-raised-button matStepperNext [disabled]="formGroup.invalid" type="submit" color="primary">Завершити реєстрацію</button>
+            </div>
+          </mat-step>
+        </mat-vertical-stepper>
+      </form>
+    </mat-card>
+  </div>
+</div>

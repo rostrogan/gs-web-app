@@ -1,0 +1,29 @@
+<mat-card>
+  <div class="row">
+    Назва групи: {{ group?.name }}
+  </div>
+  <mat-divider></mat-divider>
+  <div class="row">
+    Кафедра: {{ department?.name }}
+  </div>
+  <mat-divider></mat-divider>
+  <div class="row">
+    Факультет: {{ faculty?.name }}
+  </div>
+  <mat-divider></mat-divider>
+  <div class="row">
+    <button mat-raised-button color="primary" (click)="openDialog()" style="margin-bottom: 20px">Додати предмет</button>
+    <br>
+    Предмети:
+  </div>
+  <mat-tab-group>
+    <mat-tab label="Перший семестр">
+      <div class="row" *ngFor="let lesson of group?.lessons ? group.lessons['1'] : []; let index = index">
+        {{ index + 1 }}. {{ lesson.name }}
+      </div>
+    </mat-tab>
+    <mat-tab label="Другий семестр" [disabled]="true"> Другий семестр </mat-tab>
+    <mat-tab label="Третій семестр" [disabled]="true"> Третій семестр </mat-tab>
+    <mat-tab label="Четвертий семестр" [disabled]="true"> Четвертий семестр </mat-tab>
+  </mat-tab-group>
+</mat-card>

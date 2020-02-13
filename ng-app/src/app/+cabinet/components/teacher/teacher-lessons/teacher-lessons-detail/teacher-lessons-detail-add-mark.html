@@ -1,0 +1,22 @@
+<div mat-dialog-content>
+  <mat-form-field class="registration__form-field" appearance="outline">
+    <input [formControl]="dateControl" matInput [matDatepicker]="picker" (click)="picker.open()" placeholder="Дата">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker touchUi #picker></mat-datepicker>
+    <mat-error>Це поле обов'язкове</mat-error>
+  </mat-form-field>
+  <br>
+  <mat-form-field appearance="outline">
+    <mat-label>Оцінка</mat-label>
+    <input matInput [formControl]="markControl">
+    <mat-error>Це поле обов'язкове</mat-error>
+  </mat-form-field>
+  <div class="registration__form-row">
+    <mat-checkbox [formControl]="absentControl">Був відсутній</mat-checkbox>
+  </div>
+  <br>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Закрити</button>
+  <button mat-button (click)="addLesson()" [disabled]="dateControl.invalid && markControl.invalid">Додати</button>
+</div>

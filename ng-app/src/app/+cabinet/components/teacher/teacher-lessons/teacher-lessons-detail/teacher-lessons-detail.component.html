@@ -1,0 +1,28 @@
+<mat-card *ngIf="group && lesson && aspirants">
+  <div class="" style="margin-bottom: 10px">Група {{ group.name }}</div>
+  <div class="" style="margin-bottom: 10px">{{ lesson.name }}</div>
+  <ng-container *ngIf="aspirants && lesson">
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let aspirant of aspirants">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{ aspirant.last_name }} {{ aspirant.first_name }}
+          </mat-panel-title>
+          <mat-panel-description>
+<!--            {{ aspirant.exams[lesson.key] ? 'Оцінка за екзамен: ' + aspirant.exams[lesson.key].mark : '' }}-->
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <ng-container *ngIf="aspirant.lessons_marks">
+          <div class="" *ngFor="let mark of aspirant.lessons_marks[lesson.id]? aspirant.lessons_marks[lesson.id] : []; let index = index">
+            {{ index + 1 }}. {{mark.date.seconds ? (mark.date.seconds * 1000 | date) : (mark.date | date) }}
+            <ng-container *ngIf="mark.absent">був відсутній</ng-container>
+            <ng-container *ngIf="!mark.absent"> отримав {{ mark.mark }}</ng-container>
+          </div>
+        </ng-container>
+        <button mat-raised-button color="primary" style="margin-top: 10px" (click)="addMark(aspirant)">
+          Додати відмітку
+        </button>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </ng-container>
+</mat-card>

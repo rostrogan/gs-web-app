@@ -1,0 +1,42 @@
+<mat-card>
+  <div class="abiturients" *ngIf="isLoadingFinished">
+    <mat-form-field class="abiturients__search">
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Пошук">
+    </mat-form-field>
+    <table mat-table class="abiturients__table mat-elevation-z8" [dataSource]="dataSource">
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> ПІБ </th>
+        <td mat-cell *matCellDef="let element">{{ element.last_name }} {{element.first_name}} {{ element.middle_name }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="faculty">
+        <th mat-header-cell *matHeaderCellDef> Факультет </th>
+        <td mat-cell *matCellDef="let element"> {{element.faculty}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="department">
+        <th mat-header-cell *matHeaderCellDef> Кафедра </th>
+        <td mat-cell *matCellDef="let element"> {{element.department}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="speciality">
+        <th mat-header-cell *matHeaderCellDef> Спеціальність </th>
+        <td mat-cell *matCellDef="let element"> {{element.speciality}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="group_id">
+        <th mat-header-cell *matHeaderCellDef> Група </th>
+        <td mat-cell *matCellDef="let element">
+          <button *ngIf="!element.group_id" mat-raised-button color="primary" (click)="openDialog(element)">
+            Додати в групу
+          </button>
+          <ng-container *ngIf="element.group_id">{{ groupsMap.get(element.group_id).name }}</ng-container>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</mat-card>

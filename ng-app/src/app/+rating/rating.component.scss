@@ -1,0 +1,24 @@
+.rating {
+  &__search {
+    padding-top: 20px;
+    &-form {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+    &-field {
+      width: 50%;
+    }
+  }
+  &__data {
+    padding: 20px 0;
+    &-not-found {
+      text-align: center;
+      padding: 10px;
+    }
+  }
+  &__table {
+    width: 100%;
+  }
+}

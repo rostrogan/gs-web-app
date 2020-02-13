@@ -1,0 +1,15 @@
+.cabinet-menu {
+  margin-top: 20px;
+  &__item {
+    width: 100%;
+    border-top: 1px solid #ccc;
+    border-radius: 0;
+    &:last-child {
+      border-bottom: 1px solid #ccc;
+    }
+    &_active {
+      background: #526dff;
+      color: #fff;
+    }
+  }
+}

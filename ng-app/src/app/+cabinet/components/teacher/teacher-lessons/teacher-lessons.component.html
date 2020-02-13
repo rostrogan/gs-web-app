@@ -1,0 +1,11 @@
+<ng-container *ngIf="lessons && groups">
+  <mat-card *ngFor="let lesson of lessons">
+    <div class="">
+      <div class="">Група: {{ groups.get(lesson.group_id).name }}</div>
+      <div class="">Предмет: {{ lesson.name }}</div>
+    </div>
+    <div class="">
+      <button mat-raised-button color="primary" routerLink="{{lesson.id}}">Внести оцінки та відвідуваність</button>
+    </div>
+  </mat-card>
+</ng-container>

@@ -1,0 +1,21 @@
+<mat-card>
+  <ng-container *ngIf="aspirant && lessons">
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let lesson of (aspirant?.lessons_marks | keyvalue)">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{ lessons.get(lesson.key)?.name }}
+          </mat-panel-title>
+          <mat-panel-description>
+            {{ aspirant.exams && aspirant.exams[lesson.key] ? 'Оцінка за екзамен: ' + aspirant.exams[lesson.key].mark : '' }}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="" *ngFor="let mark of lesson.value; let index = index">
+          {{ index + 1 }}. {{mark.date.seconds * 1000 | date}}
+          <ng-container *ngIf="mark.absent">був відсутній</ng-container>
+          <ng-container *ngIf="!mark.absent"> отримав {{ mark.mark }}</ng-container>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </ng-container>
+</mat-card>

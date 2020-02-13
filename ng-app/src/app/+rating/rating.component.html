@@ -1,0 +1,51 @@
+<div class="page-container">
+  <div class="container rating">
+    <div class="rating__search">
+      <form [formGroup]="formGroup" (ngSubmit)="search()" class="rating__search-form" novalidate>
+        <mat-form-field class="rating__search-field" appearance="outline">
+          <mat-label>Прізвище</mat-label>
+          <input matInput formControlName="search">
+          <mat-error>Це поле обов'язкове</mat-error>
+        </mat-form-field>
+        <div class="rating__search-submit">
+          <button mat-raised-button [disabled]="formGroup.invalid" type="submit" color="primary">Пошук</button>
+        </div>
+      </form>
+    </div>
+    <div class="rating__data" *ngIf="isLoadingFinished">
+      <table mat-table class="rating__table mat-elevation-z8" *ngIf="dataSource.data.length" [dataSource]="dataSource">
+
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> ПІБ </th>
+          <td mat-cell *matCellDef="let element"> {{element.last_name}} {{element.first_name}} {{element.middle_name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="faculty">
+          <th mat-header-cell *matHeaderCellDef> Факультет </th>
+          <td mat-cell *matCellDef="let element"> {{element.faculty}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="chair">
+          <th mat-header-cell *matHeaderCellDef> Спеціальність </th>
+          <td mat-cell *matCellDef="let element"> {{element.speciality}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="mark">
+          <th mat-header-cell *matHeaderCellDef> Рейтинговий бал </th>
+          <td mat-cell *matCellDef="let element"> {{+element.total_mark }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="btn">
+          <th mat-header-cell *matHeaderCellDef> </th>
+          <td mat-cell *matCellDef="let element"><a mat-raised-button color="primary" [routerLink]="'./' + element.id">Детальніше</a></td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <div class="rating__data-not-found" *ngIf="dataSource.data.length === 0">
+        Абітурієнта не знайдено
+      </div>
+    </div>
+  </div>
+</div>

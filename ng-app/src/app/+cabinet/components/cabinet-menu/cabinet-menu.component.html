@@ -1,0 +1,54 @@
+<div class="cabinet-menu">
+  <ng-container [ngSwitch]="user.user_role" *ngIf="user">
+    <ng-container *ngSwitchCase="1">
+      <a routerLink="./registration-data" class="cabinet-menu__item" routerLinkActive="cabinet-menu__item_active" mat-button>
+        Подані заяви
+      </a>
+      <a routerLink="./abiturients" class="cabinet-menu__item" routerLinkActive="cabinet-menu__item_active" mat-button>
+        Абітурієнти
+      </a>
+      <a routerLink="./aspirants" class="cabinet-menu__item" routerLinkActive="cabinet-menu__item_active" mat-button>
+        Зараховані
+      </a>
+      <a routerLink="./abiturient-statistics" class="cabinet-menu__item" routerLinkActive="cabinet-menu__item_active" mat-button>
+        Статистика
+      </a>
+    </ng-container>
+    <ng-container *ngSwitchCase="2">
+      <a routerLink="./aspirant-profile" class="cabinet-menu__item" routerLinkActive="cabinet-menu__item_active" mat-button>
+        Мій профіль
+      </a>
+      <a routerLink="./aspirant-plan" class="cabinet-menu__item" routerLinkActive="cabinet-menu__item_active" mat-button>
+        Індивідуальний план
+      </a>
+      <a routerLink="./aspirant-lessons" class="cabinet-menu__item" routerLinkActive="cabinet-menu__item_active" mat-button>
+        Заняття
+      </a>
+      <a routerLink="./aspirant-schedule" class="cabinet-menu__item" routerLinkActive="cabinet-menu__item_active" mat-button>
+        Розклад
+      </a>
+      <a routerLink="./aspirant-statistics" class="cabinet-menu__item" routerLinkActive="cabinet-menu__item_active" mat-button>
+        Статистика
+      </a>
+    </ng-container>
+    <ng-container *ngSwitchCase="3">
+      <a routerLink="./teacher-profile" class="cabinet-menu__item" routerLinkActive="cabinet-menu__item_active" mat-button>
+        Мій профіль
+      </a>
+      <a routerLink="./teacher-lessons" class="cabinet-menu__item" routerLinkActive="cabinet-menu__item_active" mat-button>
+        Заняття
+      </a>
+<!--      <a routerLink="./teacher-schedule" class="cabinet-menu__item" routerLinkActive="cabinet-menu__item_active" mat-button>-->
+<!--        Розклад-->
+<!--      </a>-->
+    </ng-container>
+    <ng-container *ngSwitchCase="4">
+      <a routerLink="./groups-list" class="cabinet-menu__item" routerLinkActive="cabinet-menu__item_active" mat-button>
+        Групи
+      </a>
+      <a routerLink="./teachers-list" class="cabinet-menu__item" routerLinkActive="cabinet-menu__item_active" mat-button>
+        Викладачі
+      </a>
+    </ng-container>
+  </ng-container>
+</div>

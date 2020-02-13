@@ -1,0 +1,90 @@
+<mat-card *ngIf="isLoadingFinished">
+  <div class="abiturient">
+    <div class="abiturient__row">
+      <button mat-raised-button color="primary" class="abiturient__row-btn" (click)="approveRegistration()">Підтвердити реєстрацію</button>
+      <button mat-raised-button color="warn" class="abiturient__row-btn" (click)="declineRegistration()">Відмовити в реєстрації</button>
+    </div>
+    <div class="abiturient__row">
+      <span class="abiturient__row-title">Абітурієнт: </span> {{ abiturient.last_name }} {{abiturient.first_name}} {{ abiturient.middle_name }}
+    </div>
+    <mat-divider></mat-divider>
+    <div class="abiturient__row">
+      <span class="abiturient__row-title">Стать: </span> {{ abiturient.sex === 'Ч' ? 'Чоловіча' : 'Жіноча' }}
+    </div>
+    <mat-divider></mat-divider>
+    <div class="abiturient__row">
+      <span class="abiturient__row-title">Дата народження: </span>{{ abiturient.data_of_birth?.seconds * 1000 | date }}
+    </div>
+    <mat-divider></mat-divider>
+    <div class="abiturient__row">
+      <span class="abiturient__row-title">Факультет: </span>{{ abiturient.faculty }}
+    </div>
+    <mat-divider></mat-divider>
+    <div class="abiturient__row">
+      <span class="abiturient__row-title">Кафедра: </span>{{abiturient.department}}
+    </div>
+    <mat-divider></mat-divider>
+    <div class="abiturient__row">
+      <span class="abiturient__row-title">Спеціальність: </span>{{ abiturient.speciality }}
+    </div>
+    <mat-divider></mat-divider>
+    <div class="abiturient__row">
+      <span class="abiturient__row-title">Форма навчання: </span>{{ abiturient.training_form }}
+    </div>
+    <mat-divider></mat-divider>
+    <div class="abiturient__row">
+      <span class="abiturient__row-title">Форма оплати: </span>{{ abiturient.pay_form }}
+    </div>
+    <mat-divider></mat-divider>
+    <div class="abiturient__row">
+      <span class="abiturient__row-title">Іноземна мова: </span>{{ abiturient.language_type }}
+    </div>
+    <mat-divider></mat-divider>
+    <div class="abiturient__row">
+      <span class="abiturient__row-title">ВНЗ: </span>{{ abiturient.university }}
+    </div>
+    <mat-divider></mat-divider>
+    <div class="abiturient__row">
+      <span class="abiturient__row-title">Рік випуску: </span>{{ abiturient.university_year }}
+    </div>
+    <mat-divider></mat-divider>
+    <div class="abiturient__row">
+      <span class="abiturient__row-title">Диплом: </span>{{ abiturient.degree_type }} <ng-container *ngIf="abiturient.degree_honor">з відзнакою</ng-container>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="abiturient__row">
+      <span class="abiturient__row-title">Кількість публікацій: </span>{{ abiturient.publish_count }}
+    </div>
+    <mat-divider></mat-divider>
+    <div class="abiturient__row">
+      <span class="abiturient__row-title">Особливі відзнаки (перемоги на олімпіадах, патенти, тощо): </span>{{ abiturient.indicia }}
+    </div>
+    <mat-divider></mat-divider>
+    <div class="abiturient__row">
+      <span class="abiturient__row-title">Середній бал диплому за 100-бальною шкалою: </span>{{ abiturient.average_mark }}
+    </div>
+    <mat-divider></mat-divider>
+    <div class="abiturient__row">
+      <span class="abiturient__row-title">Прізвище передбачуваного наукового керівника: </span>{{ abiturient.supervisor }}
+    </div>
+    <mat-divider></mat-divider>
+    <div class="abiturient__row">
+      <span class="abiturient__row-title">Email: </span>{{ abiturient.email }}
+    </div>
+    <mat-divider></mat-divider>
+    <div class="abiturient__row">
+      <span class="abiturient__row-title">Телефон: </span>{{ abiturient.phone }}
+    </div>
+    <mat-divider></mat-divider>
+    <div class="abiturient__row">
+      <span class="abiturient__row-title">Потребує гуртожитку: </span>{{ abiturient.hostel ? 'Так' : 'Ні' }}
+    </div>
+    <mat-divider></mat-divider>
+    <div class="abiturient__row">
+      <span class="abiturient__row-title">Додаткова інформація:</span>
+    </div>
+    <div class="abiturient__row">
+      {{ abiturient.additional_info }}
+    </div>
+  </div>
+</mat-card>

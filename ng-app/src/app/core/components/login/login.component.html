@@ -1,0 +1,31 @@
+<div class="page-container">
+  <div class="container login">
+    <mat-card class="abiturient-card">
+      <mat-card-title class="login__header">
+        Для абітурієнтів
+      </mat-card-title>
+      <a mat-raised-button [routerLink]="'/vstup/registration'" color="primary">Подати реєстраційну форму</a>
+      <a mat-raised-button [routerLink]="'/vstup/rating'" color="primary">Переглянути рейтинг</a>
+    </mat-card>
+    <mat-card>
+      <mat-card-title class="login__header">
+        Вхід
+      </mat-card-title>
+      <form [formGroup]="formGroup" (ngSubmit)="login()" class="login__form" novalidate>
+        <mat-form-field class="login__form-field" appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="login">
+          <mat-error>Це поле обов'язкове</mat-error>
+        </mat-form-field>
+        <mat-form-field class="login__form-field" appearance="outline">
+          <mat-label>Пароль</mat-label>
+          <input type="password" matInput formControlName="password">
+          <mat-error>Це поле обов'язкове</mat-error>
+        </mat-form-field>
+        <div class="login__form-submit">
+          <button mat-raised-button [disabled]="formGroup.invalid" type="submit" color="primary">Увійти</button>
+        </div>
+      </form>
+    </mat-card>
+  </div>
+</div>
