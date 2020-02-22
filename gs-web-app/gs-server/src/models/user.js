@@ -1,8 +1,64 @@
+const jwt = require('jsonwebtoken');
+const crypto = require('crypto');
+
+const bcryptService = require('../services/bcryptService');
+const config = require('../utils/config');
 const mongooseService = require('../services/mongooseService');
 const schemas = require('../consts/schemas');
+const Token = require('../models/token');
+const {USER_SCHEMA: UserSchema} = require('../consts/schemas');
 
-const User = mongooseService.createModel('User', schemas.USER_SCHEMA);
+const DATE_TO_ADD = 60;
+const HOUR_IN_MILLISECONDS = 60 * 60 * 1000;
+const {jwtSecret} = config;
 
-module.exports = {
-    User
+UserSchema.pre('save', function (next) {
+    const user = this;
+
+    if (!user.isModified('password')) return next();
+
+    const hash = bcryptService.generateSalt(10, user.password, next);
+
+    user.password = hash;
+    next();
+});
+
+UserSchema.methods.comparePassword = function (password) {
+    bcryptService.compareSync(password, this.password);
 };
+
+UserSchema.methods.generateJWT = function () {
+    const today = new Date();
+    const expirationDate = new Date(today);
+
+    expirationDate.setDate(today.getDate() + DATE_TO_ADD);
+
+    const payload = {
+        id: this._id,
+        email: this.email,
+        name: this.name,
+        surname: this.surname
+    };
+
+    return jwt.sign(payload, jwtSecret, {
+        expiresIn: parseInt(expirationDate.getTime() / 1000, 10)
+    });
+};
+
+UserSchema.methods.generatePasswordReset = function () {
+    this.resetPasswordToken = crypto.randomBytes(20).toString('hex');
+    this.resetPasswordExpires = Date.now() + HOUR_IN_MILLISECONDS;
+};
+
+UserSchema.methods.generateVerificationToken = function () {
+    let payload = {
+        userId: this._id,
+        token: crypto.randomBytes(20).toString('hex')
+    };
+
+    return new Token(payload);
+};
+
+const User = mongooseService.createModel('User', UserSchema);
+
+module.exports = User;

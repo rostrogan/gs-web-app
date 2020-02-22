@@ -1,13 +1,11 @@
 import React from 'react';
 
-import apiRequestService from '../../services/api/apiRequestService';
+import styles from './Root.module.scss';
 
 const Root = (props) => {
-    apiRequestService.getAllUsers();
-
     return (
         <div>
-            <h2>Test</h2>
+            <h2 className={styles.Text}>Test</h2>
         </div>
     );
 };

@@ -130,9 +130,42 @@ const USER_SCHEMA = new Schema({
             exam_mark: Number,
             isPassed: Boolean
         }
-    ]
-});
+    ],
+    isVerified: {
+        type: Boolean,
+        default: false
+    },
+    resetPasswordToken: {
+        type: String,
+        required: false
+    },
+    resetPasswordExpires: {
+        type: Date,
+        required: false
+    }
+}, {timestamps: true});
+
+const TOKEN_SCHEMA = new Schema({
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'User'
+    },
+
+    token: {
+        type: String,
+        required: true
+    },
+
+    createdAt: {
+        type: Date,
+        required: true,
+        default: Date.now,
+        expires: 43200
+    }
+}, {timestamps: true});
 
 module.exports = {
-    USER_SCHEMA
+    USER_SCHEMA,
+    TOKEN_SCHEMA
 };

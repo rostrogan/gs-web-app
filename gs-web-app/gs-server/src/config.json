@@ -1,3 +1,6 @@
 {
-  "databaseUrl": "mongodb://localhost:27017/gradschool"
+  "databaseUrl": "mongodb://localhost:27017/gradschool",
+  "JWT_Secret": "zhY-lwWjhLsqmG2-2i01bu8j1LcG_lENCOoqCgSSujvTekLggwJaH-4D3nYHVp8CCaIxIIbjVA_85n0q3Cg0FdYxUmrprNOkWlQNaII_RJaOLzXRGfBJY0_2WHTIS2flKKTnpQLqP1Vy2oNMBFfZlGOlmzVYW47CxRjRh2OHPIMa",
+  "SendgridApiKey": "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",
+  "EmailFromAddress": "noreply@aspirantura.kpi.ua"
 }
