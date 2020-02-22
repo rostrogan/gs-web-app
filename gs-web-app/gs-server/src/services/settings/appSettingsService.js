@@ -10,8 +10,12 @@ const setApplicationSettings = (app, express) => {
     app.use(cookieParser());
     app.use(express.static(path.join(__dirname, 'public')));
     app.use(express.json());
-    app.use(express.urlencoded({ extended: false }));
+    app.use(express.urlencoded({extended: false}));
 
     corsSettingsService.useCorsOptions(app);
     routerSettingsService.useRoutesOptions(app);
+};
+
+module.exports = {
+    setApplicationSettings
 };

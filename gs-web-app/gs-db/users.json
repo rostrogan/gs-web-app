@@ -1,0 +1,74 @@
+[
+  {
+    "name": "John",
+    "surname": "Singleton",
+    "patronymic": "Michael",
+    "birth_date": "04.03.1999",
+    "email": "test@email.com",
+    "password": "123456",
+    "contact_phone": "+490797911442",
+    "sex": "Man",
+    "faculty": "APEPS",
+    "department": "TEF",
+    "specialty": "121",
+    "study_form": "Daily",
+    "pay_form": "Government order",
+    "foreign_language": "English",
+    "graduation_university": "KPI",
+    "graduation_year": "2020",
+    "degree_type": "Bachelors",
+    "isHonorsDegree": false,
+    "isHostelNeeded": false,
+    "gpa": 99,
+    "publications_count": 8,
+    "prospective_supervisor": "Barack Obama",
+    "distinctive_awards": "None",
+    "additional_info": "Additional info not provided.",
+    "create_date": "202013012223",
+    "role": 0,
+    "lessons": [],
+    "exams": []
+  },
+  {
+    "name": "Test",
+    "surname": "Enrollee",
+    "patronymic": "Role",
+    "birth_date": "04.03.1999",
+    "email": "test@email.com",
+    "password": "123456",
+    "contact_phone": "+490797911442",
+    "sex": "Man",
+    "faculty": "DIGG",
+    "department": "FIOT",
+    "specialty": "122",
+    "study_form": "Daily",
+    "pay_form": "Contract",
+    "foreign_language": "French",
+    "graduation_university": "KPI",
+    "graduation_year": "2020",
+    "degree_type": "Masters",
+    "isHonorsDegree": false,
+    "isHostelNeeded": false,
+    "gpa": 99,
+    "publications_count": 8,
+    "prospective_supervisor": "Barack Obama",
+    "distinctive_awards": "None",
+    "additional_info": "Additional info not provided.",
+    "create_date": "202013012223",
+    "role": 1,
+    "lessons": [
+      {
+        "isAbsent": false,
+        "lesson_date": "03.05.2019",
+        "lesson_mark": "5"
+      }
+    ],
+    "exams": [
+      {
+        "exam_date": "03.01.2020",
+        "exam_mark": "4",
+        "isPassed": true
+      }
+    ]
+  }
+]

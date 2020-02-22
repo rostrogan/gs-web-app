@@ -1,0 +1,9 @@
+const USER_ROLE_APPLICANT = 0;
+const USER_ROLE_ENROLLEE = 1;
+const USER_ROLE_POSTGRAD = 2;
+
+module.exports = {
+    USER_ROLE_APPLICANT,
+    USER_ROLE_ENROLLEE,
+    USER_ROLE_POSTGRAD
+};

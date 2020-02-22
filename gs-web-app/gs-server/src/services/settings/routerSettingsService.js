@@ -1,8 +1,8 @@
 const routePaths = require('../../consts/routePaths');
-const applicantsRoute = require('../../routes/applicants');
+const usersRoute = require('../../routes/users');
 
 const useRoutesOptions = (app) => {
-    app.use(routePaths.ROUTE_APPLICANTS, applicantsRoute);
+    app.use('/api/users', usersRoute);
 };
 
 module.exports = {
