@@ -1,0 +1,177 @@
+@import './../mixins/import';
+@import '../../mainCssModules/views/buttons';
+
+@mixin btn-size($height, $font-size, $font-weight) {
+  height: $height;
+  border-radius: 7px;
+  font-size: $font-size;
+  font-weight: $font-weight;
+  line-height: $height;
+
+  .svg-icon {
+    height: ceil($height / 1.75);
+    width: ceil($height / 1.75);
+  }
+}
+
+@mixin btn-size-desktop($size, $font) {
+  & {
+    height: $size;
+  }
+
+  span,
+  strong {
+    height: $size - 4;
+    line-height: $size - 4;
+    font-size: $font;
+  }
+}
+
+/*=====VARIABLES=====*/
+$btn-size-lg: 48px;
+$btn-size-md: 38px;
+// $btn-size-sm: 30px;
+
+$btn-size-lg-font: 24px;
+$btn-size-md-font: 20px;
+// $btn-size-sm-font: 20px;
+/*=====VARIABLES=====*/
+
+button {
+  padding: 0;
+  border: 0;
+  width: 100%;
+  outline: none;
+
+  &::-moz-focus-inner,
+  &::-moz-focus-inner,
+  &::-moz-focus-inner,
+  &::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+  }
+}
+
+input[type='button'i],
+input[type='submit'i],
+input[type='reset'i],
+input[type='file'i]::-webkit-file-upload-button,
+button {
+  box-sizing: content-box;
+}
+
+#widget-container {
+  * {
+    box-sizing: border-box;
+  }
+}
+
+.btn-mob {
+  @extend .btnMob;
+
+  &--sm {
+    @extend .btnMob.sm;
+  }
+
+  &--md {
+    @extend .btnMob.md;
+  }
+
+  &--lg {
+    @extend .btnMob.lg;
+  }
+
+  &--header {
+    @extend .btnMob.header;
+  }
+
+  &--menu {
+    @extend .btnMob.menu;
+  }
+
+  &--prev {
+    @extend .btnMob.prev;
+  }
+
+  &--close {
+    @extend .btnMob.close;
+  }
+
+  &__blue {
+    @extend .btnMob.blue;
+  }
+
+  &__green {
+    @extend .btnMob.green;
+  }
+
+  &__red {
+    @extend .btnMob.red;
+  }
+
+  &__orange {
+    @extend .btnMob.orange;
+  }
+
+  &__opacity {
+    border: 0.35rem solid #3265cf;
+    background: 0 0;
+    line-height: 4.7rem;
+  }
+}
+
+.btn-mob__disabled,
+.btn-mob:disabled,
+.btn-mob[disabled] {
+  pointer-events: none;
+  filter: grayscale(60%);
+  opacity: 0.5;
+
+  span {
+    opacity: 0.5;
+    &:before {
+      content: none;
+    }
+  }
+}
+
+.btn-desktop {
+  @extend .btnDesktop;
+
+  .btn,
+  .btn i,
+  .btn span {
+    outline: 0;
+  }
+
+  &__success {
+  }
+
+  &__primary {
+  }
+
+  &__success-xs {
+  }
+
+  &:hover {
+  }
+
+  &:active {
+  }
+
+  &--lg {
+  }
+
+  &--md {
+  }
+
+  &--xs {
+  }
+
+  &--sm {
+  }
+
+  &__static {
+
+  }
+}
