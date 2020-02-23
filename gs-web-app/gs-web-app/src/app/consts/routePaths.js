@@ -1,4 +1,1 @@
-export const Routes = {
-    HOME: '/',
-    LOGIN: '/login'
-};
+export const ROOT = '/';
