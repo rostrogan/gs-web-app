@@ -2,12 +2,9 @@ const expressService = require('../services/expressService');
 const routePaths = require('../consts/routePaths');
 const usersService = require('../services/usersService');
 
-const express = require('express');
+const router = expressService.getRouter();
 
-const router = express.Router();
-
-
-router.get('/', async (req, res) => {
+router.get(routePaths.ROUTE_USERS, async (req, res) => {
     const users = await usersService.getAllUsers();
 
     res.send(users);

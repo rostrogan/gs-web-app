@@ -1,20 +1,24 @@
-const mailService = require('./mailService');
-const User = require('../models/user');
-const Token = require('../models/token');
+const mailService = require('../mailService');
+const mongooseService = require('../mongooseService');
+const Token = require('../../models/token');
+const User = require('../../models/user');
 
 const register = async (req, res) => {
     try {
         const {email} = req.body;
-        const user = await User.findOne({email});
+        const user = await mongooseService.findOneDocument(User, {email});
 
         if (user) return res.status(401).json({message: 'The email address you have entered is already associated with another account.'});
 
         const newUser = new User({...req.body, role: 0});
+
         const createdUser = await newUser.save();
 
         sendVerificationEmail(createdUser, req, res);
+
+        res.send('register success');
     } catch (error) {
-        res.status(500).json({success: false, message: error.message})
+        res.send({success: false, message: error.message});
     }
 };
 
@@ -87,7 +91,9 @@ const sendVerificationEmail = (user, req, res) => {
     verificationToken.save((error) => {
         if (error) return res.status(500).json({message: error.message});
 
-        const verificationLink = `http://${req.headers.host}/api/auth/verify/${verificationToken}`;
+        const verificationLink = `http://${req.headers.host}/api/auth/verify/${verificationToken.token}`;
+
+        console.log(verificationLink);
 
         const mailText = `Hi, ${name}, \n
         Click here to verify account: ${verificationLink}`;

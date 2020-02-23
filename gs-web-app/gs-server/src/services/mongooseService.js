@@ -23,6 +23,18 @@ const findDocuments = async (schema, options = {}) => {
     return result;
 };
 
+const findOneDocument = async (schema, options = {}) => {
+    connect();
+
+    const result = await schema.findOne(options, (err, docs) => {
+        // disconnect();
+
+        errorService.logError(err);
+    });
+
+    return result;
+};
+
 const createModel = (name, schema) => mongoose.model(name, schema);
 
 module.exports = {
@@ -30,5 +42,6 @@ module.exports = {
     createModel,
     disconnect,
     findDocuments,
-    Schema,
+    findOneDocument,
+    Schema
 };

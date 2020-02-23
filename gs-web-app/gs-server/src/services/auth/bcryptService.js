@@ -7,7 +7,7 @@ const generateSalt = (saltLength, password, next) => {
         }
 
         bcrypt.hash(password, salt, (hashError, hash) => {
-            if (err) return next(err);
+            if (hashError) return next(hashError);
 
             return hash;
         });

@@ -1,7 +1,8 @@
 const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
+const bcrypt = require('bcryptjs');
 
-const bcryptService = require('../services/bcryptService');
+const bcryptService = require('../services/auth/bcryptService');
 const config = require('../utils/config');
 const mongooseService = require('../services/mongooseService');
 const schemas = require('../consts/schemas');
@@ -17,10 +18,19 @@ UserSchema.pre('save', function (next) {
 
     if (!user.isModified('password')) return next();
 
-    const hash = bcryptService.generateSalt(10, user.password, next);
+    bcrypt.genSalt(10, (error, salt) => {
+        if (error) {
+            return next(error);
+        }
 
-    user.password = hash;
-    next();
+        bcrypt.hash(user.password, salt, (hashError, hash) => {
+            if (hashError) return next(hashError);
+
+            user.password = hash;
+
+            next();
+        });
+    });
 });
 
 UserSchema.methods.comparePassword = function (password) {
@@ -55,6 +65,8 @@ UserSchema.methods.generateVerificationToken = function () {
         userId: this._id,
         token: crypto.randomBytes(20).toString('hex')
     };
+
+    console.log('generateVerificationToken', new Token(payload));
 
     return new Token(payload);
 };

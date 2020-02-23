@@ -3,9 +3,9 @@ const {sendgridApiKey} = require('../utils/config');
 
 const {emailFromAddress} = require('../utils/config');
 
-sgMail.setApiKey(sendgridApiKey);
-
 const sendMail = (to, subject, text, from = emailFromAddress) => {
+    sgMail.setApiKey(sendgridApiKey);
+
     const mailOptions = {
         to,
         from,
@@ -13,7 +13,9 @@ const sendMail = (to, subject, text, from = emailFromAddress) => {
         text
     };
 
-    sgMail.send(mailOptions);
+    sgMail.send(mailOptions, false, (err, res) => {
+        console.log('Sendgrid result:', res);
+    });
 };
 module.exports = {
     sendMail

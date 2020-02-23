@@ -106,8 +106,7 @@ const USER_SCHEMA = new Schema({
         ...builtinOptions
     },
     additional_info: {
-        type: String,
-        ...builtinOptions
+        type: String
     },
     create_date: {
         type: String,
@@ -143,11 +142,11 @@ const USER_SCHEMA = new Schema({
         type: Date,
         required: false
     }
-}, {timestamps: true});
+});
 
 const TOKEN_SCHEMA = new Schema({
     userId: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         required: true,
         ref: 'User'
     },
@@ -163,7 +162,7 @@ const TOKEN_SCHEMA = new Schema({
         default: Date.now,
         expires: 43200
     }
-}, {timestamps: true});
+});
 
 module.exports = {
     USER_SCHEMA,
