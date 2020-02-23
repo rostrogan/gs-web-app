@@ -1,2 +1,2 @@
-import Header from "./Header"
+import Header from "./Footer"
 export default Header;

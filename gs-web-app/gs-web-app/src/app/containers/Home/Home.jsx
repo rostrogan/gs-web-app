@@ -1,13 +1,15 @@
 import * as React from 'react';
-import styles from './Home.module.scss'
-import Header from '../../components/Header'
-const HomeComponent = () => {
+import Header from '../../components/Header';
+import Footer from '../../components/Footer';
+import Login from '../Home/components/Login'
+const HomeComponents = () => {
     return (
         <>
             <Header />
-            <nav className={styles.header}>Home</nav>
+                <Login />
+            <Footer />
         </>
     );
 };
 
-export default HomeComponent;
+export default HomeComponents;

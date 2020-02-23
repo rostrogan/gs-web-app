@@ -5,7 +5,10 @@ import Logo from "./../../assets/img/kpi-logo-black.png";
 import AccountCircleRounded from "@material-ui/icons/AccountCircleRounded";
 import ExitToApp from "@material-ui/icons/ExitToApp";
 import IconButton from "@material-ui/core/IconButton";
+import Button from '@material-ui/core/Button';
+
 import { Routes }  from "../../consts/routePaths"
+
 
 const userName = 'Alex';
 
@@ -13,8 +16,10 @@ const HeaderComponent = () => {
     return (
         <div className={styles.header}>
             <Link to={Routes.HOME} className={styles.header__logo}>
-                <img src={Logo} alt="logo" />
-                <span>Аспірантура КПІ</span>
+                <Button>
+                    <img src={Logo} alt="logo" />
+                    Аспірантура КПІ
+                </Button>
             </Link>
 
             <div className={styles.header__logged}>

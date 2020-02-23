@@ -20,12 +20,13 @@
 
 
   &__logo {
-    display: flex;
-    align-items: center;
-    font-size: 14px;
-    color: #fff;
-    font-weight: 700;
-    font-family: $font-roboto;
+    button {
+      font-size: 13px;
+      color: #fff;
+      font-weight: 700;
+      font-family: $font-roboto;
+      text-transform: initial;
+    }
 
     img {
       filter: invert(1);
