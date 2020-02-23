@@ -1,12 +1,12 @@
 import * as React from "react";
 import styles from "./Footer.module.scss";
 
-const HeaderComponent = () => {
+const FooterComponent = () => {
     return (
-        <div className={styles.footer}>
+        <div className={styles.Footer}>
             <span>КПІ {(new Date().getFullYear())}</span>
         </div>
     )
 };
 
-export default HeaderComponent;
+export default FooterComponent;

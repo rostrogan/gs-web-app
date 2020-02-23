@@ -1,22 +1,24 @@
-@import "../../assets/css/mixins/import";
+@import "../../../assets/css/mixins/import";
 
-:host {
-  box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 2;
-}
-
-.header {
+.Header {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  padding: 4px 32px;
+  padding: 4px 16px;
   background: #3f51b5;
   color: #fff;
+  z-index: 9;
+
+  &:after {
+    content: '';
+    @include absolute(auto,0,0,0,2);
+    height: 5px;
+    box-shadow: 0 3px 5px -1px rgba(0,0,0,.2),
+    0 6px 10px 0 rgba(0,0,0,.14),
+    0 1px 18px 0 rgba(0,0,0,.12);
+  }
 
 
   &__logo {
@@ -33,6 +35,8 @@
       max-width: 40px;
       margin-right: 10px;
     }
+
+
   }
 
   &__logged {
@@ -42,6 +46,10 @@
     &_icon {
       display: flex;
       color: #fff;
+
+      &:hover {
+        color: #fff;
+      }
     }
   }
 
