@@ -2,7 +2,8 @@ import * as React from 'react';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Login from '../Home/components/Login'
-const HomeComponents = () => {
+
+const HomeComponent = () => {
     return (
         <>
             <Header />
@@ -12,4 +13,4 @@ const HomeComponents = () => {
     );
 };
 
-export default HomeComponents;
+export default HomeComponent;

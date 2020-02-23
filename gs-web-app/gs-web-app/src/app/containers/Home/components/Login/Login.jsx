@@ -35,7 +35,7 @@ const useStyles = makeStyles({
     }
 });
 
-const LoginComponents = () => {
+const LoginComponent = () => {
     const classes = useStyles();
 
     return (
@@ -113,4 +113,4 @@ const LoginComponents = () => {
     )
 };
 
-export default LoginComponents;
+export default LoginComponent;

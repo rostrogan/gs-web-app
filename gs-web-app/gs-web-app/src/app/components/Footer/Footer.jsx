@@ -1,7 +1,7 @@
 import * as React from "react";
 import styles from "./Footer.module.scss";
 
-const HeaderComponet = () => {
+const HeaderComponent = () => {
     return (
         <div className={styles.footer}>
             <span>КПІ {(new Date().getFullYear())}</span>
@@ -9,4 +9,4 @@ const HeaderComponet = () => {
     )
 };
 
-export default HeaderComponet;
+export default HeaderComponent;
