@@ -98,12 +98,12 @@ const LoginComponents = () => {
                                         variant={"contained"}
                                         color="primary"
                                         className={classes.btnCenter}
+                                        href={Routes.HOME}
                                     >
                                         Увійти
                                     </Button>
                                 </div>
                             </form>
-
                         </CardActions>
                     </CardContent>
                 </Card>
