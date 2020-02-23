@@ -1,0 +1,62 @@
+@import "../../../assets/css/mixins/import";
+
+.Header {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 16px;
+  background: #3f51b5;
+  color: #fff;
+  z-index: 9;
+
+  &:after {
+    content: '';
+    @include absolute(auto,0,0,0,2);
+    height: 5px;
+    box-shadow: 0 3px 5px -1px rgba(0,0,0,.2),
+    0 6px 10px 0 rgba(0,0,0,.14),
+    0 1px 18px 0 rgba(0,0,0,.12);
+  }
+
+
+  &__logo {
+    button {
+      font-size: 13px;
+      color: #fff;
+      font-weight: 700;
+      font-family: $font-roboto;
+      text-transform: initial;
+    }
+
+    img {
+      filter: invert(1);
+      max-width: 40px;
+      margin-right: 10px;
+    }
+
+
+  }
+
+  &__logged {
+    display: flex;
+    align-items: center;
+
+    &_icon {
+      display: flex;
+      color: #fff;
+
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
+
+  &_userName {
+    padding-right: 15px;
+    height: 100%;
+    font-size: 16px;
+    font-family: $font-roboto;
+  }
+}
