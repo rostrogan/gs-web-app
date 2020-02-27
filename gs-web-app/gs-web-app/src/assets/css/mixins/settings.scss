@@ -1,0 +1,60 @@
+/**
+ * SIZE variables
+ * ============================ */
+
+$desktop--grid-width: 1120px;
+
+$desktop--wrapper-min-width: 1200px;
+$desktop--wrapper-width: 1200px;
+
+$desktop--content-width: 720px;
+$desktop--sidebar-width: 176px;
+
+$path-img: '/assets/img';
+$path-img-desktop: '/assets/img/desktop';
+$path-img-mobile: '/assets/img/mobile';
+$path-img-sys: '/assets/img/sys';
+
+$path-svg: '/assets/svg';
+
+/**
+ * FONTS variables
+ * ============================ */
+
+$font-roboto: 'Roboto', Roboto, Arial, Helvetica Neue, Helvetica, Verdana, sans-serif;
+
+$font-size-base: 14px;
+$font-size-large: ceil(($font-size-base * 1.25)); // ~18px
+$font-size-small: ceil(($font-size-base * 0.85)); // ~12px
+
+$line-height-base: 1.4285714; // 20/14
+
+$line-height-computed: floor(($font-size-base * $line-height-base)); // ~20px
+
+/**
+ * @MEDIA QUERRIES variables
+ * ============================ */
+$media: "only screen";
+$media-mobile: "screen and (max-width: 1023px)";
+$media-desktop: "screen and (min-width: 1024px)";
+
+$media-mobile--all: "screen (max-width: 1024px)";
+$media-mobile--hg: "screen and (min-width: 907px) and (max-width: 1024px)";
+$media-mobile--lg: "screen and (min-width: 769px) and (max-width: 906px)";
+$media-mobile--md: "screen and (min-width: 569px) and (max-width: 768px)";
+$media-mobile--sm: "screen and (min-width: 415px) and (max-width: 568px)";
+$media-mobile--xs: "screen and (min-width: 321px) and (max-width: 414px)";
+$media-mobile--xxs: "screen and (max-width: 320px)";
+
+$breakpoint-mobile-md: 360px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1024px;
+
+$media--portrait: " orientation: portrait";
+$media--landscape: " screen and (min-aspect-ratio: 1/1) and (min-aspect-ratio: 13/9) and (min-width: 480px)";
+
+
+
+
+
+
