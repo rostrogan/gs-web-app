@@ -1,0 +1,23 @@
+/**
+ * POSITIONS Combination
+ ======================= */
+@mixin absolute($top: auto, $right: auto, $bottom: $top, $left: $right, $z-index: 0) {
+  position: absolute;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+  z-index: $z-index;
+}
+@mixin fixed($top: auto, $right: auto, $bottom: $top, $left: $right, $z-index: 0) {
+  position: fixed;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+  z-index: $z-index;
+}
+@mixin relative($z-index: 1) {
+  position: relative;
+  z-index: $z-index;
+};
