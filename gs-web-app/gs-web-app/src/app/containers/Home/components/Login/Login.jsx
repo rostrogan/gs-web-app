@@ -1,5 +1,4 @@
 import * as React from 'react';
-import styles from './Login.module.scss';
 
 import classNames from 'classnames';
 import { makeStyles } from '@material-ui/core/styles';
@@ -8,9 +7,10 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import TextField from '@material-ui/core/TextField';
 
 import { Routes } from "../../../../consts/routePaths";
+import LoginForm  from "./components/LoginForm";
+import {reduxForm} from "redux-form";
 
 const useStyles = makeStyles({
     Card: {
@@ -44,15 +44,23 @@ const useStyles = makeStyles({
     }
 });
 
+const FormLogin = reduxForm({ form: "login" })(LoginForm);
+
 const LoginComponent = () => {
     const classes = useStyles();
+    //id="delete"
+    //Потріюно буде видалити.
+    //Для перегляду даних
+    const onSubmit = (formatDate) => {
+        console.log(formatDate);
+    };
 
     return (
         <div className="page-container">
             <div className="container login">
                 <Card className={classNames(classes.Card, classes.Pos)}>
                     <CardContent>
-                        <Typography className={classes.Title} variant="h2" color="initial">
+                        <Typography className={classes.Title} variant="h2" component={'h2'} color="initial">
                             Для Абітурієнтів
                         </Typography>
                         <CardActions>
@@ -60,7 +68,7 @@ const LoginComponent = () => {
                                 variant={"contained"}
                                 color="primary"
                                 className={classes.Btn}
-                                href={Routes.HOME}
+                                href={Routes.REGISTRATION}
                             >
                                 Подати реєстраційну форму
                             </Button>
@@ -86,36 +94,7 @@ const LoginComponent = () => {
                             Вхід
                         </Typography>
                         <CardActions>
-                            <form action="">
-                                <div className={styles.Wrapper}>
-                                    <TextField
-                                        label="Email"
-                                        id="outlined-size-normal"
-                                        defaultValue="test@gmail.com"
-                                        variant="outlined"
-                                        type="email"
-                                    />
-                                </div>
-                                <div className={styles.Wrapper}>
-                                    <TextField
-                                        label="Пароль"
-                                        id="outlined-size-normal"
-                                        defaultValue="*****"
-                                        variant="outlined"
-                                        type="password"
-                                    />
-                                </div>
-                                <div className={styles.Wrapper}>
-                                    <Button
-                                        variant={"contained"}
-                                        color="primary"
-                                        className={classes.BtnCenter}
-                                        href={Routes.HOME}
-                                    >
-                                        Увійти
-                                    </Button>
-                                </div>
-                            </form>
+                            <FormLogin onSubmit={onSubmit} />
                         </CardActions>
                     </CardContent>
                 </Card>

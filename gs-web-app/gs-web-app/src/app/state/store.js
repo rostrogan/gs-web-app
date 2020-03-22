@@ -1,6 +1,7 @@
 import promise from 'redux-promise-middleware';
 import thunk from 'redux-thunk';
-import {applyMiddleware, createStore, combineReducers} from 'redux';
+import { applyMiddleware, createStore, combineReducers } from 'redux';
+import { reducer as formReducer } from 'redux-form'
 
 import * as reducers from './ducks';
 
@@ -9,7 +10,8 @@ let getState;
 
 const configureStore = () => {
     const rootReducer = combineReducers({
-        ...reducers
+        ...reducers,
+        form: formReducer,
     });
     const middlewares = [promise, thunk];
 
