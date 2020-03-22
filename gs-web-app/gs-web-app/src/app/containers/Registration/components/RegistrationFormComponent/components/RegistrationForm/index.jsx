@@ -5,7 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import StepContent from "@material-ui/core/StepContent";
 import Button from "@material-ui/core/Button";
 import {makeStyles} from "@material-ui/core/styles";
-import styles from "./RegistrationForm.modules.scss";
+import styles from "./RegistrationForm.module.scss";
 import { Field } from "redux-form";
 import ReduxFormDateRange, {
     renderCheckbox,
