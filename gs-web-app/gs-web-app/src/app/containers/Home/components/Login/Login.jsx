@@ -52,7 +52,7 @@ const LoginComponent = () => {
     //Потріюно буде видалити.
     //Для перегляду даних
     const onSubmit = (formatDate) => {
-        console.log(formatDate);
+        console.log('formatDate', formatDate);
     };
 
     return (

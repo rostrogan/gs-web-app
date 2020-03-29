@@ -1,3 +1,4 @@
 {
-  "databaseUrl": "mongodb://localhost:27017/gradschool"
+  "DatabaseUrl": "mongodb://localhost:27017/gradschool",
+  "CorsWhitelist": ["http://localhost:3000"]
 }

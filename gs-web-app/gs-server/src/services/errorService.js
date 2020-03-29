@@ -1,4 +1,8 @@
-const logError = (error) => console.log(error);
+const logError = (error) => {
+    if (error) {
+        console.log('ErrorLogger: ', error);
+    }
+};
 
 module.exports = {
     logError

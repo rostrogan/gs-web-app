@@ -1,1 +1,6 @@
-export const API_ALL_USERS = '/api/users';
+const ApiRequestPaths = {
+    GET_ALL_USERS: '/api/users',
+    POST_USER_REGISTER: '/api/users/register',
+};
+
+export default ApiRequestPaths

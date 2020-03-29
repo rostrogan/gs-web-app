@@ -13,5 +13,11 @@ router.get('/', async (req, res) => {
     res.send(users);
 });
 
+router.post('/register', async (req, res) => {
+    const newUser = await usersService.registerUser(req.body);
+
+    console.log(newUser);
+});
+
 module.exports = router;
 

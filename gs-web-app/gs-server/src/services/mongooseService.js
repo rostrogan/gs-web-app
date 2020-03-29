@@ -12,13 +12,19 @@ const connect = () => mongoose.connect(databaseUrl, mongooseOptions);
 const disconnect = () => mongoose.disconnect();
 
 const findDocuments = async (schema, options = {}) => {
-    connect();
-
     const result = await schema.find(options, (err, docs) => {
-        disconnect();
-
         errorService.logError(err);
     });
+
+    return result;
+};
+
+const createDocument = async (data, callback) => {
+    const result = await data.save((err) => {
+        errorService.logError(err);
+    });
+
+    console.log(result);
 
     return result;
 };
@@ -27,6 +33,7 @@ const createModel = (name, schema) => mongoose.model(name, schema);
 
 module.exports = {
     connect,
+    createDocument,
     createModel,
     disconnect,
     findDocuments,

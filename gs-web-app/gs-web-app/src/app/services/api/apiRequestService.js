@@ -1,9 +1,9 @@
-import * as apiRequestPaths from '../../consts/apiRequestPaths';
+import ApiRequestPaths from '../../consts/apiRequestPaths';
 import apiService from './apiService';
 import urlUtils from '../../utils/urlUtils';
 
 const getAllUsers = () => {
-    const requestUrl = urlUtils.getApiRequestUrl(apiRequestPaths.API_ALL_USERS);
+    const requestUrl = urlUtils.getApiRequestUrl(ApiRequestPaths.GET_ALL_USERS);
 
     try {
         apiService.get(requestUrl)
@@ -15,6 +15,24 @@ const getAllUsers = () => {
     }
 };
 
+const registerUser = (userData) => {
+    const requestUrl = urlUtils.getApiRequestUrl(ApiRequestPaths.POST_USER_REGISTER);
+
+    try {
+        if (!userData) {
+            throw new Error('\'[registerUser error]: invalid userData');
+        }
+
+        apiService.post(requestUrl, {data: userData})
+            .then((response) => {
+                console.log(response.data);
+            });
+    } catch (e) {
+        console.error('[registerUser error]: ', e);
+    }
+};
+
 export default {
-    getAllUsers
+    getAllUsers,
+    registerUser
 }
