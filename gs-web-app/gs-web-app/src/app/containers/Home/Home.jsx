@@ -1,17 +1,24 @@
 import React, {useEffect} from 'react';
+import {connect} from 'react-redux';
+import {createStructuredSelector} from 'reselect';
 
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Login from './components/Login'
 import apiRequestService from '../../services/api/apiRequestService';
+import {makeSelectUserData} from '../../state/selectors/user';
 
-const HomeComponent = () => {
+const mapStateToProps = createStructuredSelector({
+    userData: makeSelectUserData(),
+});
+
+const HomeComponent = ({userData}) => {
     useEffect(() => {
         const defaultFormData = {
-            surname: 'фыв',
-            name: 'фыв',
-            patronymic: 'фыв',
-            sex: 'ж',
+            surname: 'Строган',
+            name: 'Роман',
+            patronymic: 'Сергійович',
+            sex: 'ч',
             birth_date: 'Thu Mar 12 2020 21:44:00 GMT+0200 (Eastern European Standard Time',
             create_date: new Date().getDate(),
             specialty: '1',
@@ -20,10 +27,10 @@ const HomeComponent = () => {
             study_form: '1',
             pay_form: '1',
             foreign_language: '2',
-            graduation_university: 'цукцу',
-            graduation_year: 'цукцук',
+            graduation_university: 'КПІ',
+            graduation_year: '2020',
             degree_type: '1',
-            email: 'admin@pnnsoft.com',
+            email: 'rostrogan@gmail.com',
             password: '123456',
             contact_phone: 'цук',
             gpa: '234',
@@ -39,11 +46,11 @@ const HomeComponent = () => {
 
     return (
         <>
-            <Header />
-                <Login />
-            <Footer />
+            <Header/>
+            <Login userData={userData}/>
+            <Footer/>
         </>
     );
 };
 
-export default HomeComponent;
+export default connect(mapStateToProps)(HomeComponent);

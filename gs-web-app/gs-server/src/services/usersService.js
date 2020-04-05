@@ -10,8 +10,10 @@ const getEnrolleeUsers = () => getAllUsers({role: userRoles.USER_ROLE_ENROLLEE})
 
 const getPostgradUsers = () => getAllUsers({role: userRoles.USER_ROLE_POSTGRAD});
 
+const getUserById = (userId) => mongooseService.findOneDocument(UserModel, {_id: userId});
+
 const registerUser = async (userData) => {
-    mongooseService.connect();
+    await mongooseService.connect();
 
     const {email} = userData;
 
@@ -26,16 +28,38 @@ const registerUser = async (userData) => {
     }
 
     await mongooseService.createDocument(user);
-    await mongooseService.disconnect();
 
     return {status: 1, message: 'User successfully registered.'};
+};
 
+const auth = async (userData) => {
+    await mongooseService.connect();
+
+    const {email: authRequestEmail, password: authRequestPassword} = userData;
+
+    const user = new UserModel();
+
+    const excitedUser = await mongooseService.findOneDocument(UserModel, {email: authRequestEmail});
+
+    if (excitedUser) {
+        const {email: excitedUserEmail, password: excitedUserPassword, _id: excitedUserId} = excitedUser || {};
+
+        const isAuthSuccess = authRequestPassword === excitedUserPassword;
+
+        if (isAuthSuccess) {
+            return {status: 1, message: 'User authentication success.', uid: excitedUserId};
+        } else {
+            return {status: 0, message: 'User authentication failed.'};
+        }
+    }
 };
 
 module.exports = {
+    auth,
     getAllUsers,
     getApplicantUsers,
     getEnrolleeUsers,
     getPostgradUsers,
+    getUserById,
     registerUser,
 };

@@ -1,56 +1,64 @@
-import * as React from "react";
-import styles from "./Header.module.scss";
-import { Link } from "react-router-dom";
-import Logo from "../../../assets/img/kpi-logo-black.png";
+import * as React from 'react';
+import Logo from '../../../assets/img/kpi-logo-black.png';
+import styles from './Header.module.scss';
+import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {createStructuredSelector} from 'reselect';
 
-import AccountCircleRounded from "@material-ui/icons/AccountCircleRounded";
-import ExitToApp from "@material-ui/icons/ExitToApp";
-import IconButton from "@material-ui/core/IconButton";
-import Button from "@material-ui/core/Button";
+import AccountCircleRounded from '@material-ui/icons/AccountCircleRounded';
+import ExitToApp from '@material-ui/icons/ExitToApp';
+import IconButton from '@material-ui/core/IconButton';
+import Button from '@material-ui/core/Button';
+import {makeSelectUserData} from '../../state/selectors/user';
 
-import { Routes }  from "../../consts/routePaths"
+import {Routes} from '../../consts/routePaths'
+import authService from '../../services/authService';
 
 
-const userName = 'Alex';
-const isLoggedIn = false;
+const mapStateToProps = createStructuredSelector({
+    userData: makeSelectUserData(),
+});
 
-const HeaderComponent = () => {
+const HeaderComponent = ({userData}) => {
+    const {name} = userData || {};
+    const isLoggedIn = !!userData;
+
     return (
         <div className={styles.Header}>
             <Link to={Routes.HOME} className={styles.Header__logo}>
                 <Button>
-                    <img src={Logo} alt="logo" />
+                    <img src={Logo} alt="logo"/>
                     Аспірантура КПІ
                 </Button>
             </Link>
 
-            <div className={styles.Header__logged}>
+            {
+                isLoggedIn &&
+                <div className={styles.Header__logged}>
                 <span className={styles.Header_userName}>
-                     Вітаємо, {userName}
+                     Вітаємо, {name}
                 </span>
-                <Link to={Routes.HOME} className={styles.Header__logged_icon}>
+                    <Link to={Routes.HOME} className={styles.Header__logged_icon}>
+                        <IconButton
+                            color="inherit"
+                            aria-label="upload picture"
+                            component="span"
+                        >
+                            <AccountCircleRounded/>
+                        </IconButton>
+                    </Link>
                     <IconButton
                         color="inherit"
                         aria-label="upload picture"
                         component="span"
+                        onClick={authService.logout}
                     >
-                        <AccountCircleRounded />
+                        <ExitToApp/>
                     </IconButton>
-                </Link>
-                {
-                    isLoggedIn && ( <IconButton
-                            color="inherit"
-                            aria-label="upload picture"
-                            component="span">
-                            {
-                                isLoggedIn && <ExitToApp />
-                            }
-                        </IconButton>
-                    )
-                }
-            </div>
+                </div>
+            }
         </div>
     )
 };
 
-export default HeaderComponent;
+export default connect(mapStateToProps)(HeaderComponent);

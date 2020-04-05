@@ -12,6 +12,8 @@ import { Routes } from "../../../../consts/routePaths";
 import LoginForm  from "./components/LoginForm";
 import {reduxForm} from "redux-form";
 
+import apiRequestService from '../../../../services/api/apiRequestService';
+
 const useStyles = makeStyles({
     Card: {
         minWidth: 275,
@@ -46,13 +48,13 @@ const useStyles = makeStyles({
 
 const FormLogin = reduxForm({ form: "login" })(LoginForm);
 
-const LoginComponent = () => {
+const LoginComponent = ({userData}) => {
     const classes = useStyles();
     //id="delete"
     //Потріюно буде видалити.
     //Для перегляду даних
-    const onSubmit = (formatDate) => {
-        console.log('formatDate', formatDate);
+    const onSubmit = (formData) => {
+        apiRequestService.auth(formData)
     };
 
     return (

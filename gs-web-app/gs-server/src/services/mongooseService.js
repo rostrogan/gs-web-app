@@ -5,7 +5,7 @@ const config = require('../utils/config');
 const errorService = require('./errorService');
 
 const databaseUrl = config.databaseUrl;
-const mongooseOptions = {useNewUrlParser: true};
+const mongooseOptions = { useUnifiedTopology: true };
 
 const connect = () => mongoose.connect(databaseUrl, mongooseOptions);
 
@@ -19,12 +19,18 @@ const findDocuments = async (schema, options = {}) => {
     return result;
 };
 
+const findOneDocument = async (schema, options = {}) => {
+    const result = await schema.findOne(options, (err, docs) => {
+        errorService.logError(err);
+    });
+
+    return result;
+};
+
 const createDocument = async (data, callback) => {
     const result = await data.save((err) => {
         errorService.logError(err);
     });
-
-    console.log(result);
 
     return result;
 };
@@ -37,5 +43,6 @@ module.exports = {
     createModel,
     disconnect,
     findDocuments,
+    findOneDocument,
     Schema,
 };
