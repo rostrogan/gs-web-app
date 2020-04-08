@@ -51,6 +51,8 @@ const auth = async (userData) => {
         } else {
             return {status: 0, message: 'User authentication failed.'};
         }
+    } else {
+        return {status: 0, message: 'This e-mail is not registered.'}
     }
 };
 
