@@ -33,7 +33,7 @@ const HeaderComponent = ({userData}) => {
             </Link>
 
             {
-                isLoggedIn &&
+                !isLoggedIn &&
                 <div className={styles.Header__logged}>
                 <span className={styles.Header_userName}>
                      Вітаємо, {name}

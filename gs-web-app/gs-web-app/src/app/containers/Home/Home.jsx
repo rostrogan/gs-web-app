@@ -47,7 +47,7 @@ const HomeComponent = ({userData}) => {
     return (
         <>
             <Header/>
-            <Login userData={userData}/>
+                <Login userData={userData}/>
             <Footer/>
         </>
     );
