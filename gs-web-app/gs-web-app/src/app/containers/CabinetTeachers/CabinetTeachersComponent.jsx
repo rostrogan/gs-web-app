@@ -1,6 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
@@ -10,13 +8,11 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import PeopleIcon from '@material-ui/icons/People';
-import Typography from '@material-ui/core/Typography';
 import {makeStyles, useTheme} from '@material-ui/core/styles';
-import {Routes} from "../../../consts/routePaths";
+import {Routes} from "../../consts/routePaths";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import classNames from 'classnames';
-import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import TableContainer from "@material-ui/core/TableContainer";
 import Table from "@material-ui/core/Table";
@@ -25,12 +21,21 @@ import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 import TableBody from "@material-ui/core/TableBody";
 import Paper from "@material-ui/core/Paper";
+import {reduxForm} from "redux-form";
+import FormSearchTeachers from "./components/FormSearchTeachers";
+import {Link} from "react-router-dom";
 
 const drawerWidth = 200;
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
+  },
+  form: {
+    width: '100%',
+  },
+  inputSearch: {
+    width: '100%',
   },
   drawer: {
     [theme.breakpoints.up('sm')]: {
@@ -74,7 +79,7 @@ const useCardStyles = makeStyles({
   }
 });
 
-const Cabinet = (props) => {
+const CabinetTeachersCompoent = (props) => {
   const {container} = props;
   const classes = useStyles();
   const classes_card = useCardStyles();
@@ -114,17 +119,24 @@ const Cabinet = (props) => {
   }
 
   const rows = [
-    createData('та-91ф', 'ТЕФ', '/'),
-    createData('тв-91ф', 'ТЕФ','/'),
-    createData('тр-91ф', 'ТЕФ', '/'),
+    createData('Коваль О.В.', 'ТЕФ', `${Routes.TEACHERS_SHOW_DETAILS}1`),
+    createData('Препотенська М. П.', 'ТЕФ', '/'),
+    createData('Олізько Ю. М.', 'ТЕФ', '/'),
   ];
+
+  const FormSearchGroup = reduxForm({ form: "FormSearchGroup" })(FormSearchTeachers);
+
+  //id="delete"
+  //Потріюно буде видалити.
+  //Для перегляду даних
+  const onSubmit = (formData) => {
+    console.log(formData)
+  };
 
   return (
     <div className="page-container">
       <div className={classes.root}>
-        <CssBaseline/>
         <nav className={classes.drawer} aria-label="mailbox folders">
-          {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
           <Hidden smUp implementation="css">
             <Drawer
               container={container}
@@ -157,12 +169,10 @@ const Cabinet = (props) => {
         <main className={classes.content}>
           <Card className={classNames(classes_card.Card, classes_card.Pos)}>
             <CardContent>
-              <form className={classes_card.root} noValidate autoComplete="on">
-                <TextField id="standard-basic" label="Пошук" />
-              </form>
+              <FormSearchGroup onSubmit={onSubmit}/>
               <br/>
-              <Button variant="contained" href='/' color="primary">
-                Додати групу
+              <Button variant="contained" href={Routes.CABINET_TEACHERS_LIST_ADD} color="primary">
+                Додати викладача
               </Button>
               <br/>
               <br/>
@@ -170,46 +180,44 @@ const Cabinet = (props) => {
                 <Table className={classes_card.table} aria-label="caption table">
                   <TableHead>
                     <TableRow>
-                      <TableCell>Назва групи</TableCell>
-                      <TableCell align="right">Факультет</TableCell>
-                      <TableCell align="right"/>
-                      <TableCell align="right"/>
-                      <TableCell align="right"/>
-                      <TableCell align="right"/>
-                      <TableCell align="right"/>
-                      <TableCell align="right"/>
-                      <TableCell align="right"/>
-                      <TableCell align="right"/>
-                      <TableCell align="right"/>
+                      <TableCell className={classes_card.table_th}>Викладач</TableCell>
+                      <TableCell align="center"/>
+                      <TableCell align="center" className={classes_card.table_th}>Факультет</TableCell>
+                      <TableCell align="center"/>
+                      <TableCell align="center"/>
+                      <TableCell align="center"/>
+                      <TableCell align="center"/>
+                      <TableCell align="center"/>
+                      <TableCell align="center"/>
+                      <TableCell align="center"/>
+                      <TableCell align="center"/>
+                      <TableCell align="center"/>
                     </TableRow>
                   </TableHead>
                   <TableBody>
                     {rows.map((row) => (
                       <TableRow key={row.name}>
-                        <TableCell component="th" scope="row" className={classes_card.table_th}>
+                        <TableCell component="th" scope="row" >
                           {row.name_group}
                         </TableCell>
-                        <TableRow key={row.name}>
-                          <TableCell component="th" scope="row" className={classes_card.table_th}>
-                            {row.name_group}
-                          </TableCell>
-                        <TableCell align="right">{row.name_faculty}</TableCell>
-                        <TableCell align="right">
-                          <Button variant="contained" href={row.link} color="primary">
-                            Детальніше
-                          </Button>
-                        </TableCell>
-                        <TableCell align="right"/>
-                        <TableCell align="right"/>
-                        <TableCell align="right"/>
-                        <TableCell align="right"/>
-                        <TableCell align="right"/>
-                        <TableCell align="right"/>
-                        <TableCell align="right"/>
-                        <TableCell align="right"/>
+                      <TableCell align="center"/>
+                        <TableCell align="center">{row.name_faculty}</TableCell>
+                        <TableCell align="center"/>
+                        <TableCell align="center"/>
+                      <TableCell align="center">
+                        <Button variant="contained" component={Link} to={row.detail_link} color="primary">
+                          Детальніше
+                        </Button>
+                      </TableCell>
+                      <TableCell align="center"/>
+                      <TableCell align="center"/>
+                      <TableCell align="center"/>
+                      <TableCell align="center"/>
+                      <TableCell align="center"/>
+                      <TableCell align="center"/>
                       </TableRow>
-                    ))}
-                  </TableBody>
+                        ))}
+                      </TableBody>
                 </Table>
               </TableContainer>
             </CardContent>
@@ -220,12 +228,4 @@ const Cabinet = (props) => {
   );
 };
 
-Cabinet.propTypes = {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
-  container: PropTypes.any,
-};
-
-export default Cabinet;
+export default CabinetTeachersCompoent;

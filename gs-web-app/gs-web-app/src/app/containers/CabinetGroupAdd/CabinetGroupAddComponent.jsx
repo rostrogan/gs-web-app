@@ -1,6 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
@@ -10,15 +8,26 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import PeopleIcon from '@material-ui/icons/People';
-import Typography from '@material-ui/core/Typography';
 import {makeStyles, useTheme} from '@material-ui/core/styles';
-import {Routes} from "../../../consts/routePaths";
+import {Routes} from "../../consts/routePaths";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
+import classNames from 'classnames';
+import {reduxForm} from "redux-form";
+import FormAddGroup from "./components/FormAddGroup";
+import Typography from "@material-ui/core/Typography";
 
-const drawerWidth = 240;
+const drawerWidth = 200;
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
+  },
+  form: {
+    width: '100%',
+  },
+  inputSearch: {
+    width: '100%',
   },
   drawer: {
     [theme.breakpoints.up('sm')]: {
@@ -53,9 +62,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Cabinet = (props) => {
+const useCardStyles = makeStyles({
+  table: {
+    minWidth: 650,
+  },
+  table_th: {
+    fontWeight: 700,
+  }
+});
+
+const CabinetGroupAddComponent = (props) => {
   const {container} = props;
   const classes = useStyles();
+  const classes_card = useCardStyles();
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -77,8 +96,8 @@ const Cabinet = (props) => {
         {Menu.map((text, index) => (
           <>
             <ListItem button component="a" key={index} href={MenuLink[index]}>
-                  <ListItemIcon>{index % 2 === 0 ? <GroupIcon/> : <PeopleIcon/>}</ListItemIcon>
-                  <ListItemText primary={text}/>
+              <ListItemIcon>{index % 2 === 0 ? <GroupIcon/> : <PeopleIcon/>}</ListItemIcon>
+              <ListItemText primary={text}/>
             </ListItem>
             <Divider/>
           </>
@@ -87,12 +106,19 @@ const Cabinet = (props) => {
     </div>
   );
 
+  const FormSearchGroup = reduxForm({ form: "FormSearchGroup" })(FormAddGroup);
+
+  //id="delete"
+  //Потріюно буде видалити.
+  //Для перегляду даних
+  const onSubmit = (formData) => {
+    console.log(formData)
+  };
+
   return (
     <div className="page-container">
       <div className={classes.root}>
-        <CssBaseline/>
         <nav className={classes.drawer} aria-label="mailbox folders">
-          {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
           <Hidden smUp implementation="css">
             <Drawer
               container={container}
@@ -123,22 +149,18 @@ const Cabinet = (props) => {
           </Hidden>
         </nav>
         <main className={classes.content}>
-          <div className={classes.toolbar}/>
-          <Typography paragraph>
-            Виберіть у пункті меню, що вас цікавить
-          </Typography>
+          <Card className={classNames(classes_card.Card, classes_card.Pos)}>
+            <CardContent>
+              <Typography className={classes.Title} variant="h6" color="initial" component={'h6'}>
+                Додати групу
+              </Typography>
+              <FormSearchGroup onSubmit={onSubmit}/>
+            </CardContent>
+          </Card>
         </main>
       </div>
     </div>
   );
 };
 
-Cabinet.propTypes = {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
-  container: PropTypes.any,
-};
-
-export default Cabinet;
+export default CabinetGroupAddComponent;

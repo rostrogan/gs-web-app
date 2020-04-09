@@ -1,6 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
@@ -10,15 +8,29 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import PeopleIcon from '@material-ui/icons/People';
-import Typography from '@material-ui/core/Typography';
 import {makeStyles, useTheme} from '@material-ui/core/styles';
-import {Routes} from "../../../consts/routePaths";
+import {Routes} from "../../consts/routePaths";
+import Card from "@material-ui/core/Card";
+import classNames from 'classnames';
+import TableContainer from "@material-ui/core/TableContainer";
+import Table from "@material-ui/core/Table";
+// import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+import TableCell from "@material-ui/core/TableCell";
+import TableBody from "@material-ui/core/TableBody";
+import Paper from "@material-ui/core/Paper";
 
-const drawerWidth = 240;
+const drawerWidth = 200;
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
+  },
+  form: {
+    width: '100%',
+  },
+  inputSearch: {
+    width: '100%',
   },
   drawer: {
     [theme.breakpoints.up('sm')]: {
@@ -53,9 +65,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Cabinet = (props) => {
+const useCardStyles = makeStyles({
+  table: {
+    minWidth: 650,
+  },
+  table_th: {
+    fontWeight: 700,
+  }
+});
+
+const ShowDetailsTeachersComponent = (props) => {
   const {container} = props;
   const classes = useStyles();
+  const classes_card = useCardStyles();
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -87,12 +109,19 @@ const Cabinet = (props) => {
     </div>
   );
 
+  function createData(name_teacher, name_faculty, name_department) {
+    return { name_teacher, name_faculty, name_department};
+  }
+
+  const rows = [
+    createData('Ковальов В.О', 'Кафедра автоматизації проектування енергетичних процесів і систем', 'Теплоенергетичний факультет'),
+  ];
+
+
   return (
     <div className="page-container">
       <div className={classes.root}>
-        <CssBaseline/>
         <nav className={classes.drawer} aria-label="mailbox folders">
-          {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
           <Hidden smUp implementation="css">
             <Drawer
               container={container}
@@ -123,30 +152,33 @@ const Cabinet = (props) => {
           </Hidden>
         </nav>
         <main className={classes.content}>
-          <div className={classes.toolbar}/>
-          <Typography paragraph>
-            Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper eget nulla
-            facilisi etiam dignissim diam. Pulvinar elementum integer enim neque volutpat ac
-            tincidunt. Ornare suspendisse sed nisi lacus sed viverra tellus. Purus sit amet volutpat
-            consequat mauris. Elementum eu facilisis sed odio morbi. Euismod lacinia at quis risus sed
-            vulputate odio. Morbi tincidunt ornare massa eget egestas purus viverra accumsan in. In
-            hendrerit gravida rutrum quisque non tellus orci ac. Pellentesque nec nam aliquam sem et
-            tortor. Habitant morbi tristique senectus et. Adipiscing elit duis tristique sollicitudin
-            nibh sit. Ornare aenean euismod elementum nisi quis eleifend. Commodo viverra maecenas
-            accumsan lacus vel facilisis. Nulla posuere sollicitudin aliquam ultrices sagittis orci a.
-          </Typography>
+          <Card className={classNames(classes_card.Card, classes_card.Pos)}>
+              <TableContainer component={Paper}>
+                <Table className={classes_card.table} aria-label="caption table">
+                  <TableBody>
+                    <TableRow >
+                    {rows.map((row) => (
+                      <>
+                        <div key={row.name}>
+                          <TableCell style={{width: '100%', display: 'flex'}}><b>ПІБ викладача:</b>&nbsp;{row.name_teacher}</TableCell>
+                        </div>
+                        <div key={row.name}>
+                          <TableCell align="center" style={{width: '100%', display: 'flex'}}><b>Кафедра:</b>&nbsp;{row.name_faculty}</TableCell>
+                        </div>
+                        <div key={row.name}>
+                          <TableCell align="center" style={{width: '100%', display: 'flex'}}><b>Факультет:&nbsp;</b>{row.name_department}</TableCell>
+                        </div>
+                      </>
+                    ))}
+                   </TableRow>
+                  </TableBody>
+                </Table>
+            </TableContainer>
+          </Card>
         </main>
       </div>
     </div>
   );
 };
 
-Cabinet.propTypes = {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
-  container: PropTypes.any,
-};
-
-export default Cabinet;
+export default ShowDetailsTeachersComponent;
