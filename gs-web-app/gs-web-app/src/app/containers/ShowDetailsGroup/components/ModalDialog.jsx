@@ -8,7 +8,6 @@ import Slide from '@material-ui/core/Slide';
 import FormAddSubject from "./FormAddSubject";
 import {reduxForm} from "redux-form";
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import FormSearchGroupComponent from "../../CabinetGroup/components/FormSearchGroup";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;

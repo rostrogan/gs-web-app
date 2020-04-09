@@ -102,13 +102,13 @@ const CabinetTeachersCompoent = (props) => {
       <List>
         <Divider/>
         {Menu.map((text, index) => (
-          <>
-            <ListItem button component="a" key={index} href={MenuLink[index]}>
+          <div key={index}>
+            <ListItem button component="a" href={MenuLink[index]}>
               <ListItemIcon>{index % 2 === 0 ? <GroupIcon/> : <PeopleIcon/>}</ListItemIcon>
               <ListItemText primary={text}/>
             </ListItem>
             <Divider/>
-          </>
+          </div>
         ))}
       </List>
     </div>

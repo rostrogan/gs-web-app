@@ -80,7 +80,7 @@ const useCardStyles = makeStyles({
   }
 });
 
-const Cabinet = (props) => {
+const CabinetGroupComponent = (props) => {
   const {container} = props;
   const classes = useStyles();
   const classes_card = useCardStyles();
@@ -103,13 +103,13 @@ const Cabinet = (props) => {
       <List>
         <Divider/>
         {Menu.map((text, index) => (
-          <>
-            <ListItem button component="a" key={index} href={MenuLink[index]}>
+          <div key={index}>
+            <ListItem button component="a" href={MenuLink[index]}>
               <ListItemIcon>{index % 2 === 0 ? <GroupIcon/> : <PeopleIcon/>}</ListItemIcon>
               <ListItemText primary={text}/>
             </ListItem>
             <Divider/>
-          </>
+          </div>
         ))}
       </List>
     </div>
@@ -121,8 +121,8 @@ const Cabinet = (props) => {
 
   const rows = [
     createData('та-91ф', 'ТЕФ', `${Routes.GROUP_SHOW_DETAILS}1`),
-    createData('тв-91ф', 'ТЕФ','/'),
-    createData('тр-91ф', 'ТЕФ', '/'),
+    createData('та-91ф', 'ТЕФ', `${Routes.GROUP_SHOW_DETAILS}2`),
+    createData('та-91ф', 'ТЕФ', `${Routes.GROUP_SHOW_DETAILS}3`),
   ];
 
   const FormSearchGroup = reduxForm({ form: "FormSearchGroup" })(FormSearchGroupComponent);
@@ -229,12 +229,4 @@ const Cabinet = (props) => {
   );
 };
 
-Cabinet.propTypes = {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
-  container: PropTypes.any,
-};
-
-export default Cabinet;
+export default CabinetGroupComponent;
