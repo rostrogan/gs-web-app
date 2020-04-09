@@ -157,8 +157,8 @@ const ShowDetailsTeachersComponent = (props) => {
                 <Table className={classes_card.table} aria-label="caption table">
                   <TableBody>
                     <TableRow >
-                    {rows.map((row) => (
-                      <>
+                    {rows.map((row, key) => (
+                      <div key={key}>
                         <div key={row.name}>
                           <TableCell style={{width: '100%', display: 'flex'}}><b>ПІБ викладача:</b>&nbsp;{row.name_teacher}</TableCell>
                         </div>
@@ -168,7 +168,7 @@ const ShowDetailsTeachersComponent = (props) => {
                         <div key={row.name}>
                           <TableCell align="center" style={{width: '100%', display: 'flex'}}><b>Факультет:&nbsp;</b>{row.name_department}</TableCell>
                         </div>
-                      </>
+                      </div>
                     ))}
                    </TableRow>
                   </TableBody>
