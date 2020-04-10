@@ -7,7 +7,7 @@ const express = require('express');
 const router = express.Router();
 
 
-router.get('/', async (req, response) => {
+router.get('/', async (request, response) => {
     const users = await usersService.getAllUsers();
 
     response.send(users);
@@ -25,9 +25,7 @@ router.post('/user', async (request, response) => {
 router.post('/register', async (request, response) => {
     const {body} = request;
 
-    const newUser = await usersService.registerUser(body);
-
-    console.log(newUser);
+    await usersService.registerUser(body);
 });
 
 router.post('/auth', async (request, response) => {

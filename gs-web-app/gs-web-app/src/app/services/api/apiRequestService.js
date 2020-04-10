@@ -4,6 +4,7 @@ import urlUtils from '../../utils/urlUtils';
 import authService from '../authService';
 import {dispatch} from '../../state/store';
 import {setUserData} from '../../state/ducks/user/actions';
+import {setGroupsData} from '../../state/ducks/global/actions';
 
 const getAllUsers = () => {
     const requestUrl = urlUtils.getApiRequestUrl(ApiRequestPaths.GET_ALL_USERS);
@@ -58,6 +59,7 @@ const getUserDataById = (userId) => {
             .then((response) => {
                 const {data} = response;
 
+                console.log(data);
                 dispatch(setUserData(data));
             });
     } catch (e) {
@@ -65,9 +67,29 @@ const getUserDataById = (userId) => {
     }
 };
 
+const getAllGroups = () => {
+    const requestUrl = urlUtils.getApiRequestUrl(ApiRequestPaths.GET_ALL_GROUPS);
+
+    console.log(requestUrl);
+
+    try {
+        apiService.get(requestUrl)
+            .then((response) => {
+                const {data} = response;
+
+                console.log(data);
+
+                dispatch(setGroupsData(data));
+            });
+    } catch (e) {
+        console.error('[getAllUsers error]: ', e);
+    }
+};
+
 export default {
-    getAllUsers,
-    registerUser,
     auth,
+    getAllGroups,
+    getAllUsers,
     getUserDataById,
+    registerUser,
 }

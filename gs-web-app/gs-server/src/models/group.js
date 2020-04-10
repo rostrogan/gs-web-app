@@ -1,8 +1,8 @@
 const mongooseService = require('../services/mongooseService');
 const schemas = require('../consts/schemas');
 
-const User = mongooseService.createModel('User', schemas.USER_SCHEMA);
+const Group = mongooseService.createModel('Group', schemas.GROUP_SCHEMA);
 
 module.exports = {
-    User,
-};
+    Group,
+}

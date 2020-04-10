@@ -1,4 +1,7 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import {connect} from 'react-redux';
+import {createStructuredSelector} from 'reselect';
+
 import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
@@ -24,6 +27,9 @@ import Paper from "@material-ui/core/Paper";
 import {reduxForm} from "redux-form";
 import FormSearchGroupComponent from './components/FormSearchGroup';
 import {Link} from "react-router-dom";
+import {makeSelectGroupsData} from '../../state/selectors/global';
+
+import apiRequestService from '../../services/api/apiRequestService';
 
 const drawerWidth = 200;
 
@@ -79,12 +85,20 @@ const useCardStyles = makeStyles({
   }
 });
 
+const mapStateToProps = createStructuredSelector({
+  groups: makeSelectGroupsData(),
+});
+
 const CabinetGroupComponent = (props) => {
-  const {container} = props;
+  const {container, groups} = props;
   const classes = useStyles();
   const classes_card = useCardStyles();
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
+
+  useEffect(() => {
+    apiRequestService.getAllGroups();
+  }, [])
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -194,30 +208,33 @@ const CabinetGroupComponent = (props) => {
                       <TableCell align="center"/>
                     </TableRow>
                   </TableHead>
-                  <TableBody>
-                    {rows.map((row) => (
-                      <TableRow key={row.name}>
-                        <TableCell component="th" scope="row" >
-                          {row.name_group}
-                        </TableCell>
-                      <TableCell align="center"/>
-                        <TableCell align="center">{row.name_faculty}</TableCell>
-                        <TableCell align="center"/>
-                        <TableCell align="center"/>
-                      <TableCell align="center">
-                        <Button variant="contained" component={Link} to={row.detail_link} color="primary">
-                          Детальніше
-                        </Button>
-                      </TableCell>
-                      <TableCell align="center"/>
-                      <TableCell align="center"/>
-                      <TableCell align="center"/>
-                      <TableCell align="center"/>
-                      <TableCell align="center"/>
-                      <TableCell align="center"/>
-                      </TableRow>
-                        ))}
-                      </TableBody>
+                  {
+                    groups &&
+                    <TableBody>
+                      {groups.map((group, index) => (
+                          <TableRow key={group._id}>
+                            <TableCell component="th" scope="row" >
+                              {group.name}
+                            </TableCell>
+                            <TableCell align="center"/>
+                            <TableCell align="center">{group.name_faculty}</TableCell>
+                            <TableCell align="center"/>
+                            <TableCell align="center"/>
+                            <TableCell align="center">
+                              <Button variant="contained" component={Link} to={group.detail_link} color="primary">
+                                Детальніше
+                              </Button>
+                            </TableCell>
+                            <TableCell align="center"/>
+                            <TableCell align="center"/>
+                            <TableCell align="center"/>
+                            <TableCell align="center"/>
+                            <TableCell align="center"/>
+                            <TableCell align="center"/>
+                          </TableRow>
+                      ))}
+                    </TableBody>
+                  }
                 </Table>
               </TableContainer>
             </CardContent>
@@ -228,4 +245,4 @@ const CabinetGroupComponent = (props) => {
   );
 };
 
-export default CabinetGroupComponent;
+export default connect(mapStateToProps)(CabinetGroupComponent);

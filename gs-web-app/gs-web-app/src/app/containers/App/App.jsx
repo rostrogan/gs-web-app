@@ -1,14 +1,11 @@
-import authService from '../../services/authService';
-import apiRequestService from '../../services/api/apiRequestService';
+import React from 'react';
+
+import useGetAuthorizedUserData from '../../hooks/useGetAuthorizedUserData';
 
 const App = (props) => {
-    const { children } = props;
+    const {children} = props;
 
-    const authorizedUserId = authService.checkAuthorizedUserAvailability();
-
-    if (authorizedUserId) {
-        apiRequestService.getUserDataById(authorizedUserId);
-    }
+    useGetAuthorizedUserData();
 
     return children;
 };
