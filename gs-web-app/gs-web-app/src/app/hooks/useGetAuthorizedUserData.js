@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import {useEffect} from 'react';
 
 import apiRequestService from '../services/api/apiRequestService';
 import authService from '../services/authService';

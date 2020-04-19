@@ -1,21 +1,11 @@
 import React, {useEffect} from 'react';
-import {connect} from 'react-redux';
-import {createStructuredSelector} from 'reselect';
 
-import Divider from '@material-ui/core/Divider';
+import {makeStyles, useTheme} from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
-import GroupIcon from '@material-ui/icons/GroupWork';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import PeopleIcon from '@material-ui/icons/People';
-import {makeStyles, useTheme} from '@material-ui/core/styles';
 import {Routes} from "../../consts/routePaths";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-import classNames from 'classnames';
 import Button from "@material-ui/core/Button";
 import TableContainer from "@material-ui/core/TableContainer";
 import Table from "@material-ui/core/Table";
@@ -24,12 +14,12 @@ import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 import TableBody from "@material-ui/core/TableBody";
 import Paper from "@material-ui/core/Paper";
-import {reduxForm} from "redux-form";
 import FormSearchGroupComponent from './components/FormSearchGroup';
 import {Link} from "react-router-dom";
-import {makeSelectGroupsData} from '../../state/selectors/global';
-
+import {reduxForm} from "redux-form";
 import apiRequestService from '../../services/api/apiRequestService';
+import Menu from "../../components/Menu/Menu";
+import classNames from 'classnames';
 
 const drawerWidth = 200;
 
@@ -85,10 +75,6 @@ const useCardStyles = makeStyles({
   }
 });
 
-const mapStateToProps = createStructuredSelector({
-  groups: makeSelectGroupsData(),
-});
-
 const CabinetGroupComponent = (props) => {
   const {container, groups} = props;
   const classes = useStyles();
@@ -98,45 +84,15 @@ const CabinetGroupComponent = (props) => {
 
   useEffect(() => {
     apiRequestService.getAllGroups();
-  }, [])
+  }, []);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
 
-  const Menu = ['Групи', 'Викладачі'];
-  const MenuLink = [
-    Routes.CABINET_GROUP_LIST,
-    Routes.CABINET_TEACHERS_LIST
-  ];
-
   const drawer = (
-    <div>
-      <div className={classes.toolbar}/>
-      <List>
-        <Divider/>
-        {Menu.map((text, index) => (
-          <div key={index}>
-            <ListItem button component="a" href={MenuLink[index]}>
-              <ListItemIcon>{index % 2 === 0 ? <GroupIcon/> : <PeopleIcon/>}</ListItemIcon>
-              <ListItemText primary={text}/>
-            </ListItem>
-            <Divider/>
-          </div>
-        ))}
-      </List>
-    </div>
+    <Menu/>
   );
-
-  function createData(name_group, name_faculty, detail_link) {
-    return { name_group, name_faculty, detail_link};
-  }
-
-  const rows = [
-    createData('та-91ф', 'ТЕФ', `${Routes.GROUP_SHOW_DETAILS}1`),
-    createData('та-91ф', 'ТЕФ', `${Routes.GROUP_SHOW_DETAILS}2`),
-    createData('та-91ф', 'ТЕФ', `${Routes.GROUP_SHOW_DETAILS}3`),
-  ];
 
   const FormSearchGroup = reduxForm({ form: "FormSearchGroup" })(FormSearchGroupComponent);
 
@@ -185,7 +141,7 @@ const CabinetGroupComponent = (props) => {
             <CardContent>
               <FormSearchGroup onSubmit={onSubmit}/>
               <br/>
-              <Button variant="contained" href={Routes.CABINET_GROUP_LIST_ADD} color="primary">
+              <Button variant="contained" component={Link} to={Routes.CABINET_GROUP_LIST_ADD} color="primary">
                 Додати групу
               </Button>
               <br/>
@@ -245,4 +201,5 @@ const CabinetGroupComponent = (props) => {
   );
 };
 
-export default connect(mapStateToProps)(CabinetGroupComponent);
+
+export default CabinetGroupComponent;

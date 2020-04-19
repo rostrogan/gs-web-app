@@ -1,24 +1,16 @@
 import React from 'react';
-import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
-import GroupIcon from '@material-ui/icons/GroupWork';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import PeopleIcon from '@material-ui/icons/People';
 import {makeStyles, useTheme} from '@material-ui/core/styles';
-import {Routes} from "../../consts/routePaths";
 import Card from "@material-ui/core/Card";
 import classNames from 'classnames';
 import TableContainer from "@material-ui/core/TableContainer";
 import Table from "@material-ui/core/Table";
-// import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 import TableBody from "@material-ui/core/TableBody";
 import Paper from "@material-ui/core/Paper";
+import Menu from "../../components/Menu/Menu";
 
 const drawerWidth = 200;
 
@@ -85,28 +77,8 @@ const ShowDetailsTeachersComponent = (props) => {
     setMobileOpen(!mobileOpen);
   };
 
-  const Menu = ['Групи', 'Викладачі'];
-  const MenuLink = [
-    Routes.CABINET_GROUP_LIST,
-    Routes.CABINET_TEACHERS_LIST
-  ];
-
   const drawer = (
-    <div>
-      <div className={classes.toolbar}/>
-      <List>
-        <Divider/>
-        {Menu.map((text, index) => (
-          <div key={index}>
-            <ListItem button component="a" href={MenuLink[index]}>
-              <ListItemIcon>{index % 2 === 0 ? <GroupIcon/> : <PeopleIcon/>}</ListItemIcon>
-              <ListItemText primary={text}/>
-            </ListItem>
-            <Divider/>
-          </div>
-        ))}
-      </List>
-    </div>
+    <Menu/>
   );
 
   function createData(name_teacher, name_faculty, name_department) {

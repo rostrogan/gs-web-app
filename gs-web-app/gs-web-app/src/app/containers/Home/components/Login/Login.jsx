@@ -13,6 +13,7 @@ import LoginForm  from "./components/LoginForm";
 import {reduxForm} from "redux-form";
 
 import apiRequestService from '../../../../services/api/apiRequestService';
+import {Redirect} from "react-router-dom";
 
 const useStyles = makeStyles({
     Card: {
@@ -50,12 +51,14 @@ const FormLogin = reduxForm({ form: "login" })(LoginForm);
 
 const LoginComponent = ({userData}) => {
     const classes = useStyles();
-    //id="delete"
-    //Потріюно буде видалити.
-    //Для перегляду даних
+
     const onSubmit = (formData) => {
         apiRequestService.auth(formData)
     };
+
+    if (userData) {
+        return (<Redirect to={Routes.CABINET} />)
+    }
 
     return (
         <div className="page-container">

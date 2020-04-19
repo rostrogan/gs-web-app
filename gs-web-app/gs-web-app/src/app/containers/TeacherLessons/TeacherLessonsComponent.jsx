@@ -1,13 +1,13 @@
-import React from 'react';
+import * as React from 'react';
 import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
 import {makeStyles, useTheme} from '@material-ui/core/styles';
+import {Routes} from "../../consts/routePaths";
 import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
 import classNames from 'classnames';
-import {reduxForm} from "redux-form";
-import FormAddTeachers from "./components/FormAddTeachers";
-import Typography from "@material-ui/core/Typography";
+import {Link} from "react-router-dom";
+import {CardContent} from "@material-ui/core";
+import Button from "@material-ui/core/Button";
 import Menu from "../../components/Menu/Menu";
 
 const drawerWidth = 200;
@@ -62,9 +62,10 @@ const useCardStyles = makeStyles({
   table_th: {
     fontWeight: 700,
   }
+
 });
 
-const CabinetTeachersAddComponent = (props) => {
+const TeacherLessonsComponent = (props) => {
   const {container} = props;
   const classes = useStyles();
   const classes_card = useCardStyles();
@@ -78,15 +79,6 @@ const CabinetTeachersAddComponent = (props) => {
   const drawer = (
     <Menu/>
   );
-
-  const FormSearchGroup = reduxForm({ form: "FormSearchGroup" })(FormAddTeachers);
-
-  //id="delete"
-  //Потріюно буде видалити.
-  //Для перегляду даних
-  const onSubmit = (formData) => {
-    console.log(formData)
-  };
 
   return (
     <div className="page-container">
@@ -122,18 +114,26 @@ const CabinetTeachersAddComponent = (props) => {
           </Hidden>
         </nav>
         <main className={classes.content}>
-          <Card className={classNames(classes_card.Card, classes_card.Pos)}>
-            <CardContent>
-              <Typography className={classes.Title} variant="h6" color="initial" component={'h6'}>
-                Додати Викладача
-              </Typography>
-              <FormSearchGroup onSubmit={onSubmit}/>
-            </CardContent>
-          </Card>
+            <Card className={classNames(classes_card.Card, classes_card.Pos)}>
+              <CardContent>
+
+              <ul style={{listStyle: 'none'}}>
+                <li>
+                  <ul style={{listStyle: 'none'}}>
+                    <li>Група: тр-91ф</li>
+                    <li>Предмет: Іноземна мова для наукової діяльності 1</li>
+                  </ul>
+                </li>
+              </ul>
+              <Button variant="contained" color="primary" component={Link} to={`${Routes.CABINET_TEACHERS_LIST}/${1}`}>
+                Внести оцінки та відвідуваність
+              </Button>
+              </CardContent>
+            </Card>
         </main>
       </div>
     </div>
   );
 };
 
-export default CabinetTeachersAddComponent;
+export default TeacherLessonsComponent;

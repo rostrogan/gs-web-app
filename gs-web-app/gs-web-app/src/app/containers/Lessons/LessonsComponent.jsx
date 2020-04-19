@@ -1,13 +1,15 @@
-import React from 'react';
+import * as React from 'react';
 import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
 import {makeStyles, useTheme} from '@material-ui/core/styles';
 import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
 import classNames from 'classnames';
-import {reduxForm} from "redux-form";
-import FormAddTeachers from "./components/FormAddTeachers";
-import Typography from "@material-ui/core/Typography";
+import Collapse from "@material-ui/core/Collapse";
+import { ExpandLess, ExpandMore} from "@material-ui/icons";
+import {CardContent} from "@material-ui/core";
 import Menu from "../../components/Menu/Menu";
 
 const drawerWidth = 200;
@@ -62,9 +64,10 @@ const useCardStyles = makeStyles({
   table_th: {
     fontWeight: 700,
   }
+
 });
 
-const CabinetTeachersAddComponent = (props) => {
+const LessonsComponent = (props) => {
   const {container} = props;
   const classes = useStyles();
   const classes_card = useCardStyles();
@@ -79,13 +82,10 @@ const CabinetTeachersAddComponent = (props) => {
     <Menu/>
   );
 
-  const FormSearchGroup = reduxForm({ form: "FormSearchGroup" })(FormAddTeachers);
+  const [open, setOpen] = React.useState(true);
 
-  //id="delete"
-  //Потріюно буде видалити.
-  //Для перегляду даних
-  const onSubmit = (formData) => {
-    console.log(formData)
+  const handleClick = () => {
+    setOpen(!open);
   };
 
   return (
@@ -122,18 +122,29 @@ const CabinetTeachersAddComponent = (props) => {
           </Hidden>
         </nav>
         <main className={classes.content}>
-          <Card className={classNames(classes_card.Card, classes_card.Pos)}>
-            <CardContent>
-              <Typography className={classes.Title} variant="h6" color="initial" component={'h6'}>
-                Додати Викладача
-              </Typography>
-              <FormSearchGroup onSubmit={onSubmit}/>
-            </CardContent>
-          </Card>
+          <CardContent>
+            <Card className={classNames(classes_card.Card, classes_card.Pos)}>
+              <List
+                component="nav"
+              >
+                <ListItem button onClick={handleClick}>
+                  <ListItemText primary="Inbox" />
+                  {open ? <ExpandLess /> : <ExpandMore />}
+                </ListItem>
+                <Collapse in={!open} timeout="auto" unmountOnExit>
+                  <List component="div" disablePadding>
+                    <ListItem button className={classes.nested}>
+                      <ListItemText primary="Starred" />
+                    </ListItem>
+                  </List>
+                </Collapse>
+              </List>
+            </Card>
+          </CardContent>
         </main>
       </div>
     </div>
   );
 };
 
-export default CabinetTeachersAddComponent;
+export default LessonsComponent;

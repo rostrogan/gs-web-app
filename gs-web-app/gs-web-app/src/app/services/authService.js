@@ -24,6 +24,7 @@ const logout = () => {
         sessionService.clearItem(sessionStorageKeys.AUTHORIZED_USER_ID);
         dispatch(clearUserData());
     }
+
 };
 
 export default {

@@ -1,13 +1,6 @@
 import React from 'react';
-import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
-import GroupIcon from '@material-ui/icons/GroupWork';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import PeopleIcon from '@material-ui/icons/People';
 import {makeStyles, useTheme} from '@material-ui/core/styles';
 import {Routes} from "../../consts/routePaths";
 import Card from "@material-ui/core/Card";
@@ -24,6 +17,7 @@ import Paper from "@material-ui/core/Paper";
 import {reduxForm} from "redux-form";
 import FormSearchTeachers from "./components/FormSearchTeachers";
 import {Link} from "react-router-dom";
+import Menu from "../../components/Menu/Menu";
 
 const drawerWidth = 200;
 
@@ -90,28 +84,8 @@ const CabinetTeachersCompoent = (props) => {
     setMobileOpen(!mobileOpen);
   };
 
-  const Menu = ['Групи', 'Викладачі'];
-  const MenuLink = [
-    Routes.CABINET_GROUP_LIST,
-    Routes.CABINET_TEACHERS_LIST
-  ];
-
   const drawer = (
-    <div>
-      <div className={classes.toolbar}/>
-      <List>
-        <Divider/>
-        {Menu.map((text, index) => (
-          <div key={index}>
-            <ListItem button component="a" href={MenuLink[index]}>
-              <ListItemIcon>{index % 2 === 0 ? <GroupIcon/> : <PeopleIcon/>}</ListItemIcon>
-              <ListItemText primary={text}/>
-            </ListItem>
-            <Divider/>
-          </div>
-        ))}
-      </List>
-    </div>
+    <Menu/>
   );
 
   function createData(name_group, name_faculty, detail_link) {
@@ -171,7 +145,7 @@ const CabinetTeachersCompoent = (props) => {
             <CardContent>
               <FormSearchGroup onSubmit={onSubmit}/>
               <br/>
-              <Button variant="contained" href={Routes.CABINET_TEACHERS_LIST_ADD} color="primary">
+              <Button variant="contained" component={Link} to={Routes.CABINET_TEACHERS_LIST_ADD} color="primary">
                 Додати викладача
               </Button>
               <br/>

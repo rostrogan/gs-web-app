@@ -5,9 +5,9 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import Slide from '@material-ui/core/Slide';
-import FormAddSubject from "./FormAddSubject";
 import {reduxForm} from "redux-form";
 import makeStyles from "@material-ui/core/styles/makeStyles";
+import FormMarkAdd from "../components/FormMarkAdd";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -22,9 +22,9 @@ const useStyles = makeStyles({
   }
 });
 
-const FormSubject = reduxForm({ form: "FormAddSubject" })(FormAddSubject);
+const FormSubject = reduxForm({ form: "FormMarkAdd" })(FormMarkAdd);
 
-export default function AlertDialogSlide() {
+export default function AlertMarkAdd() {
   const classes = useStyles();
 
 
@@ -45,7 +45,7 @@ export default function AlertDialogSlide() {
   return (
     <div>
       <Button variant="contained" color="primary" onClick={handleClickOpen}>
-
+        Додати відмітку
       </Button>
       <Dialog
         open={open}

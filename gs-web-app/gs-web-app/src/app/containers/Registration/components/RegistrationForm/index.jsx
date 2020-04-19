@@ -12,8 +12,8 @@ import ReduxFormDateRange, {
     renderField,
     renderSelectField,
     renderTextArea
-} from "../../../../../../components/Inputs/Input";
-import {requiredFile} from "../../../../../../utils/validate";
+} from "../../../../components/Inputs/Input";
+import {requiredFile} from "../../../../utils/validate";
 import FormControl from "@material-ui/core/FormControl";
 import StepLabel from "@material-ui/core/StepLabel";
 import Paper from "@material-ui/core/Paper";

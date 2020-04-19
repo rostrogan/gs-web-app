@@ -7,7 +7,7 @@ const CabinetTeachersAdd = () => {
   return (
    <>
      <Header/>
-      <CabinetTeachersAddComponent />
+        <CabinetTeachersAddComponent />
      <Footer/>
    </>
   );
