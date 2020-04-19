@@ -1,22 +1,13 @@
 import React from 'react';
-import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
-import GroupIcon from '@material-ui/icons/GroupWork';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import PeopleIcon from '@material-ui/icons/People';
 import {makeStyles, useTheme} from '@material-ui/core/styles';
-import {Routes} from "../../consts/routePaths";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import classNames from 'classnames';
 import {reduxForm} from "redux-form";
 import FormAddTeachers from "./components/FormAddTeachers";
 import Typography from "@material-ui/core/Typography";
-import {Link} from "react-router-dom";
 import Menu from "../../components/Menu/Menu";
 
 const drawerWidth = 200;
