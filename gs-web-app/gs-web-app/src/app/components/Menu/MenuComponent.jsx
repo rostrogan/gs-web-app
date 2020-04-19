@@ -121,7 +121,7 @@ const MenuComponent = (props) => {
   }
 
   return (
-    <div>
+    <>
       <div className={classes.toolbar}/>
       <List>
         <Divider/>
@@ -135,7 +135,7 @@ const MenuComponent = (props) => {
           </div>
         ))}
       </List>
-    </div>
+    </>
   );
 };
 
