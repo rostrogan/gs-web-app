@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import {CardContent} from "@material-ui/core";
 import Card from "@material-ui/core/Card";
-import RegistrationForm from "./components/RegistrationForm";
+import RegistrationForm from "./components/RegistrationForm/index";
 import {reduxForm } from "redux-form";
 
 const useStyles = makeStyles(theme => ({

@@ -1,13 +1,16 @@
-import React from 'react';
+import * as React from 'react';
 import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
 import {makeStyles, useTheme} from '@material-ui/core/styles';
+import {Routes} from "../../consts/routePaths";
 import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
 import classNames from 'classnames';
-import {reduxForm} from "redux-form";
-import FormAddGroup from "./components/FormAddGroup";
-import Typography from "@material-ui/core/Typography";
+import TableContainer from "@material-ui/core/TableContainer";
+import Table from "@material-ui/core/Table";
+import TableRow from "@material-ui/core/TableRow";
+import TableCell from "@material-ui/core/TableCell";
+import TableBody from "@material-ui/core/TableBody";
+import Paper from "@material-ui/core/Paper";
 import Menu from "../../components/Menu/Menu";
 
 const drawerWidth = 200;
@@ -64,7 +67,7 @@ const useCardStyles = makeStyles({
   }
 });
 
-const CabinetGroupAddComponent = (props) => {
+const ProfileComponent = (props) => {
   const {container} = props;
   const classes = useStyles();
   const classes_card = useCardStyles();
@@ -79,14 +82,15 @@ const CabinetGroupAddComponent = (props) => {
     <Menu/>
   );
 
-  const FormSearchGroup = reduxForm({ form: "FormSearchGroup" })(FormAddGroup);
+  function createData(name_group, name_faculty, detail_link) {
+    return { name_group, name_faculty, detail_link};
+  }
 
-  //id="delete"
-  //Потріюно буде видалити.
-  //Для перегляду даних
-  const onSubmit = (formData) => {
-    console.log(formData)
-  };
+  const rows = [
+    createData('Коваль О.В.', 'ТЕФ', `${Routes.CABINET_ASPIRANT_PROFILE}1`),
+    createData('Препотенська М. П.', 'ТЕФ', '/'),
+    createData('Олізько Ю. М.', 'ТЕФ', '/'),
+  ];
 
   return (
     <div className="page-container">
@@ -123,12 +127,19 @@ const CabinetGroupAddComponent = (props) => {
         </nav>
         <main className={classes.content}>
           <Card className={classNames(classes_card.Card, classes_card.Pos)}>
-            <CardContent>
-              <Typography className={classes.Title} variant="h6" color="initial" component={'h6'}>
-                Додати групу
-              </Typography>
-              <FormSearchGroup onSubmit={onSubmit}/>
-            </CardContent>
+              <TableContainer component={Paper}>
+                <Table className={classes_card.table} aria-label="caption table">
+                  <TableBody>
+                    {rows.map((row) => (
+                      <TableRow key={row.name}>
+                        <TableCell component="th" scope="row" >
+                          {row.name_group} : {row.name_group}
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </TableContainer>
           </Card>
         </main>
       </div>
@@ -136,4 +147,4 @@ const CabinetGroupAddComponent = (props) => {
   );
 };
 
-export default CabinetGroupAddComponent;
+export default ProfileComponent;

@@ -16,6 +16,8 @@ import classNames from 'classnames';
 import {reduxForm} from "redux-form";
 import FormAddTeachers from "./components/FormAddTeachers";
 import Typography from "@material-ui/core/Typography";
+import {Link} from "react-router-dom";
+import Menu from "../../components/Menu/Menu";
 
 const drawerWidth = 200;
 
@@ -82,28 +84,8 @@ const CabinetTeachersAddComponent = (props) => {
     setMobileOpen(!mobileOpen);
   };
 
-  const Menu = ['Групи', 'Викладачі'];
-  const MenuLink = [
-    Routes.CABINET_GROUP_LIST,
-    Routes.CABINET_TEACHERS_LIST
-  ];
-
   const drawer = (
-    <div>
-      <div className={classes.toolbar}/>
-      <List>
-        <Divider/>
-        {Menu.map((text, index) => (
-          <div key={index}>
-            <ListItem button component="a" href={MenuLink[index]}>
-              <ListItemIcon>{index % 2 === 0 ? <GroupIcon/> : <PeopleIcon/>}</ListItemIcon>
-              <ListItemText primary={text}/>
-            </ListItem>
-            <Divider/>
-          </div>
-        ))}
-      </List>
-    </div>
+    <Menu/>
   );
 
   const FormSearchGroup = reduxForm({ form: "FormSearchGroup" })(FormAddTeachers);

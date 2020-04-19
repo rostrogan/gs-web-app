@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React  from 'react';
 import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
 
@@ -15,7 +15,7 @@ const HomeComponent = ({userData}) => {
     return (
         <>
             <Header/>
-            <Login userData={userData}/>
+              <Login userData={userData}/>
             <Footer/>
         </>
     );
