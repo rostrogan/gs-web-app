@@ -4,7 +4,7 @@ import urlUtils from '../../utils/urlUtils';
 import authService from '../authService';
 import {dispatch} from '../../state/store';
 import {setUserData} from '../../state/ducks/user/actions';
-import {setGroupsData} from '../../state/ducks/global/actions';
+import {setGroupsData, setFacultiesData} from '../../state/ducks/global/actions';
 
 const getAllUsers = () => {
     const requestUrl = urlUtils.getApiRequestUrl(ApiRequestPaths.GET_ALL_USERS);
@@ -29,7 +29,7 @@ const registerUser = (userData) => {
 
         apiService.post(requestUrl, {data: userData})
             .then((response) => {
-                console.log(response.data);
+                console.log(response)
             });
     } catch (e) {
         console.error('[registerUser error]: ', e);
@@ -59,7 +59,6 @@ const getUserDataById = (userId) => {
             .then((response) => {
                 const {data} = response;
 
-                console.log(data);
                 dispatch(setUserData(data));
             });
     } catch (e) {
@@ -70,14 +69,10 @@ const getUserDataById = (userId) => {
 const getAllGroups = () => {
     const requestUrl = urlUtils.getApiRequestUrl(ApiRequestPaths.GET_ALL_GROUPS);
 
-    console.log(requestUrl);
-
     try {
         apiService.get(requestUrl)
             .then((response) => {
                 const {data} = response;
-
-                console.log(data);
 
                 dispatch(setGroupsData(data));
             });
@@ -86,8 +81,40 @@ const getAllGroups = () => {
     }
 };
 
+const getAllFaculties = () => {
+    const requestUrl = urlUtils.getApiRequestUrl(ApiRequestPaths.GET_ALL_FACULTIES);
+
+    try {
+        apiService.get(requestUrl)
+            .then((response) => {
+                const {data} = response;
+
+                dispatch(setFacultiesData(data));
+            });
+    } catch (e) {
+        console.error('[getAllUsers error]: ', e);
+    }
+};
+
+const addNewGroup = (groupData) => {
+    const requestUrl = urlUtils.getApiRequestUrl(ApiRequestPaths.POST_GROUPS_ADD);
+
+    try {
+        apiService.post(requestUrl, {data: {groupData}})
+            .then((response) => {
+                const {data} = response;
+
+                console.log(data);
+            });
+    } catch (e) {
+        console.error('[auth error]: ', e);
+    }
+};
+
 export default {
+    addNewGroup,
     auth,
+    getAllFaculties,
     getAllGroups,
     getAllUsers,
     getUserDataById,

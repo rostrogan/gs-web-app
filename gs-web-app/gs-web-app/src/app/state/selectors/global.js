@@ -7,6 +7,12 @@ const makeSelectGroupsData = () => createSelector(
     (globalState) => globalState.groups
 );
 
+const makeSelectFacultiesData = () => createSelector(
+    selectUser,
+    (globalState) => globalState.faculties
+);
+
 export {
+    makeSelectFacultiesData,
     makeSelectGroupsData,
 }

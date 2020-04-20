@@ -6,6 +6,7 @@ import {CardContent} from "@material-ui/core";
 import Card from "@material-ui/core/Card";
 import RegistrationForm from "./components/RegistrationForm/index";
 import {reduxForm } from "redux-form";
+import userRegistrationService from '../../services/userRegistrationService';
 
 const useStyles = makeStyles(theme => ({
     Title: {
@@ -19,8 +20,8 @@ const useStyles = makeStyles(theme => ({
 
 const FormRegistration = reduxForm({form: 'registration'})(RegistrationForm);
 
-const onSubmit = (formatDate) => {
-    console.log(formatDate);
+const onSubmit = (formData) => {
+    userRegistrationService.registerStudent(formData);
 };
 
 const RegistrationFormComponent = () => {
