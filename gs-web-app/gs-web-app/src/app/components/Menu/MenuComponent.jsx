@@ -9,7 +9,7 @@ import Divider from "@material-ui/core/Divider";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import GroupIcon from '@material-ui/icons/GroupWork';
 import {makeStyles} from "@material-ui/core/styles";
-import {USER_ROLE_ADMIN, USER_ROLE_APPLICANT, USER_ROLE_ENROLLEE, USER_ROLE_POSTGRAD} from "../../consts/userRoles";
+import {USER_ROLE_ADMIN, USER_ROLE_STUDENT, USER_ROLE_TEACHER} from "../../consts/userRoles";
 
 const useStyles = makeStyles((theme) => ({
   toolbar: theme.mixins.toolbar,
@@ -37,7 +37,7 @@ const MenuComponent = (props) => {
       ];
       break;
 
-    case USER_ROLE_POSTGRAD:
+    case USER_ROLE_STUDENT:
       Menu = [
         'Мій Провіль',
         'Індивідуальний план',
@@ -52,7 +52,7 @@ const MenuComponent = (props) => {
       ];
       break;
 
-      case USER_ROLE_ENROLLEE:
+      case USER_ROLE_TEACHER:
       Menu = [
         'Мій Провіль',
         'Індивідуальний план',
@@ -67,20 +67,6 @@ const MenuComponent = (props) => {
       ];
       break;
 
-      case USER_ROLE_APPLICANT:
-      Menu = [
-        'Мій Провіль',
-        'Індивідуальний план',
-        'Заняття',
-        'Розклад',
-      ];
-      MenuLink = [
-        Routes.CABINET_ASPIRANT_PROFILE,
-        Routes.CABINET_GROUP_LIST,
-        Routes.CABINET_TEACHERS_LIST,
-        Routes.CABINET_TEACHERS_LIST,
-      ];
-      break;
     default:
 
       Menu = [

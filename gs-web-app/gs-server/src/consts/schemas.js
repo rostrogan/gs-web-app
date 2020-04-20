@@ -142,12 +142,28 @@ const GROUP_SCHEMA = new Schema({
         type: String,
         ...builtinOptions,
     },
+    faculty: {
+        type: String,
+        ...builtinOptions,
+    },
     lessons: {
         type: Array
     }
 });
 
+const FACULTY_SCHEMA = new Schema({
+    name: {
+        type: String,
+        ...builtinOptions,
+    },
+    abbr: {
+        type: String,
+        ...builtinOptions,
+    }
+});
+
 module.exports = {
+    FACULTY_SCHEMA,
+    GROUP_SCHEMA,
     USER_SCHEMA,
-    GROUP_SCHEMA
 };

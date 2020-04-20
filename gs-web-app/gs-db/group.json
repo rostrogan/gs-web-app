@@ -2,16 +2,19 @@
   {
     "name": "та-91ф",
     "department": "5e9027ff9d33ef19d060cb81",
+    "faculty": "5e9027109d33ef19d060cb78",
     "lessons": []
   },
   {
     "name": "тв-91ф",
     "department": "5e9027ff9d33ef19d060cb79",
+    "faculty": "5e9027109d33ef19d060cb78",
     "lessons": []
   },
   {
     "name": "тp-91ф",
     "department": "5e9027ff9d33ef19d060cb79",
+    "faculty": "5e9027109d33ef19d060cb78",
     "lessons": []
   }
 ]

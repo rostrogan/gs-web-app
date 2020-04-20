@@ -10,7 +10,9 @@ const getEnrolleeUsers = () => getAllUsers({role: userRoles.USER_ROLE_ENROLLEE})
 
 const getPostgradUsers = () => getAllUsers({role: userRoles.USER_ROLE_POSTGRAD});
 
-const getUserById = (userId) => mongooseService.findOneDocument(UserModel, {_id: userId});
+const getUserById = async (userId) => {
+    return await mongooseService.findOneDocument(UserModel, {_id: userId})
+};
 
 const registerUser = async (userData) => {
     await mongooseService.connect();

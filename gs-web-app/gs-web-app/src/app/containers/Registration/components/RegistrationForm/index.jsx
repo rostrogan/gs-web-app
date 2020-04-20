@@ -91,7 +91,7 @@ const StepContentOne = () => {
             </FormControl>
             <div>
                 <Field
-                    name='dataPicker'
+                    name='birth_date'
                     component={ReduxFormDateRange}
                     placeholder='01/01/2000'
                     label='Дата народження'
@@ -316,7 +316,7 @@ const StepContentThree = () => {
                         label="Email"
                         variant="outlined"
                         type="text"
-                        name="Email"
+                        name="email"
                         placeholder="Email"
                         validate={requiredFile}
                     />

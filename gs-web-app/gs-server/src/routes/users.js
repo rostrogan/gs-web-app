@@ -13,12 +13,13 @@ router.get('/', async (request, response) => {
     response.send(users);
 });
 
-router.post('/user', async (request, response) => {
+router.post('/user',async (request, response) => {
     const {body} = request;
     const {userId} = body;
 
     const user = await usersService.getUserById(userId);
 
+    response.set('Cache-Control', 'no-cache');
     response.send(user);
 });
 

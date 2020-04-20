@@ -10,10 +10,7 @@ const useGetAuthorizedUserData = () => {
     const userData = makeSelectUserData()(getState());
 
     useEffect(() => {
-        if (authorizedUserId && !userData) {
-            console.log(authorizedUserId);
-            console.log(userData);
-
+        if (authorizedUserId && userData === null) {
             apiRequestService.getUserDataById(authorizedUserId);
         }
     });
