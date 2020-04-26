@@ -74,7 +74,6 @@ const useCardStyles = makeStyles({
 });
 
 const CabinetTeachersCompoent = (props) => {
-  const {container} = props;
   const classes = useStyles();
   const classes_card = useCardStyles();
 
