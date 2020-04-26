@@ -116,7 +116,6 @@ const TeacherLessonsComponent = (props) => {
         <main className={classes.content}>
             <Card className={classNames(classes_card.Card, classes_card.Pos)}>
               <CardContent>
-
               <ul style={{listStyle: 'none'}}>
                 <li>
                   <ul style={{listStyle: 'none'}}>
@@ -128,6 +127,20 @@ const TeacherLessonsComponent = (props) => {
               <Button variant="contained" color="primary" component={Link} to={`${Routes.CABINET_TEACHERS_LESSONS}/${1}`}>
                 Внести оцінки та відвідуваність
               </Button>
+              </CardContent>
+
+              <CardContent>
+                <ul style={{listStyle: 'none'}}>
+                  <li>
+                    <ul style={{listStyle: 'none'}}>
+                      <li>Група: тр-92ф</li>
+                      <li>Предмет: Іноземна мова для наукової діяльності 2</li>
+                    </ul>
+                  </li>
+                </ul>
+                <Button variant="contained" color="primary" component={Link} to={`${Routes.CABINET_TEACHERS_LESSONS}/${2}`}>
+                  Внести оцінки та відвідуваність
+                </Button>
               </CardContent>
             </Card>
         </main>
