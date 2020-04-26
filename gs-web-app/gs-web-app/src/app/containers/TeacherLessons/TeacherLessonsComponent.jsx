@@ -125,7 +125,7 @@ const TeacherLessonsComponent = (props) => {
                   </ul>
                 </li>
               </ul>
-              <Button variant="contained" color="primary" component={Link} to={`${Routes.CABINET_TEACHERS_LIST}/${1}`}>
+              <Button variant="contained" color="primary" component={Link} to={`${Routes.CABINET_TEACHERS_LESSONS}/${1}`}>
                 Внести оцінки та відвідуваність
               </Button>
               </CardContent>

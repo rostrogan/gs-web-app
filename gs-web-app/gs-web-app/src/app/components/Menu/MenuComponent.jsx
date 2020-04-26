@@ -38,7 +38,7 @@ const MenuComponent = ({role}) => {
 
     case USER_ROLE_STUDENT:
       Menu = [
-        'Мій Провіль',
+        'Мій Профіль',
         'Індивідуальний план',
         'Заняття',
         'Розклад',
@@ -53,16 +53,12 @@ const MenuComponent = ({role}) => {
 
     case USER_ROLE_TEACHER:
       Menu = [
-        'Мій Провіль',
-        'Індивідуальний план',
+        'Мій Профіль',
         'Заняття',
-        'Розклад',
       ];
       MenuLink = [
         Routes.CABINET_ASPIRANT_PROFILE,
-        Routes.CABINET_GROUP_LIST,
-        Routes.CABINET_TEACHERS_LIST,
-        Routes.CABINET_TEACHERS_LIST,
+        Routes.CABINET_TEACHERS_LESSONS,
       ];
       break;
 
