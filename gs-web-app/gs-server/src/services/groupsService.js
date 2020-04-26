@@ -4,8 +4,6 @@ const GroupModel = require('../models/group').Group;
 const getAllGroups = async (options = {}) => {
     await mongooseService.connect();
 
-    console.log(await mongooseService.findDocuments(GroupModel, {}));
-
     return await mongooseService.findDocuments(GroupModel, {});
 };
 

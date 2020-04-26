@@ -62,7 +62,7 @@ const getUserDataById = (userId) => {
                 dispatch(setUserData(data));
             });
     } catch (e) {
-        console.error('[auth error]: ', e);
+        console.error('[getUserDataById error]: ', e);
     }
 };
 
@@ -77,7 +77,7 @@ const getAllGroups = () => {
                 dispatch(setGroupsData(data));
             });
     } catch (e) {
-        console.error('[getAllUsers error]: ', e);
+        console.error('[getAllGroups error]: ', e);
     }
 };
 
@@ -92,7 +92,7 @@ const getAllFaculties = () => {
                 dispatch(setFacultiesData(data));
             });
     } catch (e) {
-        console.error('[getAllUsers error]: ', e);
+        console.error('[getAllFaculties error]: ', e);
     }
 };
 
@@ -107,7 +107,7 @@ const addNewGroup = (groupData) => {
                 console.log(data);
             });
     } catch (e) {
-        console.error('[auth error]: ', e);
+        console.error('[addNewGroup error]: ', e);
     }
 };
 
