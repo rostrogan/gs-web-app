@@ -1,5 +1,3 @@
-import React from 'react';
-
 import useGetAuthorizedUserData from '../../hooks/useGetAuthorizedUserData';
 
 const App = (props) => {

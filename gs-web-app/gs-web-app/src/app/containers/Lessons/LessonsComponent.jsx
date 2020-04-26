@@ -128,13 +128,41 @@ const LessonsComponent = (props) => {
                 component="nav"
               >
                 <ListItem button onClick={handleClick}>
-                  <ListItemText primary="Inbox" />
+                  <ListItemText>
+                    Екзистенціальна філософія 1. Практична риторика
+                  </ListItemText>
                   {open ? <ExpandLess /> : <ExpandMore />}
                 </ListItem>
                 <Collapse in={!open} timeout="auto" unmountOnExit>
                   <List component="div" disablePadding>
-                    <ListItem button className={classes.nested}>
-                      <ListItemText primary="Starred" />
+                    <ListItem className={classes.nested}>
+                      <ListItemText>
+                        <CardContent>
+                        <ol>
+                          <li>
+                            1 жовт. 2019 р. отримав 5
+                          </li>
+                          <li>
+                            8 жовт. 2019 р. отримав 4
+                          </li>
+                          <li>
+                            15 жовт. 2019 р. був відсутній
+                          </li>
+                          <li>
+                            22 жовт. 2019 р. отримав 5
+                          </li>
+                          <li>
+                            29 жовт. 2019 р. отримав 3
+                          </li>
+                          <li>
+                             лист. 2019 р. отримав 5
+                          </li>
+                          <li>
+                            12 лист. 2019 р. отримав 3
+                          </li>
+                        </ol>
+                        </CardContent>
+                      </ListItemText>
                     </ListItem>
                   </List>
                 </Collapse>

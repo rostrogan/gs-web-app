@@ -21,6 +21,7 @@ const mapStateToProps = createStructuredSelector({
 
 const HeaderComponent = ({userData}) => {
     const {name} = userData || {};
+    const {patronymic} = userData || {};
     const isLoggedIn = !!userData;
 
     return (
@@ -36,7 +37,7 @@ const HeaderComponent = ({userData}) => {
                 isLoggedIn &&
                 <div className={styles.Header__logged}>
                 <span className={styles.Header_userName}>
-                     Вітаємо, {name}
+                     Вітаємо, {name} {patronymic}
                 </span>
                     <Link to={Routes.HOME} className={styles.Header__logged_icon}>
                         <IconButton

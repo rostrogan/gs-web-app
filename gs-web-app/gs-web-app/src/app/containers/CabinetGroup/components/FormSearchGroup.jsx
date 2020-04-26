@@ -4,7 +4,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { Field } from "redux-form";
 import { renderField} from '../../../components/Inputs/Input';
-import { requiredFile} from '../../../utils/validate';
 
 const useStyles = makeStyles({
   BtnCenter: {
@@ -12,26 +11,26 @@ const useStyles = makeStyles({
     "&:hover": {
       color: '#fff',
     }
-  }
+  },
+  flex: {
+    display: 'flex',
+  },
 });
 
 const FormSearchGroupComponent = (props) => {
   const classes = useStyles();
   const { handleSubmit, pristine, submitting } = props;
 
-  // @ts-ignore
   return (
     <form onSubmit={handleSubmit}>
-      <div >
         <Field
           component={renderField}
-          label="Назва групи"
+          label="Пошук"
           type="text"
           name="name_group"
-          placeholder="Назви груп"
-          validate={requiredFile}
+          placeholder="Пошук"
+          className={classes.flex}
         />
-      </div>
       <div>
         <Button
           type="submit"

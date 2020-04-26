@@ -1,15 +1,13 @@
 import * as React from 'react';
 import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
-import {makeStyles, useTheme} from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import Card from "@material-ui/core/Card";
 import classNames from 'classnames';
-import TableContainer from "@material-ui/core/TableContainer";
 import Table from "@material-ui/core/Table";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 import TableBody from "@material-ui/core/TableBody";
-import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import TableHead from "@material-ui/core/TableHead";
 import Menu from "../../components/Menu/Menu";
@@ -66,20 +64,23 @@ const useCardStyles = makeStyles({
   },
   table_th: {
     fontWeight: 700,
+  },
+  h2: {
+    textAlign: "center",
+  },
+  headerText: {
+    "& > th": {
+      color: "rgba(0,0,0,.54)",
+      fontWeight: "700",
+      fontSize: "13px"
+    }
   }
 
 });
 
-const ScheduleComponent = (props) => {
-  const {container} = props;
+const ScheduleComponent = () => {
   const classes = useStyles();
   const classes_card = useCardStyles();
-  const theme = useTheme();
-  const [mobileOpen, setMobileOpen] = React.useState(false);
-
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
-  };
 
   const drawer = (
     <Menu/>
@@ -89,23 +90,6 @@ const ScheduleComponent = (props) => {
     <div className="page-container">
       <div className={classes.root}>
         <nav className={classes.drawer} aria-label="mailbox folders">
-          <Hidden smUp implementation="css">
-            <Drawer
-              container={container}
-              variant="temporary"
-              anchor={theme.direction === 'rtl' ? 'right' : 'left'}
-              open={mobileOpen}
-              onClose={handleDrawerToggle}
-              classes={{
-                paper: classes.drawerPaper,
-              }}
-              ModalProps={{
-                keepMounted: true, // Better open performance on mobile.
-              }}
-            >
-              {drawer}
-            </Drawer>
-          </Hidden>
           <Hidden xsDown implementation="css">
             <Drawer
               classes={{
@@ -121,11 +105,10 @@ const ScheduleComponent = (props) => {
         <main className={classes.content}>
           <Card className={classNames(classes_card.Card, classes_card.Pos)}>
             <CardContent>
-            <TableContainer component={Paper}>
+              <Typography className={classes_card.h2}>I тиждень</Typography>
               <Table className={classes_card.table} aria-label="caption table">
                 <TableHead>
-                  <Typography>I тиждень</Typography>
-                  <TableRow>
+                  <TableRow className={classes_card.headerText}>
                     <TableCell align="left" colSpan={2}>Понеділок</TableCell>
                     <TableCell align="left" colSpan={2}>Вівторок</TableCell>
                     <TableCell align="left" colSpan={2}>Середа</TableCell>
@@ -151,67 +134,77 @@ const ScheduleComponent = (props) => {
                   </TableRow>
                 </TableBody>
               </Table>
-            </TableContainer>
-            <br/>
-            <TableContainer component={Paper}>
-              <Table className={classes_card.table} aria-label="caption table">
-                <TableHead>
-                  <Typography>ІІ тиждень</Typography>
-                  <TableRow>
-                    <TableCell align="left" colSpan={2}>Понеділок</TableCell>
-                    <TableCell align="left" colSpan={2}>Вівторок</TableCell>
-                    <TableCell align="left" colSpan={2}>Середа</TableCell>
-                    <TableCell align="left" colSpan={2}>Четвер</TableCell>
-                    <TableCell align="left" colSpan={2}>П'ятниця</TableCell>
-                    <TableCell align="left" colSpan={2}>Субота</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  <TableRow>
-                    <TableCell component="td" scope="row" align="left" colSpan={2}>Інформатика</TableCell>
-                    <TableCell component="td" scope="row" align="left" colSpan={2}>Інформатика</TableCell>
-                    <TableCell component="td" scope="row" align="left" colSpan={2}>Інформатика</TableCell>
-                    <TableCell component="td" scope="row" align="left" colSpan={2}>Інформатика</TableCell>
-                    <TableCell component="td" scope="row" align="left" colSpan={2}>Інформатика</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell component="td" scope="row" align="left" colSpan={2}>Інформатика</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell component="td" scope="row" align="left" colSpan={2}>Інформатика</TableCell>
-                  </TableRow>
-                </TableBody>
-              </Table>
-            </TableContainer>
-            <br/>
-            <TableContainer component={Paper}>
-              <Table className={classes_card.table} aria-label="caption table">
-                <TableHead>
-                  <Typography>IІІ тиждень</Typography>
-                  <TableRow>
-                    <TableCell align="left" colSpan={2}>Понеділок</TableCell>
-                    <TableCell align="left" colSpan={2}>Вівторок</TableCell>
-                    <TableCell align="left" colSpan={2}>Середа</TableCell>
-                    <TableCell align="left" colSpan={2}>Четвер</TableCell>
-                    <TableCell align="left" colSpan={2}>П'ятниця</TableCell>
-                    <TableCell align="left" colSpan={2}>Субота</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  <TableRow>
-                    <TableCell component="td" scope="row" align="left" colSpan={2}>Інформатика</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell component="td" scope="row" align="left" colSpan={2}>Інформатика</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell component="td" scope="row" align="left" colSpan={2}>Інформатика</TableCell>
-                  </TableRow>
-                </TableBody>
-              </Table>
-            </TableContainer>
             </CardContent>
           </Card>
+          <br/>
+          <Card className={classNames(classes_card.Card, classes_card.Pos)}>
+            <CardContent>
+              <Typography className={classes_card.h2}>IІ тиждень</Typography>
+              <Table className={classes_card.table} aria-label="caption table">
+                <TableHead>
+                  <TableRow className={classes_card.headerText}>
+                    <TableCell align="left" colSpan={2}>Понеділок</TableCell>
+                    <TableCell align="left" colSpan={2}>Вівторок</TableCell>
+                    <TableCell align="left" colSpan={2}>Середа</TableCell>
+                    <TableCell align="left" colSpan={2}>Четвер</TableCell>
+                    <TableCell align="left" colSpan={2}>П'ятниця</TableCell>
+                    <TableCell align="left" colSpan={2}>Субота</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  <TableRow>
+                    <TableCell component="td" scope="row" align="left" colSpan={2}>Інформатика</TableCell>
+                    <TableCell component="td" scope="row" align="left" colSpan={2}>Інформатика</TableCell>
+                    <TableCell component="td" scope="row" align="left" colSpan={2}>Інформатика</TableCell>
+                    <TableCell component="td" scope="row" align="left" colSpan={2}>Інформатика</TableCell>
+                    <TableCell component="td" scope="row" align="left" colSpan={2}>Інформатика</TableCell>
+                    <TableCell component="td" scope="row" align="left" colSpan={2}>Інформатика</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell component="td" scope="row" align="left" colSpan={2}>Інформатика</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell component="td" scope="row" align="left" colSpan={2}>Інформатика</TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </CardContent>
+          </Card>
+          <br/>
+          <Card className={classNames(classes_card.Card, classes_card.Pos)}>
+            <CardContent>
+              <Typography className={classes_card.h2}>IІІ тиждень</Typography>
+              <Table className={classes_card.table} aria-label="caption table">
+                <TableHead>
+                  <TableRow className={classes_card.headerText}>
+                    <TableCell align="left" colSpan={2}>Понеділок</TableCell>
+                    <TableCell align="left" colSpan={2}>Вівторок</TableCell>
+                    <TableCell align="left" colSpan={2}>Середа</TableCell>
+                    <TableCell align="left" colSpan={2}>Четвер</TableCell>
+                    <TableCell align="left" colSpan={2}>П'ятниця</TableCell>
+                    <TableCell align="left" colSpan={2}>Субота</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  <TableRow>
+                    <TableCell component="td" scope="row" align="left" colSpan={2}>Інформатика</TableCell>
+                    <TableCell component="td" scope="row" align="left" colSpan={2}>Інформатика</TableCell>
+                    <TableCell component="td" scope="row" align="left" colSpan={2}>Інформатика</TableCell>
+                    <TableCell component="td" scope="row" align="left" colSpan={2}>Інформатика</TableCell>
+                    <TableCell component="td" scope="row" align="left" colSpan={2}>Інформатика</TableCell>
+                    <TableCell component="td" scope="row" align="left" colSpan={2}>Інформатика</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell component="td" scope="row" align="left" colSpan={2}>Інформатика</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell component="td" scope="row" align="left" colSpan={2}>Інформатика</TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </CardContent>
+          </Card>
+          <br/>
         </main>
       </div>
     </div>
