@@ -24,10 +24,11 @@ export const renderField = ({
     name,
     type,
     variant,
+    className,
     meta: {touched, invalid, error},
     ...custom
   }) => (
-  <FormControl error={touched && error}>
+  <FormControl error={touched && error}  className={className}>
     <TextField
       label={label}
       variant={variant}

@@ -5,20 +5,26 @@ import ProfileComponent from "./ProfileComponent";
 import {createStructuredSelector} from "reselect";
 import {makeSelectUserData} from "../../state/selectors/user";
 import {connect} from "react-redux";
+import {branch, compose, renderNothing} from "recompose";
 
 const mapStateToProps = createStructuredSelector({
   userData: makeSelectUserData(),
 });
 
-const Profile = (props) => {
+const Profile = ({userData}) => {
   return (
    <>
      <Header/>
-      <ProfileComponent {...props} />
+      <ProfileComponent userData={userData} />
      <Footer/>
    </>
   )
 };
 
-export default connect(mapStateToProps)(Profile);
+const hoc = compose(
+  connect(mapStateToProps),
+  branch(props => !props.userData, renderNothing)
+);
+
+export default hoc(Profile);
 

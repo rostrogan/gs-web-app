@@ -1,15 +1,13 @@
 import * as React from 'react';
 import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
-import {makeStyles, useTheme} from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import Card from "@material-ui/core/Card";
 import classNames from 'classnames';
-import TableContainer from "@material-ui/core/TableContainer";
 import Table from "@material-ui/core/Table";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 import TableBody from "@material-ui/core/TableBody";
-import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import TableHead from "@material-ui/core/TableHead";
 import {CardContent} from "@material-ui/core";
@@ -20,12 +18,6 @@ const drawerWidth = 200;
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
-  },
-  form: {
-    width: '100%',
-  },
-  inputSearch: {
-    width: '100%',
   },
   drawer: {
     [theme.breakpoints.up('sm')]: {
@@ -58,28 +50,27 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     padding: theme.spacing(3),
   },
-}));
-
-const useCardStyles = makeStyles({
   table: {
     minWidth: 650,
   },
-  table_th: {
+  h2: {
     fontWeight: 700,
+    color: "rgba(0,0,0,.54)",
+    paddingBottom: "initial"
+  },
+  headerText : {
+    "& > th": {
+      color: "rgba(0,0,0,.54)",
+      fontWeight: "700",
+      fontSize: "13px"
+    }
   }
+}));
 
-});
 
-const PlanComponent = (props) => {
-  const {container} = props;
+
+const PlanComponent = () => {
   const classes = useStyles();
-  const classes_card = useCardStyles();
-  const theme = useTheme();
-  const [mobileOpen, setMobileOpen] = React.useState(false);
-
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
-  };
 
   const drawer = (
     <Menu/>
@@ -89,23 +80,6 @@ const PlanComponent = (props) => {
     <div className="page-container">
       <div className={classes.root}>
         <nav className={classes.drawer} aria-label="mailbox folders">
-          <Hidden smUp implementation="css">
-            <Drawer
-              container={container}
-              variant="temporary"
-              anchor={theme.direction === 'rtl' ? 'right' : 'left'}
-              open={mobileOpen}
-              onClose={handleDrawerToggle}
-              classes={{
-                paper: classes.drawerPaper,
-              }}
-              ModalProps={{
-                keepMounted: true, // Better open performance on mobile.
-              }}
-            >
-              {drawer}
-            </Drawer>
-          </Hidden>
           <Hidden xsDown implementation="css">
             <Drawer
               classes={{
@@ -119,26 +93,18 @@ const PlanComponent = (props) => {
           </Hidden>
         </nav>
         <main className={classes.content}>
-          <Card className={classNames(classes_card.Card, classes_card.Pos)}>
-            <TableContainer component={Paper}>
-              <Table className={classes_card.table} aria-label="caption table">
-                <TableBody>
-                  <TableRow>
-                    <TableCell component="th" scope="row">
-                      Індивідуальний навчальний план
-                    </TableCell>
-                  </TableRow>
-                </TableBody>
-              </Table>
-            </TableContainer>
+          <Card>
+            <CardContent className={classes.h2}>
+                Індивідуальний навчальний план
+            </CardContent>
           </Card>
           <br/>
-          <Card className={classNames(classes_card.Card, classes_card.Pos)}>
+          <Card className={classNames(classes.Card, classes.Pos)}>
             <CardContent>
-              <Table className={classes_card.table} aria-label="caption table">
+              <Table className={classes.table} aria-label="caption table">
                 <TableHead>
                   <Typography>1 семестр</Typography>
-                  <TableRow>
+                  <TableRow className={classes.headerText}>
                     <TableCell align="left" colSpan={4}>
                       Назва навчальної дисципліни
                     </TableCell>
@@ -166,10 +132,10 @@ const PlanComponent = (props) => {
                 </TableBody>
               </Table>
               <br/>
-              <Table className={classes_card.table} aria-label="caption table">
+              <Table className={classes.table} aria-label="caption table">
                 <TableHead>
                   <Typography>2 семестр</Typography>
-                  <TableRow>
+                  <TableRow className={classes.headerText}>
                     <TableCell align="left" colSpan={4}>
                       Назва навчальної дисципліни
                     </TableCell>
@@ -192,12 +158,11 @@ const PlanComponent = (props) => {
                     <TableCell component="th" scope="row" align="left" colSpan={4}>
                       Екзамен
                     </TableCell>
-
                   </TableRow>
                 </TableBody>
               </Table>
               <br/>
-              <Table className={classes_card.table} aria-label="caption table">
+              <Table className={classes.table} aria-label="caption table">
                 <TableHead>
                   <Typography>3 семестр</Typography>
                   <TableRow>

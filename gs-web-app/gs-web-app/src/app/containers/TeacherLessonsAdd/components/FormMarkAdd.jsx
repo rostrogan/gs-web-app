@@ -3,7 +3,7 @@ import * as React from "react";
 import {makeStyles} from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import {Field} from "redux-form";
-import ReduxFormDateRange, {renderCheckbox, renderField, renderSelectField} from '../../../components/Inputs/Input';
+import ReduxFormDateRange, {renderCheckbox, renderField} from '../../../components/Inputs/Input';
 import {requiredFile} from '../../../utils/validate';
 
 const useStyles = makeStyles({
@@ -18,23 +18,6 @@ const useStyles = makeStyles({
 const FormMarkAddComponent = (props) => {
   const classes = useStyles();
   const {handleSubmit, pristine, submitting, children} = props;
-  const facultyList = [
-    '33 - Філософія',
-    '32 - Історія та археологія',
-    '33 - Філософія',
-    '35 - Філологія',
-    '51 - Економіка',
-    '53 - Психологія',
-  ];
-
-  const departmentList = [
-    '33 - Філософія',
-    '32 - Історія та археологія',
-    '33 - Філософія',
-    '35 - Філологія',
-    '51 - Економіка',
-    '53 - Психологія',
-  ];
 
   // @ts-ignore
   return (
