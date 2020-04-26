@@ -19,12 +19,6 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
   },
-  form: {
-    width: '100%',
-  },
-  inputSearch: {
-    width: '100%',
-  },
   drawer: {
     [theme.breakpoints.up('sm')]: {
       width: drawerWidth,
@@ -68,51 +62,48 @@ const useCardStyles = makeStyles({
 });
 
 const ProfileComponent = (props) => {
-  const {container} = props;
+  const {
+    userData,
+    specialty,
+    faculty,
+    department,
+  } = props;
   const classes = useStyles();
   const classes_card = useCardStyles();
-  const theme = useTheme();
-  const [mobileOpen, setMobileOpen] = React.useState(false);
 
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
-  };
+  const fullName = `${userData.surname} ${userData.name} ${userData.patronymic}`;
 
   const drawer = (
     <Menu/>
   );
 
-  function createData(name_group, name_faculty, detail_link) {
-    return { name_group, name_faculty, detail_link};
-  }
+
+  const defaultFields = [
+    'ПІБ',
+    'Інститут/Факультет',
+    'Кафедра',
+    'Спеціальність',
+    'Науковий керівник',
+    'Термін підготовки',
+    'Рік вступу',
+    'Рік закінчення',
+    'Термін підготовки',
+    'Група',
+    'Форма підготовки',
+  ];
 
   const rows = [
-    createData('Коваль О.В.', 'ТЕФ', `${Routes.CABINET_ASPIRANT_PROFILE}1`),
-    createData('Препотенська М. П.', 'ТЕФ', '/'),
-    createData('Олізько Ю. М.', 'ТЕФ', '/'),
+    fullName,
+    specialty,
+    faculty,
+    department,
+    fullName,
   ];
 
   return (
     <div className="page-container">
       <div className={classes.root}>
         <nav className={classes.drawer} aria-label="mailbox folders">
-          <Hidden smUp implementation="css">
-            <Drawer
-              container={container}
-              variant="temporary"
-              anchor={theme.direction === 'rtl' ? 'right' : 'left'}
-              open={mobileOpen}
-              onClose={handleDrawerToggle}
-              classes={{
-                paper: classes.drawerPaper,
-              }}
-              ModalProps={{
-                keepMounted: true, // Better open performance on mobile.
-              }}
-            >
-              {drawer}
-            </Drawer>
-          </Hidden>
           <Hidden xsDown implementation="css">
             <Drawer
               classes={{
@@ -130,10 +121,10 @@ const ProfileComponent = (props) => {
               <TableContainer component={Paper}>
                 <Table className={classes_card.table} aria-label="caption table">
                   <TableBody>
-                    {rows.map((row) => (
-                      <TableRow key={row.name}>
+                    {rows.map((row, index) => (
+                      <TableRow key={index}>
                         <TableCell component="th" scope="row" >
-                          {row.name_group} : {row.name_group}
+                          {defaultFields[index]} : {row}
                         </TableCell>
                       </TableRow>
                     ))}

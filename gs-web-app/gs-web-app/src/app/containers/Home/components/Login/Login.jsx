@@ -13,7 +13,7 @@ import LoginForm  from "./components/LoginForm";
 import {reduxForm} from "redux-form";
 
 import apiRequestService from '../../../../services/api/apiRequestService';
-import {Redirect} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 
 const useStyles = makeStyles({
     Card: {
@@ -73,7 +73,8 @@ const LoginComponent = ({userData}) => {
                                 variant={"contained"}
                                 color="primary"
                                 className={classes.Btn}
-                                href={Routes.REGISTRATION}
+                                component={Link}
+                                to={Routes.REGISTRATION}
                             >
                                 Подати реєстраційну форму
                             </Button>
