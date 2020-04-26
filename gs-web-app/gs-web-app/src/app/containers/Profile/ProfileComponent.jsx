@@ -1,8 +1,7 @@
 import * as React from 'react';
 import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
-import {makeStyles, useTheme} from '@material-ui/core/styles';
-import {Routes} from "../../consts/routePaths";
+import {makeStyles} from '@material-ui/core/styles';
 import Card from "@material-ui/core/Card";
 import classNames from 'classnames';
 import TableContainer from "@material-ui/core/TableContainer";
