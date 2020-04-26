@@ -3,6 +3,7 @@ import * as actionTypes from './actionTypes';
 const initialData = {
     groups: null,
     faculties: null,
+    teachers: null,
 };
 
 export default function reducer(state = initialData, action) {
@@ -19,6 +20,13 @@ export default function reducer(state = initialData, action) {
 
             return {
                 ...state, faculties
+            };
+
+        case actionTypes.SET_TEACHERS_DATA:
+            const {teachers} = action.payload;
+
+            return {
+                ...state, teachers
             };
 
         default:

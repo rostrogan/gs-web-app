@@ -83,7 +83,8 @@ export const renderCheckbox = ({
   />
 );
 
-export const renderSelectField = ({
+export const
+    renderSelectField = ({
       input,
       label,
       inputLabel,

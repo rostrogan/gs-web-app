@@ -31,8 +31,7 @@ const FormAddTeachers = (props) => {
           label="ПІБ викладача"
           type="text"
           variant="outlined"
-          name="name_group"
-          placeholder="Назви груп"
+          name="name"
           validate={requiredFile}
         />
       </div>
@@ -44,7 +43,6 @@ const FormAddTeachers = (props) => {
           type="email"
           variant="outlined"
           name="email"
-          placeholder="Назви груп"
           validate={requiredFile}
         />
       </div>
@@ -55,8 +53,7 @@ const FormAddTeachers = (props) => {
           label="Пароль для викладача"
           type="password"
           variant="outlined"
-          name="name_group"
-          placeholder="Назви груп"
+          name="password"
           validate={requiredFile}
         />
       </div>

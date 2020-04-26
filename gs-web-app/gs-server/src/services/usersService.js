@@ -1,25 +1,24 @@
 const mongooseService = require('../services/mongooseService');
 const UserModel = require('../models/user').User;
-const userRoles = require('../consts/userRoles');
+const TeacherModel = require('../models/teacher').Teacher;
+const {USER_ROLE_STUDENT} = require('../consts/userRoles');
 
 const getAllUsers = (options = {}) => mongooseService.findDocuments(UserModel, options);
 
-const getApplicantUsers = () => getAllUsers({role: userRoles.USER_ROLE_APPLICANT});
-
-const getEnrolleeUsers = () => getAllUsers({role: userRoles.USER_ROLE_ENROLLEE});
-
-const getPostgradUsers = () => getAllUsers({role: userRoles.USER_ROLE_POSTGRAD});
-
 const getUserById = async (userId) => {
     return await mongooseService.findOneDocument(UserModel, {_id: userId})
+    || mongooseService.findOneDocument(TeacherModel, {_id: userId})
 };
 
 const registerUser = async (userData) => {
     await mongooseService.connect();
 
-    const {email} = userData;
+    const modifiedUserData = userData;
+    modifiedUserData.role = USER_ROLE_STUDENT;
 
-    const user = new UserModel(userData);
+    const {email} = modifiedUserData;
+
+    const user = new UserModel(modifiedUserData);
 
     const excitedUser = await mongooseService.findDocuments(UserModel, {email});
 
@@ -39,31 +38,28 @@ const auth = async (userData) => {
 
     const {email: authRequestEmail, password: authRequestPassword} = userData;
 
-    const user = new UserModel();
-
-    const excitedUser = await mongooseService.findOneDocument(UserModel, {email: authRequestEmail});
+    const excitedUser =
+        await mongooseService.findOneDocument(UserModel, {email: authRequestEmail})
+        || await mongooseService.findOneDocument(TeacherModel, {email: authRequestEmail});
 
     if (excitedUser) {
-        const {email: excitedUserEmail, password: excitedUserPassword, _id: excitedUserId} = excitedUser || {};
+        const {password: excitedUserPassword, _id: excitedUserId} = excitedUser || {};
 
         const isAuthSuccess = authRequestPassword === excitedUserPassword;
 
         if (isAuthSuccess) {
-            return {status: 1, message: 'User authentication success.', uid: excitedUserId};
+            return {status: 1, message: 'Авторизація успішна.', uid: excitedUserId};
         } else {
-            return {status: 0, message: 'User authentication failed.'};
+            return {status: 0, message: 'Введені дані не вірні.'};
         }
     } else {
-        return {status: 0, message: 'This e-mail is not registered.'}
+        return {status: 0, message: 'Користувача з такими даними не знайдено.'}
     }
 };
 
 module.exports = {
     auth,
     getAllUsers,
-    getApplicantUsers,
-    getEnrolleeUsers,
-    getPostgradUsers,
     getUserById,
     registerUser,
 };

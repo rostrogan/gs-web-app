@@ -12,8 +12,6 @@ router.get('/', async (request, response) => {
 router.post('/add', async (request, response) => {
     const {groupData} = request.body || {};
 
-    console.log(groupData);
-
     await groupsService.addNewGroup(groupData);
 });
 
