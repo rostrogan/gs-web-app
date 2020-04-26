@@ -59,7 +59,6 @@ const FormAddTeachers = (props) => {
           type="email"
           variant="outlined"
           name="email"
-          placeholder="Назви груп"
           validate={requiredFile}
         />
       </div>
@@ -71,7 +70,6 @@ const FormAddTeachers = (props) => {
           type="password"
           variant="outlined"
           name="password"
-          placeholder="Назви груп"
           validate={requiredFile}
         />
       </div>

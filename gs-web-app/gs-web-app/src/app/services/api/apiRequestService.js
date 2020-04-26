@@ -4,7 +4,7 @@ import urlUtils from '../../utils/urlUtils';
 import authService from '../authService';
 import {dispatch} from '../../state/store';
 import {setUserData} from '../../state/ducks/user/actions';
-import {setGroupsData, setFacultiesData} from '../../state/ducks/global/actions';
+import {setGroupsData, setFacultiesData, setTeachersData} from '../../state/ducks/global/actions';
 
 const getAllUsers = () => {
     const requestUrl = urlUtils.getApiRequestUrl(ApiRequestPaths.GET_ALL_USERS);
@@ -43,6 +43,8 @@ const auth = (userData) => {
         apiService.post(requestUrl, {data: userData})
             .then((response) => {
                 const {data} = response;
+
+                console.log(data);
 
                 authService.handleAuthRequest(data);
             });
@@ -111,12 +113,48 @@ const addNewGroup = (groupData) => {
     }
 };
 
+const getAllTeachers = () => {
+    const requestUrl = urlUtils.getApiRequestUrl(ApiRequestPaths.GET_ALL_TEACHERS);
+
+    try {
+        apiService.get(requestUrl)
+            .then((response) => {
+                const {data} = response;
+
+                console.log(data);
+
+                dispatch(setTeachersData(data));
+            });
+    } catch (e) {
+        console.error('[getAllTeachers error]: ', e);
+    }
+};
+
+const registerTeacher = (teacherData) => {
+    const requestUrl = urlUtils.getApiRequestUrl(ApiRequestPaths.POST_TEACHER_REGISTER);
+
+    try {
+        if (!teacherData) {
+            throw new Error('\'[registerTeacher error]: invalid teacherData');
+        }
+
+        apiService.post(requestUrl, {data: teacherData})
+            .then((response) => {
+                console.log(response)
+            });
+    } catch (e) {
+        console.error('[registerUser error]: ', e);
+    }
+};
+
 export default {
     addNewGroup,
     auth,
     getAllFaculties,
     getAllGroups,
+    getAllTeachers,
     getAllUsers,
     getUserDataById,
+    registerTeacher,
     registerUser,
 }
