@@ -5,6 +5,7 @@ import LessonsComponent from "./LessonsComponent";
 import {createStructuredSelector} from "reselect";
 import {makeSelectUserData} from "../../state/selectors/user";
 import {connect} from "react-redux";
+import withRedirect from "../../utils/withAuthRedirect";
 
 const mapStateToProps = createStructuredSelector({
   userData: makeSelectUserData(),
@@ -20,5 +21,7 @@ const Lessons = (props) => {
   )
 };
 
-export default connect(mapStateToProps)(Lessons);
+let AuthRedirectComponent = withRedirect(Lessons);
+
+export default connect(mapStateToProps)(AuthRedirectComponent);
 

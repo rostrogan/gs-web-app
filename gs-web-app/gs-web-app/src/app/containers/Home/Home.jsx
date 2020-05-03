@@ -6,6 +6,7 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Login from './components/Login';
 import {makeSelectUserData} from '../../state/selectors/user';
+import withRedirect from "../../utils/withAuthRedirect";
 
 const mapStateToProps = createStructuredSelector({
     userData: makeSelectUserData(),
@@ -21,4 +22,7 @@ const HomeComponent = ({userData}) => {
     );
 };
 
-export default connect(mapStateToProps)(HomeComponent);
+let AuthRedirectComponent = withRedirect(HomeComponent);
+
+
+export default connect(mapStateToProps)(AuthRedirectComponent);

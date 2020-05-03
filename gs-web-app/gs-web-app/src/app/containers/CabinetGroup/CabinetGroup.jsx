@@ -6,6 +6,7 @@ import {createStructuredSelector} from "reselect";
 import {makeSelectUserData} from "../../state/selectors/user";
 import {connect} from "react-redux";
 import {makeSelectGroupsData} from "../../state/selectors/global";
+import withRedirect from "../../utils/withAuthRedirect";
 
 const mapStateToProps = createStructuredSelector({
   userData: makeSelectUserData(),
@@ -22,4 +23,6 @@ const CabinetGroup = (props) => {
   );
 };
 
-export default connect(mapStateToProps)(CabinetGroup);
+let AuthRedirectComponent = withRedirect(CabinetGroup);
+
+export default connect(mapStateToProps)(AuthRedirectComponent);

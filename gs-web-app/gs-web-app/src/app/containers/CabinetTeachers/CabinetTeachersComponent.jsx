@@ -73,8 +73,7 @@ const useCardStyles = makeStyles({
   }
 });
 
-const CabinetTeachersCompoent = (props) => {
-  const {container} = props;
+const CabinetTeachersComponent = () => {
   const classes = useStyles();
   const classes_card = useCardStyles();
 
@@ -179,4 +178,4 @@ const CabinetTeachersCompoent = (props) => {
   );
 };
 
-export default CabinetTeachersCompoent;
+export default CabinetTeachersComponent;

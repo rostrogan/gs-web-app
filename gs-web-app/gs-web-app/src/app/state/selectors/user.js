@@ -7,14 +7,6 @@ const makeSelectUserData = () => createSelector(
     (userState) => userState.userData
 );
 
-const makeSelectorUserRole = () => createSelector(
-  [makeSelectUserData],
-  (userData) => userData.role
-);
-
-
-
 export {
     makeSelectUserData,
-    makeSelectorUserRole
 }

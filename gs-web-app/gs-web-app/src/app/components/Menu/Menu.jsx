@@ -17,8 +17,7 @@ const Menu = ({userData}) => {
 
 const hoc = compose(
   connect(mapStateToProps),
-  branch((props) => !props.userData, renderNothing)
-
+  branch((props) => !props.userData, renderNothing),
 );
 
 export default hoc(Menu);

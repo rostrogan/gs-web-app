@@ -5,7 +5,7 @@ import ProfileComponent from "./ProfileComponent";
 import {createStructuredSelector} from "reselect";
 import {makeSelectUserData} from "../../state/selectors/user";
 import {connect} from "react-redux";
-import {branch, compose, renderNothing} from "recompose";
+import withRedirect from "../../utils/withAuthRedirect";
 
 const mapStateToProps = createStructuredSelector({
   userData: makeSelectUserData(),
@@ -21,10 +21,7 @@ const Profile = ({userData}) => {
   )
 };
 
-const hoc = compose(
-  connect(mapStateToProps),
-  branch(props => !props.userData, renderNothing)
-);
+let AuthRedirectComponent = withRedirect(Profile);
 
-export default hoc(Profile);
+export default connect(mapStateToProps)(AuthRedirectComponent);
 
