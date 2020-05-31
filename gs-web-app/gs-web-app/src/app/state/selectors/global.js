@@ -12,7 +12,13 @@ const makeSelectFacultiesData = () => createSelector(
     (globalState) => globalState.faculties
 );
 
+const makeSelectTeachersData = () => createSelector(
+    selectUser,
+    (globalState) => globalState.teachers
+);
+
 export {
     makeSelectFacultiesData,
     makeSelectGroupsData,
+    makeSelectTeachersData,
 }

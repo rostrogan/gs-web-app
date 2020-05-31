@@ -1,3 +1,5 @@
+import urlJoin from 'url-join';
+
 import config from './config';
 
 const getApiRequestUrl = (path) => {
@@ -10,6 +12,9 @@ const getApiRequestUrl = (path) => {
     }
 };
 
+const join = (...params) => urlJoin(params);
+
 export default {
     getApiRequestUrl,
+    join,
 }

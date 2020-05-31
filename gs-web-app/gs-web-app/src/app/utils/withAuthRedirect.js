@@ -1,31 +1,31 @@
-import {connect} from "react-redux";
 import React from "react";
 import {createStructuredSelector} from "reselect";
-// import {Redirect} from "react-router-dom";
-// import {Routes} from "../consts/routePaths";
 import {makeSelectUserData} from "../state/selectors/user";
+import {compose} from "recompose";
+import {connect} from "react-redux";
+import {Redirect} from "react-router-dom";
+import {Routes} from "../consts/routePaths";
 
 const mapStateToProps = createStructuredSelector({
   userData: makeSelectUserData()
 });
 
-const withAuthRedirect = (Component) => {
+export const withAuthRedirect = (Component) => {
+
   class RedirectComponent extends React.Component {
-    render() {
-      console.log(this.props.userData);
 
-      // if (Boolean(this.props.userData)) return <Redirect to={Routes.HOME} />;
-
-      return <Component {...this.props} />
+    componentDidMount() {
+      if (Boolean(1)) return <Redirect to={Routes.HOME} />;
     }
 
+    render() {
+      return <Component {...this.props} />
+    }
   }
 
-  let ConnectedAuthRedirectComponent = connect(mapStateToProps)(RedirectComponent);
+  const hoc = compose(
+    connect(mapStateToProps),
+  );
 
-
-  return ConnectedAuthRedirectComponent;
-
+  return hoc(RedirectComponent);
 };
-
-export default withAuthRedirect;

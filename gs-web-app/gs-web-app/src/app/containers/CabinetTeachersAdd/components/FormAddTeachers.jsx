@@ -3,8 +3,10 @@ import * as React from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { Field } from "redux-form";
-import {renderField, renderSelectField} from '../../../components/Inputs/Input';
+import {renderField} from '../../../components/Inputs/Input';
 import { requiredFile} from '../../../utils/validate';
+import SelectFacultyComponent from "../../../components/Selects/SelectFaculty";
+import SelectDepartmentComponent from "../../../components/Selects/SelectDepartment";
 
 const useStyles = makeStyles({
   BtnCenter: {
@@ -19,24 +21,6 @@ const FormAddTeachers = (props) => {
   const classes = useStyles();
   const { handleSubmit, pristine, submitting } = props;
 
-  const facultyList = [
-    '33 - Філософія',
-    '32 - Історія та археологія',
-    '33 - Філософія',
-    '35 - Філологія',
-    '51 - Економіка',
-    '53 - Психологія',
-  ];
-
-  const departmentList = [
-    '33 - Філософія',
-    '32 - Історія та археологія',
-    '33 - Філософія',
-    '35 - Філологія',
-    '51 - Економіка',
-    '53 - Психологія',
-  ];
-
   // @ts-ignore
   return (
     <form onSubmit={handleSubmit}>
@@ -47,8 +31,7 @@ const FormAddTeachers = (props) => {
           label="ПІБ викладача"
           type="text"
           variant="outlined"
-          name="name_group"
-          placeholder="Назви груп"
+          name="name"
           validate={requiredFile}
         />
       </div>
@@ -60,7 +43,6 @@ const FormAddTeachers = (props) => {
           type="email"
           variant="outlined"
           name="email"
-          placeholder="Назви груп"
           validate={requiredFile}
         />
       </div>
@@ -71,46 +53,17 @@ const FormAddTeachers = (props) => {
           label="Пароль для викладача"
           type="password"
           variant="outlined"
-          name="name_group"
-          placeholder="Назви груп"
+          name="password"
           validate={requiredFile}
         />
       </div>
       <br/>
       <div >
-        <Field
-          component={renderSelectField}
-          name="faculty"
-          label="Факультет"
-          validate={requiredFile}
-        >
-          <option />
-          {
-            facultyList.map((facultyName,index) => {
-              return (
-                <option key={index} value={index}>{facultyName}</option>
-              )
-            })
-          }
-        </Field>
+        <SelectFacultyComponent/>
       </div>
       <br/>
-      <div >
-        <Field
-          component={renderSelectField}
-          name="department"
-          label="Кафедра"
-          validate={requiredFile}
-        >
-          <option />
-          {
-            departmentList.map((departmentName,index) => {
-              return (
-                <option key={index} value={index}>{departmentName}</option>
-              )
-            })
-          }
-        </Field>
+      <div>
+        <SelectDepartmentComponent/>
       </div>
       <br/>
       <div>

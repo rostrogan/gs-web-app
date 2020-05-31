@@ -10,13 +10,20 @@ import { Field } from "redux-form";
 import ReduxFormDateRange, {
     renderCheckbox,
     renderField,
-    renderSelectField,
     renderTextArea
 } from "../../../../components/Inputs/Input";
 import {requiredFile} from "../../../../utils/validate";
 import FormControl from "@material-ui/core/FormControl";
 import StepLabel from "@material-ui/core/StepLabel";
 import Paper from "@material-ui/core/Paper";
+import SelectFacultyComponent from "../../../../components/Selects/SelectFaculty";
+import SelectSexComponent from "../../../../components/Selects/SelectSex";
+import SelectSpecialtyComponent from "../../../../components/Selects/SelectSpecialty";
+import SelectDepartmentComponent from "../../../../components/Selects/SelectDepartment";
+import SelectStudyComponent from "../../../../components/Selects/SelectStudy";
+import SelectPuyComponent from "../../../../components/Selects/SelectPuy";
+import SelectForeignLanguageComponent from "../../../../components/Selects/SelectForeignLanguage";
+import SelectDegreeTypeComponent from "../../../../components/Selects/SelectDegreeType";
 
 
 const useStyles = makeStyles(theme => ({
@@ -37,11 +44,6 @@ const useStyles = makeStyles(theme => ({
 
 
 const StepContentOne = () => {
-
-    const sexList = [
-        'ч',
-        'ж',
-    ];
 
     const classes = useStyles();
 
@@ -75,19 +77,7 @@ const StepContentOne = () => {
                 validate={requiredFile}
             />
             <FormControl className={classes.formControl} >
-                <Field
-                    component={renderSelectField}
-                    name="sex"
-                    label="Стать"
-                    validate={requiredFile}
-                >
-                    <option />
-                    {sexList.map((sexItem, index) => {
-                        return (
-                            <option key={index} value={sexItem}>{sexItem}</option>
-                        )
-                    })}
-                </Field>
+                <SelectSexComponent/>
             </FormControl>
             <div>
                 <Field
@@ -103,168 +93,24 @@ const StepContentOne = () => {
 };
 
 const StepContentTwo = () => {
-    const specialtyList = [
-        '33 - Філософія',
-        '32 - Історія та археологія',
-        '33 - Філософія',
-        '35 - Філологія',
-        '51 - Економіка',
-        '53 - Психологія',
-    ];
-
-    const facultyList = [
-        '33 - Філософія',
-        '32 - Історія та археологія',
-        '33 - Філософія',
-        '35 - Філологія',
-        '51 - Економіка',
-        '53 - Психологія',
-    ];
-
-    const departmentList = [
-        '33 - Філософія',
-        '32 - Історія та археологія',
-        '33 - Філософія',
-        '35 - Філологія',
-        '51 - Економіка',
-        '53 - Психологія',
-    ];
-
     return (
         <div className={styles.StepContentTwo}>
-            <Field
-                component={renderSelectField}
-                name="specialty"
-                label="Спеціальність"
-                placeholder='Спеціальність'
-                validate={requiredFile}
-            >
-                <option/>
-                {
-                    specialtyList.map((specialtyName,index) => {
-                        return (
-                            <option key={index} value={index}>{specialtyName}</option>
-                        )
-                    })
-                }
-            </Field>
-            <Field
-                component={renderSelectField}
-                name="faculty"
-                label="Факультет"
-                validate={requiredFile}
-            >
-                <option />
-                {
-                    facultyList.map((facultyName,index) => {
-                        return (
-                            <option key={index} value={index}>{facultyName}</option>
-                        )
-                    })
-                }
-            </Field>
-            <Field
-                component={renderSelectField}
-                name="department"
-                label="Кафедра"
-                validate={requiredFile}
-            >
-                <option />
-                {
-                    departmentList.map((departmentName,index) => {
-                        return (
-                            <option key={index} value={index}>{departmentName}</option>
-                        )
-                    })
-                }
-            </Field>
+            <SelectSpecialtyComponent/>
+            <SelectFacultyComponent/>
+            <SelectDepartmentComponent/>
         </div>
     )
 };
 
 const StepContentThree = () => {
-    const studyList= [
-        '33 - Філософія',
-        '32 - Історія та археологія',
-        '33 - Філософія',
-        '35 - Філологія',
-        '51 - Економіка',
-        '53 - Психологія',
-    ];
-
-    const puyList= [
-        '33 - Філософія',
-        '32 - Історія та археологія',
-        '33 - Філософія',
-        '35 - Філологія',
-        '51 - Економіка',
-        '53 - Психологія',
-    ];
-
-    const foreignLanguageList= [
-        '33 - Італійська',
-        '32 - Українська',
-        '33 - Італійська',
-        '32 - Українська',
-        '32 - Українська',
-        '33 - Англійська',
-        '35 - Іспанська',
-    ];
-
-    const degreeTypeList = [
-        'Спеціаліст',
-        'Магістр',
-    ];
 
     return (
         <div className={styles.StepContentThree}>
             <div className={styles.StepContentThreeItems}>
                 <div className={styles.StepContentThreeItem}>
-                    <Field
-                        component={renderSelectField}
-                        name="study_form"
-                        label="Форма навчання"
-                        validate={requiredFile}
-                    >
-                        <option />
-                        {
-                            studyList.map((studyName,index) => {
-                                return (
-                                    <option key={index} value={index}>{studyName}</option>
-                                )
-                            })
-                        }
-                    </Field>
-                    <Field
-                        label="Форма оплати"
-                        name="pay_form"
-                        component={renderSelectField}
-                        validate={requiredFile}
-                    >
-                        <option />
-                        {
-                            puyList.map((puyName, index) => {
-                                return (
-                                    <option key={index} value={index}>{puyName}</option>
-                                )
-                            })
-                        }
-                    </Field>
-                    <Field
-                        label="Іноземна мова"
-                        name="foreign_language"
-                        component={renderSelectField}
-                        validate={requiredFile}
-                    >
-                        <option />
-                        {
-                            foreignLanguageList.map((foreignLanguageName,index) => {
-                                return (
-                                    <option key={index} value={index}>{foreignLanguageName}</option>
-                                )
-                            })
-                        }
-                    </Field>
+                    <SelectStudyComponent/>
+                    <SelectPuyComponent/>
+                    <SelectForeignLanguageComponent/>
                 </div>
                 <div className={styles.StepContentThreeItem}>
                     <Field
@@ -285,23 +131,7 @@ const StepContentThree = () => {
                         placeholder="2019"
                         validate={requiredFile}
                     />
-                    <Field
-                        component={renderSelectField}
-                        label="Спеціаліст/Магістр"
-                        variant="outlined"
-                        type="text"
-                        name="degree_type"
-                        validate={requiredFile}
-                    >
-                        <option />
-                        {
-                            degreeTypeList.map((foreignLanguageName, index) => {
-                                return (
-                                    <option key={index} value={index}>{foreignLanguageName}</option>
-                                )
-                            })
-                        }
-                    </Field>
+                    <SelectDegreeTypeComponent/>
                     <Field
                         component={renderCheckbox}
                         name="isHonorsDegree"

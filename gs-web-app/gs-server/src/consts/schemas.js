@@ -162,8 +162,41 @@ const FACULTY_SCHEMA = new Schema({
     }
 });
 
+const TEACHER_SCHEMA = new Schema({
+    name: {
+        type: String,
+        ...builtinOptions,
+    },
+    role: {
+        type: Number,
+        ...builtinOptions
+    },
+    email: {
+        type: String,
+        unique,
+        ...builtinOptions,
+    },
+    faculty: {
+        type: String,
+        ...builtinOptions,
+    },
+    department: {
+        type: String,
+        ...builtinOptions,
+    },
+    lessons: {
+        type: Array,
+    },
+    password: {
+        type: String,
+        minlength: 6,
+        ...builtinOptions
+    },
+});
+
 module.exports = {
     FACULTY_SCHEMA,
     GROUP_SCHEMA,
     USER_SCHEMA,
+    TEACHER_SCHEMA,
 };

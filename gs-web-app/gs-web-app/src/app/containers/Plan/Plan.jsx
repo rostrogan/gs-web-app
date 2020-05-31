@@ -5,7 +5,6 @@ import PlanComponent from "./PlanComponent";
 import {createStructuredSelector} from "reselect";
 import {makeSelectUserData} from "../../state/selectors/user";
 import {connect} from "react-redux";
-import withRedirect from "../../utils/withAuthRedirect";
 
 const mapStateToProps = createStructuredSelector({
   userData: makeSelectUserData(),
@@ -21,7 +20,5 @@ const Plan = (props) => {
   )
 };
 
-let AuthRedirectComponent = withRedirect(Plan);
-
-export default connect(mapStateToProps)(AuthRedirectComponent);
+export default connect(mapStateToProps)(Plan);
 

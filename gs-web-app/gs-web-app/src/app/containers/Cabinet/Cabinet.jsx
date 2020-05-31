@@ -5,7 +5,8 @@ import CabinetComponent from './CabinetComponent';
 import {createStructuredSelector} from "reselect";
 import {connect} from "react-redux";
 import {makeSelectUserData} from "../../state/selectors/user";
-import  withRedirect from "../../utils/withAuthRedirect"
+import { withAuthRedirect } from "../../utils/withAuthRedirect"
+import {compose} from "recompose";
 
 const mapStateToProps = createStructuredSelector({
   userData: makeSelectUserData(),
@@ -21,6 +22,10 @@ const Cabinet = (props) => {
   );
 };
 
-let AuthRedirectComponent = withRedirect(Cabinet);
 
-export default connect(mapStateToProps)(AuthRedirectComponent);
+const hoc = compose(
+  connect(mapStateToProps),
+  withAuthRedirect,
+);
+
+export default hoc(Cabinet);

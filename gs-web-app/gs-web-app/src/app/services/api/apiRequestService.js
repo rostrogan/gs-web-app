@@ -4,7 +4,7 @@ import urlUtils from '../../utils/urlUtils';
 import authService from '../authService';
 import {dispatch} from '../../state/store';
 import {setUserData} from '../../state/ducks/user/actions';
-import {setGroupsData, setFacultiesData} from '../../state/ducks/global/actions';
+import {setGroupsData, setFacultiesData, setTeachersData} from '../../state/ducks/global/actions';
 
 const getAllUsers = () => {
     const requestUrl = urlUtils.getApiRequestUrl(ApiRequestPaths.GET_ALL_USERS);
@@ -44,6 +44,8 @@ const auth = (userData) => {
             .then((response) => {
                 const {data} = response;
 
+                console.log(data);
+
                 authService.handleAuthRequest(data);
             });
     } catch (e) {
@@ -62,7 +64,7 @@ const getUserDataById = (userId) => {
                 dispatch(setUserData(data));
             });
     } catch (e) {
-        console.error('[auth error]: ', e);
+        console.error('[getUserDataById error]: ', e);
     }
 };
 
@@ -77,7 +79,7 @@ const getAllGroups = () => {
                 dispatch(setGroupsData(data));
             });
     } catch (e) {
-        console.error('[getAllUsers error]: ', e);
+        console.error('[getAllGroups error]: ', e);
     }
 };
 
@@ -92,7 +94,7 @@ const getAllFaculties = () => {
                 dispatch(setFacultiesData(data));
             });
     } catch (e) {
-        console.error('[getAllUsers error]: ', e);
+        console.error('[getAllFaculties error]: ', e);
     }
 };
 
@@ -107,7 +109,41 @@ const addNewGroup = (groupData) => {
                 console.log(data);
             });
     } catch (e) {
-        console.error('[auth error]: ', e);
+        console.error('[addNewGroup error]: ', e);
+    }
+};
+
+const getAllTeachers = () => {
+    const requestUrl = urlUtils.getApiRequestUrl(ApiRequestPaths.GET_ALL_TEACHERS);
+
+    try {
+        apiService.get(requestUrl)
+            .then((response) => {
+                const {data} = response;
+
+                console.log(data);
+
+                dispatch(setTeachersData(data));
+            });
+    } catch (e) {
+        console.error('[getAllTeachers error]: ', e);
+    }
+};
+
+const registerTeacher = (teacherData) => {
+    const requestUrl = urlUtils.getApiRequestUrl(ApiRequestPaths.POST_TEACHER_REGISTER);
+
+    try {
+        if (!teacherData) {
+            throw new Error('\'[registerTeacher error]: invalid teacherData');
+        }
+
+        apiService.post(requestUrl, {data: teacherData})
+            .then((response) => {
+                console.log(response)
+            });
+    } catch (e) {
+        console.error('[registerUser error]: ', e);
     }
 };
 
@@ -116,7 +152,9 @@ export default {
     auth,
     getAllFaculties,
     getAllGroups,
+    getAllTeachers,
     getAllUsers,
     getUserDataById,
+    registerTeacher,
     registerUser,
 }
