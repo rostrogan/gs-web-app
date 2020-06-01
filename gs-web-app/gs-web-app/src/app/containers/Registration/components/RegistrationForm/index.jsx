@@ -265,13 +265,13 @@ const RegistrationForm = (props) => {
       department,
       graduationUniversity,
       graduationYear,
-      isHonorsDegree,
       email,
       contactPhone,
       publicationsCount,
       prospectiveSupervisor,
       distinctiveAwards,
       additionalInfo,
+      gpa,
     } = props;
 
     const classes = useStyles();
@@ -293,7 +293,7 @@ const RegistrationForm = (props) => {
     const isValidationStepThree =
       graduationUniversity &&
       graduationYear &&
-      isHonorsDegree &&
+      gpa &&
       email &&
       contactPhone &&
       publicationsCount &&

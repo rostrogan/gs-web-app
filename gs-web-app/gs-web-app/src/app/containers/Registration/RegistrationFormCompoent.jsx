@@ -21,8 +21,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const selector = formValueSelector('registration');
-
+const selector = formValueSelector('registration'); // <-- same as form name
 const mapStateToProps = (state: State) => {
    return {
        name: selector(state, 'name'),
@@ -37,9 +36,11 @@ const mapStateToProps = (state: State) => {
 
        graduationUniversity: selector(state, 'graduation_university'),
        graduationYear: selector(state, 'graduation_year'),
-       isHonorsDegree: selector(state, 'isHonorsDegree'),
+       // isHonorsDegree: selector(state, 'isHonorsDegree'),
        email: selector(state, 'email'),
        contactPhone: selector(state, 'contact_phone'),
+       isHostelNeeded: selector(state, 'isHostelNeeded'),
+       gpa: selector(state, 'gpa'),
        publicationsCount: selector(state, 'publications_count'),
        prospectiveSupervisor: selector(state, 'prospective_supervisor'),
        distinctiveAwards: selector(state, 'distinctive_awards'),
@@ -47,12 +48,10 @@ const mapStateToProps = (state: State) => {
 
    }
 };
-
 const hoc = compose(
   connect(mapStateToProps),
   reduxForm({form: 'registration'}),
 );
-
 const FormRegistration = hoc(RegistrationForm);
 
 const onSubmit = (formData) => {
