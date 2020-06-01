@@ -254,6 +254,25 @@ function getStepContent(step) {
 }
 
 const RegistrationForm = (props) => {
+    const {
+      name,
+      surname,
+      patronymic,
+      sex,
+      birthDate,
+      specialty,
+      faculty,
+      department,
+      graduationUniversity,
+      graduationYear,
+      isHonorsDegree,
+      email,
+      contactPhone,
+      publicationsCount,
+      prospectiveSupervisor,
+      distinctiveAwards,
+      additionalInfo,
+    } = props;
 
     const classes = useStyles();
     const [activeStep, setActiveStep] = React.useState(0);
@@ -268,6 +287,30 @@ const RegistrationForm = (props) => {
     };
 
     const { handleSubmit, pristine, submitting, submitSucceeded } = props;
+
+    const isValidationStepOne = name && surname && patronymic && sex && birthDate;
+    const isValidationStepTwo = specialty && faculty && department;
+    const isValidationStepThree =
+      graduationUniversity &&
+      graduationYear &&
+      isHonorsDegree &&
+      email &&
+      contactPhone &&
+      publicationsCount &&
+      prospectiveSupervisor &&
+      distinctiveAwards &&
+      additionalInfo;
+
+    const isValid = (activeStep) => {
+      if (activeStep === 0) {
+        return isValidationStepOne;
+      } else if ( activeStep === 1) {
+        return isValidationStepTwo;
+      } else {
+        return isValidationStepThree;
+      }
+    };
+
     return (
         <form onSubmit={handleSubmit}>
             <div className={classes.root}>
@@ -293,7 +336,7 @@ const RegistrationForm = (props) => {
                                             color="primary"
                                             onClick={handleNext}
                                             className={classes.button}
-                                            disabled={false}
+                                            disabled={!isValid(activeStep) && (activeStep === index)}
                                         >
                                             {activeStep === steps.length - 1 ? 'Завершити реєстрацію' : 'Дальше'}
                                         </Button>
