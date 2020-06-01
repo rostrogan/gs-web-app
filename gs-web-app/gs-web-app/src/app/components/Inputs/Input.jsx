@@ -28,7 +28,7 @@ export const renderField = ({
     meta: {touched, invalid, error},
     ...custom
   }) => (
-  <FormControl error={touched && error}  className={className}>
+  <FormControl error={touched && error} className={className}>
     <TextField
       label={label}
       variant={variant}

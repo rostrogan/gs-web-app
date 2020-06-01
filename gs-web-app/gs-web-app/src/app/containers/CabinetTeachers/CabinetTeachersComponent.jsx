@@ -83,27 +83,17 @@ const mapStateToProps = createStructuredSelector({
 });
 
 const CabinetTeachersCompoent = (props) => {
-    const {container, teachers} = props;
+    const {teachers} = props;
     const classes = useStyles();
     const classes_card = useCardStyles();
 
     useEffect(() => {
         apiRequestService.getAllTeachers();
-    }, [])
+    }, []);
 
     const drawer = (
         <Menu/>
     );
-
-    function createData(name_group, name_faculty, detail_link) {
-        return {name_group, name_faculty, detail_link};
-    }
-
-    const rows = [
-        createData('Коваль О.В.', 'ТЕФ', `${Routes.TEACHERS_SHOW_DETAILS}1`),
-        createData('Препотенська М. П.', 'ТЕФ', '/'),
-        createData('Олізько Ю. М.', 'ТЕФ', '/'),
-    ];
 
     const FormSearchGroup = reduxForm({form: 'FormSearchGroup'})(FormSearchTeachers);
 
