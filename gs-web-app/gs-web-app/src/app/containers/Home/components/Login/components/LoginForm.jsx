@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { Field } from "redux-form";
 import { renderField } from "../../../../../components/Inputs/Input";
-import { requiredFile} from "../../../../../utils/validate";
+import {emailError, passwordLoginError} from "../../../../../utils/validate";
 
 const useStyles = makeStyles({
     BtnCenter: {
@@ -30,7 +30,7 @@ const LoginFormComponent = (props) => {
                     type="email"
                     name="email"
                     placeholder="test@gmail.com"
-                    validate={requiredFile}
+                    validate={emailError}
                 />
             </div>
             <div className={styles.Wrapper}>
@@ -41,7 +41,7 @@ const LoginFormComponent = (props) => {
                     type="password"
                     name="password"
                     placeholder="*****"
-                    validate={requiredFile}
+                    validate={passwordLoginError}
                 />
             </div>
             <div className={styles.Wrapper}>

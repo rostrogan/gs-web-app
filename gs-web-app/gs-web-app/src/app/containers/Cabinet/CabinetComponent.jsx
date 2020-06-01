@@ -4,7 +4,7 @@ import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
 import Typography from '@material-ui/core/Typography';
 import {makeStyles, useTheme} from '@material-ui/core/styles';
-import Menu from "../../components/Menu/Menu";
+import Menu from '../../components/Menu';
 
 const drawerWidth = 200;
 

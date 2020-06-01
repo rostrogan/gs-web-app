@@ -273,7 +273,7 @@ const RegistrationForm = (props) => {
             <div className={classes.root}>
                 <Stepper activeStep={activeStep} orientation="vertical">
                     {steps.map((label, index) => (
-                        <Step key={label}>
+                        <Step key={label} >
                             <StepLabel>{label}</StepLabel>
                             <StepContent>
                                 <Typography component={'span'} variant={'body2'}>
@@ -293,6 +293,7 @@ const RegistrationForm = (props) => {
                                             color="primary"
                                             onClick={handleNext}
                                             className={classes.button}
+                                            disabled={false}
                                         >
                                             {activeStep === steps.length - 1 ? 'Завершити реєстрацію' : 'Дальше'}
                                         </Button>
