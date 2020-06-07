@@ -18,7 +18,7 @@ const useStyles = makeStyles({
 
 const LoginFormComponent = (props) => {
     const classes = useStyles();
-    const { handleSubmit, pristine, submitting } = props;
+    const { handleSubmit, pristine, submitting, invalid } = props;
 
     return (
         <form onSubmit={handleSubmit}>
@@ -47,7 +47,7 @@ const LoginFormComponent = (props) => {
             <div className={styles.Wrapper}>
                 <Button
                     type="submit"
-                    disabled={pristine || submitting}
+                    disabled={invalid || submitting || pristine}
                     variant={"contained"}
                     color="primary"
                     className={classes.BtnCenter}

@@ -19,7 +19,7 @@ const useStyles = makeStyles({
 
 const FormSearchGroupComponent = (props) => {
   const classes = useStyles();
-  const { handleSubmit, pristine, submitting } = props;
+  const { handleSubmit, pristine, submitting, invalid } = props;
 
   return (
     <form onSubmit={handleSubmit}>
@@ -34,7 +34,7 @@ const FormSearchGroupComponent = (props) => {
       <div>
         <Button
           type="submit"
-          disabled={pristine || submitting}
+          disabled={pristine || submitting || invalid}
           variant={"contained"}
           color="primary"
           className={classes.BtnCenter}

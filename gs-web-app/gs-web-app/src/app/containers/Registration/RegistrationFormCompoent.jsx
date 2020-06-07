@@ -8,7 +8,7 @@ import RegistrationForm from "./components/RegistrationForm/index";
 import {reduxForm, formValueSelector } from "redux-form";
 import userRegistrationService from '../../services/userRegistrationService';
 import {connect} from "react-redux";
-import State from '../../state/ducks/index';
+import * as State from '../../state/ducks/index';
 import {compose} from "recompose";
 
 const useStyles = makeStyles(theme => ({
@@ -22,6 +22,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const selector = formValueSelector('registration'); // <-- same as form name
+
 const mapStateToProps = (state: State) => {
    return {
        name: selector(state, 'name'),
@@ -48,10 +49,12 @@ const mapStateToProps = (state: State) => {
 
    }
 };
+
 const hoc = compose(
   connect(mapStateToProps),
   reduxForm({form: 'registration'}),
 );
+
 const FormRegistration = hoc(RegistrationForm);
 
 const onSubmit = (formData) => {

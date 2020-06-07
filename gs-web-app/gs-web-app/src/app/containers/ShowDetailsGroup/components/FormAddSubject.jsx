@@ -19,7 +19,7 @@ const useStyles = makeStyles({
 
 const FormAddSubjectComponent = (props) => {
   const classes = useStyles();
-  const {handleSubmit, pristine, submitting, children} = props;
+  const {handleSubmit, pristine, submitting, children, invalid} = props;
 
   // @ts-ignore
   return (
@@ -61,7 +61,7 @@ const FormAddSubjectComponent = (props) => {
         {children}
         <Button
           type="submit"
-          disabled={pristine || submitting}
+          disabled={pristine || submitting || invalid}
           variant={"contained"}
           color="primary"
           className={classes.BtnCenter}

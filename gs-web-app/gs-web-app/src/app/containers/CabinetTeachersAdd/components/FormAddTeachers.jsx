@@ -1,10 +1,10 @@
 import * as React from "react";
 
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import { Field } from "redux-form";
+import {Field} from "redux-form";
 import {renderField} from '../../../components/Inputs/Input';
-import { requiredFile} from '../../../utils/validate';
+import {requiredFile} from '../../../utils/validate';
 import SelectFacultyComponent from "../../../components/Selects/SelectFaculty";
 import SelectDepartmentComponent from "../../../components/Selects/SelectDepartment";
 
@@ -19,7 +19,7 @@ const useStyles = makeStyles({
 
 const FormAddTeachers = (props) => {
   const classes = useStyles();
-  const { handleSubmit, pristine, submitting } = props;
+  const {handleSubmit, pristine, submitting, invalid} = props;
 
   // @ts-ignore
   return (
@@ -58,7 +58,7 @@ const FormAddTeachers = (props) => {
         />
       </div>
       <br/>
-      <div >
+      <div>
         <SelectFacultyComponent/>
       </div>
       <br/>
@@ -69,7 +69,7 @@ const FormAddTeachers = (props) => {
       <div>
         <Button
           type="submit"
-          disabled={pristine || submitting}
+          disabled={pristine || submitting || invalid}
           variant={"contained"}
           color="primary"
           className={classes.BtnCenter}
