@@ -17,7 +17,7 @@ const useStyles = makeStyles({
 
 const FormMarkAddComponent = (props) => {
   const classes = useStyles();
-  const {handleSubmit, pristine, submitting, children} = props;
+  const {handleSubmit, pristine, submitting, children, invalid} = props;
 
   // @ts-ignore
   return (
@@ -32,8 +32,8 @@ const FormMarkAddComponent = (props) => {
           validate={requiredFile}
         />
       </div>
+      <br/>
       <div>
-        <br/>
         <Field
           component={renderField}
           label="Оцінка"
@@ -44,20 +44,18 @@ const FormMarkAddComponent = (props) => {
           validate={requiredFile}
         />
       </div>
-      <br/>
       <Field
         component={renderCheckbox}
         name="isMissing"
         label="Був відсутній"
         type="boolean"
-        validate={requiredFile}
       />
       <br/>
       <div style={{display: "flex", alignItems: "center"}}>
         {children}
         <Button
           type="submit"
-          disabled={pristine || submitting}
+          disabled={pristine || submitting || invalid}
           variant={"contained"}
           color="primary"
           className={classes.BtnCenter}

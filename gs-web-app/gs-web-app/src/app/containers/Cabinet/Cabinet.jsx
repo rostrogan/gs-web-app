@@ -5,8 +5,6 @@ import CabinetComponent from './CabinetComponent';
 import {createStructuredSelector} from "reselect";
 import {connect} from "react-redux";
 import {makeSelectUserData} from "../../state/selectors/user";
-import {Redirect} from "react-router-dom";
-import {Routes} from "../../consts/routePaths";
 import  withRole from "../../utils/withRole"
 
 const mapStateToProps = createStructuredSelector({
@@ -14,11 +12,6 @@ const mapStateToProps = createStructuredSelector({
 });
 
 const Cabinet = (props) => {
-  if (!Boolean(props.userData)) {
-    return (<Redirect to={Routes.HOME} />)
-  }
-
-  console.log(props);
   return (
     <>
       <Header/>

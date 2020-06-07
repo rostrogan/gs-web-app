@@ -254,25 +254,6 @@ function getStepContent(step) {
 }
 
 const RegistrationForm = (props) => {
-    const {
-      name,
-      surname,
-      patronymic,
-      sex,
-      birthDate,
-      specialty,
-      faculty,
-      department,
-      graduationUniversity,
-      graduationYear,
-      isHonorsDegree,
-      email,
-      contactPhone,
-      publicationsCount,
-      prospectiveSupervisor,
-      distinctiveAwards,
-      additionalInfo,
-    } = props;
 
     const classes = useStyles();
     const [activeStep, setActiveStep] = React.useState(0);
@@ -286,30 +267,7 @@ const RegistrationForm = (props) => {
         setActiveStep(prevActiveStep => prevActiveStep - 1);
     };
 
-    const { handleSubmit, pristine, submitting, submitSucceeded } = props;
-
-    const isValidationStepOne = name && surname && patronymic && sex && birthDate;
-    const isValidationStepTwo = specialty && faculty && department;
-    const isValidationStepThree =
-      graduationUniversity &&
-      graduationYear &&
-      isHonorsDegree &&
-      email &&
-      contactPhone &&
-      publicationsCount &&
-      prospectiveSupervisor &&
-      distinctiveAwards &&
-      additionalInfo;
-
-    const isValid = (activeStep) => {
-      if (activeStep === 0) {
-        return isValidationStepOne;
-      } else if ( activeStep === 1) {
-        return isValidationStepTwo;
-      } else {
-        return isValidationStepThree;
-      }
-    };
+    const { handleSubmit, pristine, submitting, submitSucceeded, invalid } = props;
 
     return (
         <form onSubmit={handleSubmit}>
@@ -336,7 +294,7 @@ const RegistrationForm = (props) => {
                                             color="primary"
                                             onClick={handleNext}
                                             className={classes.button}
-                                            disabled={!isValid(activeStep) && (activeStep === index)}
+                                            disabled={pristine || submitting || invalid}
                                         >
                                             {activeStep === steps.length - 1 ? 'Завершити реєстрацію' : 'Дальше'}
                                         </Button>
@@ -366,7 +324,7 @@ const RegistrationForm = (props) => {
                               className={classes.button}
                               color="primary"
                               variant="contained"
-                              type="submit" disabled={pristine || submitting}
+                              type="submit" disabled={pristine || submitting || invalid}
                           >
                               Відпарвити заявку
                           </Button>

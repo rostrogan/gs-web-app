@@ -26,9 +26,8 @@ const mapStateToProps = createStructuredSelector({
 
 const FormAddGroup = (props) => {
   const classes = useStyles();
-  const {handleSubmit, pristine, submitting} = props;
+  const {handleSubmit, pristine, submitting, invalid} = props;
 
-  // @ts-ignore
   return (
     <form onSubmit={handleSubmit}>
       <div>
@@ -44,8 +43,9 @@ const FormAddGroup = (props) => {
         />
       </div>
       <br/>
-
-      <SelectFacultyComponent/>
+      <div>
+        <SelectFacultyComponent/>
+      </div>
       <br/>
       <div>
         <SelectDepartmentComponent/>
@@ -54,7 +54,7 @@ const FormAddGroup = (props) => {
       <div>
         <Button
           type="submit"
-          disabled={pristine || submitting}
+          disabled={pristine || submitting || invalid}
           variant={'contained'}
           color="primary"
           className={classes.BtnCenter}

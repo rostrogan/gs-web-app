@@ -2,7 +2,7 @@ const emailValidationRegExp = new RegExp('^.+@[^\\.].*\\.[a-z]{2,}$');
 
 export const minLengthEmail = (value) => {
   const trimmed = value ? value.trim() : '';
-  return value && trimmed.length < 6 ? 'Email не менше 6 символів' : undefined;
+  return trimmed.length < 6 ? 'Email не менше 6 символів' : undefined;
 };
 
 export const email = (errorMessage) => (value) => {

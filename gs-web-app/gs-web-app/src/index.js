@@ -14,11 +14,11 @@ import {configureStore} from './app/state/store';
 const store = configureStore();
 
 ReactDOM.render(
-    <Provider store={store}>
-        <App>
-            <Router history={history.getHistory()}>
-                <Routes/>
-            </Router>
-        </App>
-    </Provider>, document.getElementById('root')
+  <Provider store={store}>
+    <Router history={history.getHistory()}>
+      <App>
+        <Routes/>
+      </App>
+    </Router>
+  </Provider>, document.getElementById('root')
 );
