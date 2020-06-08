@@ -1,0 +1,11 @@
+.menu {
+  [class*=MuiListItemIcon-root] {
+    min-width: 30px;
+  }
+  [class*=MuiListItem-gutters] {
+    padding: 6px 10px;
+  }
+  [class*=MuiListItemText-root] {
+    margin: 3px 0 0 0;
+  }
+}

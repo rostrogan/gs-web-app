@@ -43,7 +43,6 @@ const useStyles = makeStyles((theme) => ({
       display: 'none',
     },
   },
-  // necessary for content to be below app bar
   toolbar: theme.mixins.toolbar,
   drawerPaper: {
     width: drawerWidth,
@@ -64,7 +63,6 @@ const useCardStyles = makeStyles({
   table_th: {
     fontWeight: 700,
   }
-
 });
 
 const LessonsComponent = (props) => {

@@ -67,8 +67,6 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-
-
 const PlanComponent = () => {
   const classes = useStyles();
 
@@ -127,7 +125,6 @@ const PlanComponent = () => {
                     <TableCell component="th" scope="row" align="left" colSpan={4}>
                       Екзамен
                     </TableCell>
-
                   </TableRow>
                 </TableBody>
               </Table>
@@ -162,10 +159,11 @@ const PlanComponent = () => {
                 </TableBody>
               </Table>
               <br/>
+              <br/>
               <Table className={classes.table} aria-label="caption table">
                 <TableHead>
                   <Typography>3 семестр</Typography>
-                  <TableRow>
+                  <TableRow className={classes.headerText}>
                     <TableCell align="left" colSpan={4}>
                       Назва навчальної дисципліни
                     </TableCell>
@@ -188,10 +186,10 @@ const PlanComponent = () => {
                     <TableCell component="th" scope="row" align="left" colSpan={4}>
                       Екзамен
                     </TableCell>
-
                   </TableRow>
                 </TableBody>
               </Table>
+              <br/>
             </CardContent>
           </Card>
         </main>
