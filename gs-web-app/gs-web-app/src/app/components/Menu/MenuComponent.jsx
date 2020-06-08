@@ -13,6 +13,7 @@ import {
   USER_ROLE_STUDENT,
   USER_ROLE_TEACHER
 } from "../../consts/userRoles";
+import styles from './Menu.module.scss';
 
 const useStyles = makeStyles((theme) => ({
   toolbar: theme.mixins.toolbar,
@@ -61,46 +62,10 @@ const MenuComponent = ({role}) => {
         Routes.CABINET_TEACHERS_LESSONS,
       ];
       break;
-
-    default:
-
-      Menu = [
-        'Мій Профіль Аспірант',
-        'Індивідуальний план',
-        'Заняття',
-        'Розклад',
-
-        'Мій Профіль Викладач',
-        'Заняття викладач',
-
-        'Групи Адмін',
-        'Викладачі Адмін',
-      ];
-
-      MenuLink = [
-        Routes.CABINET_ASPIRANT_PROFILE,
-        Routes.CABINET_ASPIRANT_PLAN,
-        Routes.CABINET_ASPIRANT_LESSONS,
-        Routes.CABINET_ASPIRANT_SCHEDULE,
-
-        Routes.CABINET_TEACHERS_PROFILE,
-        Routes.CABINET_TEACHERS_LIST,
-
-        Routes.CABINET_GROUP_LIST,
-        Routes.CABINET_TEACHERS_LIST,
-      ];
-      break;
-    //**admin**
-    //Групи
-    //Викладачі
-
-    //**aspirant**
-    //Групи
-    //Викладачі
   }
 
   return (
-    <>
+    <div className={styles.menu}>
       <div className={classes.toolbar}/>
       <List>
         <Divider/>
@@ -114,7 +79,7 @@ const MenuComponent = ({role}) => {
           </div>
         ))}
       </List>
-    </>
+    </div>
   );
 };
 
